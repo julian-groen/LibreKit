@@ -1,0 +1,43 @@
+{
+  "Mac" : [
+
+  ],
+  "watchOS" : [
+    {
+      "name" : "LoopKit",
+      "hash" : "7c540d6fdc465f8ab654fc551767c24a10f7486b7e3ec766c597f9ed99177035",
+      "swiftToolchainVersion" : "5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+    }
+  ],
+  "tvOS" : [
+
+  ],
+  "commitish" : "6940ab10d258b21e0a33aa5729b1111a8d332d77",
+  "iOS" : [
+    {
+      "name" : "LoopTestingKit",
+      "hash" : "2503107ee17ec11460d6ffcaca5dc6668a1873854be554518bab5498a8860bb2",
+      "swiftToolchainVersion" : "5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+    },
+    {
+      "name" : "MockKitUI",
+      "hash" : "c905186b9a222f95c941e38565a401f359d1b209985971fc007cc89d5faac2f3",
+      "swiftToolchainVersion" : "5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+    },
+    {
+      "name" : "MockKit",
+      "hash" : "c6e7b1ca7d5b10c59e2b6377953762d86c6bdb4155093145b9ad5c6cce3bfcf6",
+      "swiftToolchainVersion" : "5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+    },
+    {
+      "name" : "LoopKitUI",
+      "hash" : "900624aefda77ebc5fe44d2827b17a39faad6c1934d1b37b503f1623465ad75a",
+      "swiftToolchainVersion" : "5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+    },
+    {
+      "name" : "LoopKit",
+      "hash" : "ac2566c7d7a71f2c8bf818aabb84ad4d3f9edfdedaff51b04bafd90f77e9fd11",
+      "swiftToolchainVersion" : "5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+    }
+  ]
+}
