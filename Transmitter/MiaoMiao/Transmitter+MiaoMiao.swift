@@ -192,7 +192,6 @@ public class MiaoMiaoTransmitter: Transmitter {
     
     public func updateValueForNotifyCharacteristic(_ peripheral: CBPeripheral, value: Data) {
         if Date() > timestampLastPacket.addingTimeInterval(maxWaitForNextPacket - 1) {
-            os_log("More than %{public}@ seconds since last update - or first update since app launch, resetting buffer", log: TransmitterManager.log, type: .default, maxWaitForNextPacket)
             reset()
         }
 
