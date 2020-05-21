@@ -83,6 +83,7 @@ public class TransmitterManager: NSObject {
     deinit {
         transmitter = nil
         delegate = nil
+        os_log("Did deinit TransmitterManager.", log: TransmitterManager.log, type: .default)
     }
     
     private func scanForTransmitter() {
@@ -313,6 +314,7 @@ public class TransmitterSetupManager: NSObject {
     
     deinit {
         delegate = nil
+        os_log("Did deinit TransmitterSetupManager.", log: TransmitterManager.log, type: .default)
     }
     
     public func disconnect() {

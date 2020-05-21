@@ -50,7 +50,7 @@ public struct SensorData {
                 i += 16
             }
             let startIndex = (i * 6 + 28)
-            let measurement = Measurement(bytes: bytes[startIndex..<startIndex + 6], timestamp: timestamp.advanced(by: Double(index * -60)))
+            let measurement = Measurement(bytes: Array(bytes[startIndex..<startIndex + 6]), timestamp: timestamp.advanced(by: Double(index * -60)))
             measurements.append(measurement)
         }
         
@@ -67,7 +67,7 @@ public struct SensorData {
                 i += 16
             }
             let startIndex = (i * 6 + 124)
-            let measurement = Measurement(bytes: bytes[startIndex..<startIndex + 6], timestamp: timestamp.advanced(by: Double(index * -900)))
+            let measurement = Measurement(bytes: Array(bytes[startIndex..<startIndex + 6]), timestamp: timestamp.advanced(by: Double(index * -900)))
             measurements.append(measurement)
         }
         

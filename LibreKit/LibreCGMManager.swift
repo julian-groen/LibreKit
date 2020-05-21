@@ -134,7 +134,7 @@ public class LibreCGMManager: CGMManager, TransmitterManagerDelegate {
         
         for measurement in data.trend(reversed: true) {
             if i % 5 == 0 {
-                guard let output = try? calibrationManager.prediction(raw1: Double(measurement.rawGlucose)) else {
+                guard let output = try? calibrationManager.prediction(raw: Double(measurement.rawGlucose)) else {
                     break
                 }
                 var glucose = Glucose(glucose: output.glucose, trend: .flat, minutes: data.minutes, state: data.state, timestamp: measurement.timestamp)

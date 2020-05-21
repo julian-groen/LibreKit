@@ -10,7 +10,7 @@ import Foundation
 
 public struct Measurement {
     
-    let bytes: Data
+    let bytes: [UInt8]
     
     let timestamp: TimeInterval
     
