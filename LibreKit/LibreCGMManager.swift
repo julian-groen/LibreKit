@@ -103,19 +103,25 @@ public class LibreCGMManager: CGMManager, TransmitterManagerDelegate {
         NotificationManager.sendLowBatteryNotificationIfNeeded(transmitter)
         
         guard data.isValidSensor && data.hasValidCRCs else {
-            cgmManagerDelegate?.cgmManager(self, didUpdateWith: .error(SensorError.invalid))
+            delegateQueue.async {
+                self.cgmManagerDelegate?.cgmManager(self, didUpdateWith: .error(SensorError.invalid))
+            }
             return
         }
         
         guard data.state == .ready || data.state == .starting else {
-            cgmManagerDelegate?.cgmManager(self, didUpdateWith: .error(SensorError.expired))
+            delegateQueue.async {
+                self.cgmManagerDelegate?.cgmManager(self, didUpdateWith: .error(SensorError.expired))
+            }
             return
         }
         
         NotificationManager.sendSensorExpireAlertIfNeeded(data)
         
         guard let glucose = readingToGlucose(data), glucose.count > 0 else {
-            cgmManagerDelegate?.cgmManager(self, didUpdateWith: .noData)
+            delegateQueue.async {
+                self.cgmManagerDelegate?.cgmManager(self, didUpdateWith: .noData)
+            }
             return
         }
     
@@ -124,8 +130,10 @@ public class LibreCGMManager: CGMManager, TransmitterManagerDelegate {
             return NewGlucoseSample(date: glucose.startDate, quantity: glucose.quantity, isDisplayOnly: false, syncIdentifier: "\(Int(glucose.timestamp))", device: device)
         }
         
+        delegateQueue.async {
+            self.cgmManagerDelegate?.cgmManager(self, didUpdateWith: (glucoseSamples.isEmpty ? .noData : .newData(glucoseSamples)))
+        }
         latestReading = glucose.max { $0.startDate < $1.startDate }
-        cgmManagerDelegate?.cgmManager(self, didUpdateWith: (glucoseSamples.isEmpty ? .noData : .newData(glucoseSamples)))
     }
     
     private func readingToGlucose(_ data: SensorData) -> [Glucose]? {
