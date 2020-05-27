@@ -66,7 +66,7 @@ struct NotificationManager {
                 
                 let notification = UNMutableNotificationContent()
                 notification.title = LocalizedString("Transmitter Battery Low", comment: "The notification title for a low transmitter battery")
-                notification.body = String(format: LocalizedString("%1$@% left", comment: "Low battery alert format string. (1: percentage remaining)"), battery)
+                notification.body = String(format: LocalizedString("%1$@ left", comment: "Low battery alert format string. (1: percentage remaining)"), "\(battery)%")
                 notification.sound = .default
                 
                 add(identifier: .lowBattery, content: notification)
@@ -114,7 +114,6 @@ struct NotificationManager {
             notification.sound = .default
             
             add(identifier: .glucoseAlarm, content: notification)
-            vibrate()
         }
     }
     
@@ -193,14 +192,5 @@ struct NotificationManager {
         
         add(identifier: .sensorExpire, content: notification)
     }
-        
-    private static func vibrate(times: Int = 3) {
-        AudioServicesPlaySystemSoundWithCompletion(kSystemSoundID_Vibrate) {
-            guard times >= 0 else {
-                return
-            }
-            vibrate(times: times - 1)
-        }
-    }
-    
+
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LibreKit
 
 public protocol GlucoseInputTableViewCellDelegate: class {
     
@@ -23,9 +24,19 @@ extension GlucoseInputTableViewCellDelegate {
     public func textFieldTableViewCellDidChangeEditing(_ cell: GlucoseInputTableViewCell) { }
 }
 
-public enum GlucoseAlarmType: String {
-    case low = "Low"
-    case high = "High"
+public enum GlucoseAlarmType {
+    
+    case low
+    case high
+    
+    public var description: String {
+        switch(self) {
+        case .low:
+            return LocalizedString("Low", comment: "Title describing low")
+        case .high:
+            return LocalizedString("High", comment: "Title describing high")
+        }
+    }
 }
 
 public class GlucoseInputTableViewCell: UITableViewCell, UITextFieldDelegate, NibLoadable {
@@ -62,7 +73,7 @@ public class GlucoseInputTableViewCell: UITableViewCell, UITextFieldDelegate, Ni
     
     public var type: GlucoseAlarmType? {
         didSet {
-            titleLabel.text = type?.rawValue ?? "invalid"
+            titleLabel.text = type?.description ?? "invalid"
         }
     }
 

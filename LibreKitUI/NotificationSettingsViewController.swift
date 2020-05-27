@@ -111,19 +111,19 @@ public class NotificationSettingsViewController: UITableViewController {
             
             switch ConfigurationRow(rawValue: indexPath.row)! {
             case .lowBattery:
-                cell.textLabel?.text = LocalizedString("Transmitter Low Battery", comment: "Title text for the button to toggle low battery notifications")
+                cell.textLabel?.text = LocalizedString("Transmitter Battery Low", comment: "The notification title for a low transmitter battery")
                 cell.switch?.isOn = UserDefaults.standard.lowBatteryNotification
                 cell.switch?.addTarget(self, action: #selector(lowBatteryNotificationChanged(_:)), for: .valueChanged)
             case .sensorExpire:
-                cell.textLabel?.text = LocalizedString("Sensor Expiring", comment: "Title text for the button to toggle sensor expire notifications")
+                cell.textLabel?.text = LocalizedString("Sensor Expiring Soon", comment: "Title text for the button to toggle sensor expire notifications")
                 cell.switch?.isOn = UserDefaults.standard.sensorExpireNotification
                 cell.switch?.addTarget(self, action: #selector(sensorExpireNotificationChanged(_:)), for: .valueChanged)
             case .noSensor:
-                cell.textLabel?.text = LocalizedString("No Sensor Detected", comment: "Title text for the button to toggle no sensor notifications")
+                cell.textLabel?.text = LocalizedString("No Sensor Detected", comment: "The notification title for a not detected sensor")
                 cell.switch?.isOn = UserDefaults.standard.noSensorNotification
                 cell.switch?.addTarget(self, action: #selector(noSensorNotificationChanged(_:)), for: .valueChanged)
             case .newSensor:
-                cell.textLabel?.text = LocalizedString("New Sensor Found", comment: "Title text for the button to toggle new sensor notifications")
+                cell.textLabel?.text = LocalizedString("New Sensor Detected", comment: "The notification title for a new detected sensor")
                 cell.switch?.isOn = UserDefaults.standard.newSensorNotification
                 cell.switch?.addTarget(self, action: #selector(newSensorNotificationChanged(_:)), for: .valueChanged)
             }

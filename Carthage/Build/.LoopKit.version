@@ -5,8 +5,8 @@
   "watchOS" : [
     {
       "name" : "LoopKit",
-      "hash" : "7c540d6fdc465f8ab654fc551767c24a10f7486b7e3ec766c597f9ed99177035",
-      "swiftToolchainVersion" : "5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+      "hash" : "b2a34297eb5b08c0eed77d88e39c77bf4c31adb12576be20854272aa08dfc4cf",
+      "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
     }
   ],
   "tvOS" : [
@@ -16,28 +16,28 @@
   "iOS" : [
     {
       "name" : "LoopTestingKit",
-      "hash" : "2503107ee17ec11460d6ffcaca5dc6668a1873854be554518bab5498a8860bb2",
-      "swiftToolchainVersion" : "5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+      "hash" : "96305f15371db26936984c5afa091fbdd0c70407170feed28ca9a0e404d33db2",
+      "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
     },
     {
       "name" : "MockKitUI",
-      "hash" : "c905186b9a222f95c941e38565a401f359d1b209985971fc007cc89d5faac2f3",
-      "swiftToolchainVersion" : "5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+      "hash" : "da2a67592e36c83f6eba1efe4832fdb3a3d264f120db3168563d2400b948d422",
+      "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
     },
     {
       "name" : "MockKit",
-      "hash" : "c6e7b1ca7d5b10c59e2b6377953762d86c6bdb4155093145b9ad5c6cce3bfcf6",
-      "swiftToolchainVersion" : "5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+      "hash" : "88ef9a820d7d812fa20390d238837cf569e4218c7900b4ac3654717a2714054b",
+      "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
     },
     {
       "name" : "LoopKitUI",
-      "hash" : "900624aefda77ebc5fe44d2827b17a39faad6c1934d1b37b503f1623465ad75a",
-      "swiftToolchainVersion" : "5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+      "hash" : "5eec359dc4956007efc17b7e06187b132efbb1583b43c13459192731afb440c6",
+      "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
     },
     {
       "name" : "LoopKit",
-      "hash" : "ac2566c7d7a71f2c8bf818aabb84ad4d3f9edfdedaff51b04bafd90f77e9fd11",
-      "swiftToolchainVersion" : "5.2.2 (swiftlang-1103.0.32.6 clang-1103.0.32.51)"
+      "hash" : "4fb4fc11fb65297d767a8e3d6e8fce18efdde44d367b4eb69534e8d24b682a77",
+      "swiftToolchainVersion" : "5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
     }
   ]
 }

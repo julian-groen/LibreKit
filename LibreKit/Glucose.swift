@@ -43,7 +43,7 @@ extension Glucose: SensorDisplayable {
     public var sensorAge: String {
         let days  = (minutes / 60) / 24
         let hours = (minutes / 60) - (days * 24)
-        return "\(days) day(s) and \(hours) hour(s)"
+        return String(format: LocalizedString("%1$@ day(s) and %2$@ hour(s)", comment: "Title describing sensor age. (1: day left, 2: hours left)"), days, hours)
     }
     
     public var sensorStatus: String {
