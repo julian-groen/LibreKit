@@ -166,15 +166,15 @@ struct NotificationManager {
         
         switch data.minutes {
         case let x where x >= 15840 && !(lastSensorAge ?? 0 >= 15840): // three days
-            body = String(format: LocalizedString("Replace sensor in %1$@ days", comment: "Sensor expiring alert format string. (1: days left)"), 3)
+            body = String(format: LocalizedString("Replace sensor in %1$@ days", comment: "Sensor expiring alert format string. (1: days left)"), "3")
         case let x where x >= 17280 && !(lastSensorAge ?? 0 >= 17280): // two days
-            body = String(format: LocalizedString("Replace sensor in %1$@ days", comment: "Sensor expiring alert format string. (1: days left)"), 2)
+            body = String(format: LocalizedString("Replace sensor in %1$@ days", comment: "Sensor expiring alert format string. (1: days left)"), "2")
         case let x where x >= 18720 && !(lastSensorAge ?? 0 >= 18720): // one day
-            body = String(format: LocalizedString("Replace sensor in %1$@ day", comment: "Sensor expiring alert format string. (1: day left)"), 1)
+            body = String(format: LocalizedString("Replace sensor in %1$@ day", comment: "Sensor expiring alert format string. (1: day left)"), "1")
         case let x where x >= 19440 && !(lastSensorAge ?? 0 >= 19440): // twelve hours
-            body = String(format: LocalizedString("Replace sensor in %1$@ hours", comment: "Sensor expiring alert format string. (1: hours left)"), 12)
+            body = String(format: LocalizedString("Replace sensor in %1$@ hours", comment: "Sensor expiring alert format string. (1: hours left)"), "12")
         case let x where x >= 20100 && !(lastSensorAge ?? 0 >= 20100): // one hour
-            body = String(format: LocalizedString("Replace sensor in %1$@ hour", comment: "Sensor expiring alert format string. (1: hour left)"), 1)
+            body = String(format: LocalizedString("Replace sensor in %1$@ hour", comment: "Sensor expiring alert format string. (1: hour left)"), "1")
         default:
             body = nil
         }
