@@ -10,11 +10,13 @@ import Foundation
 
 extension UserDefaults {
     private enum Key: String {
-        case enabled        = "com.librekit.notifications.enabled"
-        case lowBattery     = "com.librekit.notifications.lowBattery"
-        case sensorExpire   = "com.librekit.notifications.sensorExpire"
-        case noSensor       = "com.librekit.notifications.noSensor"
-        case newSensor      = "com.librekit.notifications.newSensor"
+        case enabled            = "com.librekit.notifications.enabled"
+        case lastBatteryLevel   = "com.librekit.notifications.lastBatteryLevel"
+        case lowBattery         = "com.librekit.notifications.lowBattery"
+        case lastSensorAge      = "com.librekit.notifications.lastSensorAge"
+        case sensorExpire       = "com.librekit.notifications.sensorExpire"
+        case noSensor           = "com.librekit.notifications.noSensor"
+        case newSensor          = "com.librekit.notifications.newSensor"
     }
 
     var notificationsEnabled: Bool? {
@@ -59,6 +61,24 @@ extension UserDefaults {
         }
         set {
             set(newValue, forKey: Key.sensorExpire.rawValue)
+        }
+    }
+    
+    var lastBatteryLevel: Int? {
+        get {
+            return integer(forKey: Key.lastBatteryLevel.rawValue)
+        }
+        set {
+            set(newValue, forKey: Key.lastBatteryLevel.rawValue)
+        }
+    }
+    
+    var lastSensorAge: Int? {
+        get {
+            return integer(forKey: Key.lastSensorAge.rawValue)
+        }
+        set {
+            set(newValue, forKey: Key.lastSensorAge.rawValue)
         }
     }
     

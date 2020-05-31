@@ -87,7 +87,7 @@ public class NotificationSettingsViewController: UITableViewController {
     override public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch Section(rawValue: section)! {
         case .configuration:
-            return LocalizedString("Determine which notifications will be send as a result of a certain event.", comment: "The footer text for the notification settings section")
+            return LocalizedString("Determine which notifications will be send as a result of a certain event", comment: "The footer text for the notification settings section")
         case .toggle:
             return nil
         }
@@ -111,19 +111,19 @@ public class NotificationSettingsViewController: UITableViewController {
             
             switch ConfigurationRow(rawValue: indexPath.row)! {
             case .lowBattery:
-                cell.textLabel?.text = LocalizedString("Transmitter Battery Low", comment: "The notification title for a low transmitter battery")
+                cell.textLabel?.text = LocalizedString("Transmitter battery low", comment: "The notification title for a low transmitter battery")
                 cell.switch?.isOn = UserDefaults.standard.lowBatteryNotification
                 cell.switch?.addTarget(self, action: #selector(lowBatteryNotificationChanged(_:)), for: .valueChanged)
             case .sensorExpire:
-                cell.textLabel?.text = LocalizedString("Sensor Expiring Soon", comment: "Title text for the button to toggle sensor expire notifications")
+                cell.textLabel?.text = LocalizedString("Sensor age update", comment: "Title text for the button to toggle sensor age update notifications")
                 cell.switch?.isOn = UserDefaults.standard.sensorExpireNotification
                 cell.switch?.addTarget(self, action: #selector(sensorExpireNotificationChanged(_:)), for: .valueChanged)
             case .noSensor:
-                cell.textLabel?.text = LocalizedString("No Sensor Detected", comment: "The notification title for a not detected sensor")
+                cell.textLabel?.text = LocalizedString("No sensor detected", comment: "The notification title for a not detected sensor")
                 cell.switch?.isOn = UserDefaults.standard.noSensorNotification
                 cell.switch?.addTarget(self, action: #selector(noSensorNotificationChanged(_:)), for: .valueChanged)
             case .newSensor:
-                cell.textLabel?.text = LocalizedString("New Sensor Detected", comment: "The notification title for a new detected sensor")
+                cell.textLabel?.text = LocalizedString("New sensor detected", comment: "The notification title for a new detected sensor")
                 cell.switch?.isOn = UserDefaults.standard.newSensorNotification
                 cell.switch?.addTarget(self, action: #selector(newSensorNotificationChanged(_:)), for: .valueChanged)
             }

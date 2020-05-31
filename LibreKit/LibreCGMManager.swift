@@ -116,7 +116,7 @@ public class LibreCGMManager: CGMManager, TransmitterManagerDelegate {
             return
         }
         
-        NotificationManager.sendSensorExpireAlertIfNeeded(data)
+        NotificationManager.sendSensorExpireNotificationIfNeeded(data)
         
         guard let glucose = readingToGlucose(data), glucose.count > 0 else {
             delegateQueue.async {
@@ -133,7 +133,7 @@ public class LibreCGMManager: CGMManager, TransmitterManagerDelegate {
         delegateQueue.async {
             self.cgmManagerDelegate?.cgmManager(self, didUpdateWith: (glucoseSamples.isEmpty ? .noData : .newData(glucoseSamples)))
         }
-        latestReading = glucose.max { $0.startDate < $1.startDate }
+        latestReading = glucose.filter({ $0.isStateValid }).max { $0.startDate < $1.startDate }
     }
     
     private func readingToGlucose(_ data: SensorData) -> [Glucose]? {
