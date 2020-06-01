@@ -127,7 +127,7 @@ struct NotificationManager {
             
             let notification = UNMutableNotificationContent()
             notification.title = LocalizedString("New sensor detected", comment: "The notification title for a new detected sensor")
-            notification.body = LocalizedString("Please wait up to 30 minutes before glucose readings are available", comment: "The notification body for a new detected sensor")
+            notification.body = LocalizedString("Please wait up to 30 minutes before glucose readings are reliable", comment: "The notification body for a new detected sensor")
             notification.sound = .default
 
             add(identifier: .newSensor, content: notification)
