@@ -6,20 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		43A8EC75210E653B00A81379 /* Cartfile */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 43A8EC76210E653C00A81379 /* Build configuration list for PBXAggregateTarget "Cartfile" */;
-			buildPhases = (
-				43A8EC79210E654300A81379 /* Build Carthage Dependencies */,
-			);
-			dependencies = (
-			);
-			name = Cartfile;
-			productName = Cartfile;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		0A06541E246F64990078D77B /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A06541D246F64990078D77B /* NotificationSettingsViewController.swift */; };
 		0A065420246F6C530078D77B /* UserDefaults+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A06541F246F6C530078D77B /* UserDefaults+Notifications.swift */; };
@@ -106,20 +92,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 43A8EC81210E664300A81379;
 			remoteInfo = LibreKitUI;
-		};
-		4325E9D6210E714B00969CE5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 432B0E7F1CDFC3C50045347B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 43A8EC75210E653B00A81379;
-			remoteInfo = Cartfile;
-		};
-		4325E9D8210E715200969CE5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 432B0E7F1CDFC3C50045347B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 43A8EC75210E653B00A81379;
-			remoteInfo = Cartfile;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -439,7 +411,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4325E9D7210E714B00969CE5 /* PBXTargetDependency */,
 			);
 			name = LibreKit;
 			productName = MiaomiaoClient;
@@ -458,7 +429,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4325E9D9210E715200969CE5 /* PBXTargetDependency */,
 			);
 			name = LibreKitUI;
 			productName = MiaomiaoClientUI;
@@ -484,10 +454,6 @@
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 1140;
 					};
-					43A8EC75210E653B00A81379 = {
-						CreatedOnToolsVersion = 9.4.1;
-						ProvisioningStyle = Automatic;
-					};
 					43A8EC81210E664300A81379 = {
 						CreatedOnToolsVersion = 9.4.1;
 						ProvisioningStyle = Automatic;
@@ -510,7 +476,6 @@
 			targets = (
 				432B0E871CDFC3C50045347B /* LibreKit */,
 				43A8EC81210E664300A81379 /* LibreKitUI */,
-				43A8EC75210E653B00A81379 /* Cartfile */,
 				0AF7ACB9239210B7004C8D5C /* TestApp */,
 			);
 		};
@@ -566,20 +531,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
-		};
-		43A8EC79210E654300A81379 /* Build Carthage Dependencies */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Build Carthage Dependencies";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ -f $PROJECT_DIR/.gitmodules ]; then\n    echo \"Skipping checkout due to presence of .gitmodules file\"\n    if [ $ACTION = \"install\" ]; then\n        echo \"You're installing: Make sure to keep all submodules up-to-date and run carthage build after changes.\"\n    fi\nelse\n    echo \"Bootstrapping carthage dependencies\"\n    /usr/local/bin/carthage bootstrap --project-directory \"$SRCROOT\" --cache-builds\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -665,16 +616,6 @@
 			isa = PBXTargetDependency;
 			target = 43A8EC81210E664300A81379 /* LibreKitUI */;
 			targetProxy = 0A73B86523A57F0C00663B46 /* PBXContainerItemProxy */;
-		};
-		4325E9D7210E714B00969CE5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 43A8EC75210E653B00A81379 /* Cartfile */;
-			targetProxy = 4325E9D6210E714B00969CE5 /* PBXContainerItemProxy */;
-		};
-		4325E9D9210E715200969CE5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 43A8EC75210E653B00A81379 /* Cartfile */;
-			targetProxy = 4325E9D8210E715200969CE5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -977,22 +918,6 @@
 			};
 			name = Release;
 		};
-		43A8EC77210E653C00A81379 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		43A8EC78210E653C00A81379 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		43A8EC88210E664300A81379 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1090,15 +1015,6 @@
 			buildConfigurations = (
 				432B0E9D1CDFC3C50045347B /* Debug */,
 				432B0E9E1CDFC3C50045347B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		43A8EC76210E653C00A81379 /* Build configuration list for PBXAggregateTarget "Cartfile" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				43A8EC77210E653C00A81379 /* Debug */,
-				43A8EC78210E653C00A81379 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
