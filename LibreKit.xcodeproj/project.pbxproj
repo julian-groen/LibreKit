@@ -70,9 +70,6 @@
 		0AF7ACC4239210B7004C8D5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AF7ACC2239210B7004C8D5C /* Main.storyboard */; };
 		0AF7ACC6239210B8004C8D5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF7ACC5239210B8004C8D5C /* Assets.xcassets */; };
 		0AF7ACC9239210B8004C8D5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AF7ACC7239210B8004C8D5C /* LaunchScreen.storyboard */; };
-		272DFE6F223E909600FBE2CB /* LoopKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272DFE6D223E909500FBE2CB /* LoopKitUI.framework */; };
-		272DFE71223E909E00FBE2CB /* LoopKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272DFE70223E909E00FBE2CB /* LoopKit.framework */; };
-		272DFE72223E909E00FBE2CB /* LoopKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272DFE70223E909E00FBE2CB /* LoopKit.framework */; };
 		43A8EC95210E67B000A81379 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A8EC94210E67B000A81379 /* HealthKit.framework */; };
 		43AB511B21330D1400B3D58D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43AB511921330D1400B3D58D /* Localizable.strings */; };
 		43AB5127213315D300B3D58D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43AB5125213315D300B3D58D /* Localizable.strings */; };
@@ -164,8 +161,6 @@
 		0AF7ACCA239210B8004C8D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AF7ACDC23921419004C8D5C /* LoopKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopKit.framework; path = Carthage/Build/iOS/LoopKit.framework; sourceTree = "<group>"; };
 		0AF7ACDE2392141E004C8D5C /* LoopKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopKitUI.framework; path = Carthage/Build/iOS/LoopKitUI.framework; sourceTree = "<group>"; };
-		272DFE6D223E909500FBE2CB /* LoopKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopKitUI.framework; path = ../../Build/iOS/LoopKitUI.framework; sourceTree = "<group>"; };
-		272DFE70223E909E00FBE2CB /* LoopKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopKit.framework; path = ../../Build/iOS/LoopKit.framework; sourceTree = "<group>"; };
 		432B0E881CDFC3C50045347B /* LibreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		432B0E8D1CDFC3C50045347B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43A8EC82210E664300A81379 /* LibreKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibreKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,7 +190,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				43A8EC95210E67B000A81379 /* HealthKit.framework in Frameworks */,
-				272DFE71223E909E00FBE2CB /* LoopKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,8 +197,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				272DFE6F223E909600FBE2CB /* LoopKitUI.framework in Frameworks */,
-				272DFE72223E909E00FBE2CB /* LoopKit.framework in Frameworks */,
 				0A2E0B172429CE0700FB3D14 /* LibreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,9 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				0AF7ACDE2392141E004C8D5C /* LoopKitUI.framework */,
-				272DFE70223E909E00FBE2CB /* LoopKit.framework */,
 				0AF7ACDC23921419004C8D5C /* LoopKit.framework */,
-				272DFE6D223E909500FBE2CB /* LoopKitUI.framework */,
 				43A8EC94210E67B000A81379 /* HealthKit.framework */,
 			);
 			name = Frameworks;
