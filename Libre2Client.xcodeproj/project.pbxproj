@@ -49,6 +49,7 @@
 		E298AD2825F2795600F739F7 /* Transmitter+Libre2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E298AD2725F2795600F739F7 /* Transmitter+Libre2.swift */; };
 		E2A9691825F7AB5B00CA01E5 /* SensorSerialNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9691725F7AB5B00CA01E5 /* SensorSerialNumber.swift */; };
 		E2A9694C25F7B70A00CA01E5 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E2A9694B25F7B70A00CA01E5 /* CryptoSwift */; };
+		E2ACC2FC2604CE6D0057D491 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EA5EEB25FB5F7E00FB3835 /* Extensions.swift */; };
 		E2BEE45125ED393300F2EC76 /* SensorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BEE45025ED393300F2EC76 /* SensorType.swift */; };
 		E2EA5EE325FB5D1C00FB3835 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EA5EE225FB5D1C00FB3835 /* Utility.swift */; };
 		E2EA5EEC25FB5F7E00FB3835 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EA5EEB25FB5F7E00FB3835 /* Extensions.swift */; };
@@ -158,8 +159,8 @@
 		432B0E7E1CDFC3C50045347B = {
 			isa = PBXGroup;
 			children = (
-				E2EA5EE825FB5ED300FB3835 /* Libre */,
 				43AB51342133176B00B3D58D /* Common */,
+				E2EA5EE825FB5ED300FB3835 /* Libre2 */,
 				432B0E8A1CDFC3C50045347B /* Libre2Client */,
 				43A8EC83210E664300A81379 /* Libre2ClientUI */,
 				432B0E891CDFC3C50045347B /* Products */,
@@ -234,7 +235,7 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		E2EA5EE825FB5ED300FB3835 /* Libre */ = {
+		E2EA5EE825FB5ED300FB3835 /* Libre2 */ = {
 			isa = PBXGroup;
 			children = (
 				E2FAC2C125FACAFF00FC0385 /* NFC.swift */,
@@ -245,7 +246,7 @@
 				E2EA5EE925FB5EE400FB3835 /* Sensor */,
 				E2EA5EF325FB616B00FB3835 /* Calculation */,
 			);
-			path = Libre;
+			path = Libre2;
 			sourceTree = "<group>";
 		};
 		E2EA5EE925FB5EE400FB3835 /* Sensor */ = {
@@ -443,6 +444,7 @@
 				0A6367FE246C3D1F00C2725D /* LibreManagerSettingsViewController.swift in Sources */,
 				0A636820246C9FFA00C2725D /* UITableView.swift in Sources */,
 				0A6367FC246C372900C2725D /* Libre2CGMManager+UI.swift in Sources */,
+				E2ACC2FC2604CE6D0057D491 /* Extensions.swift in Sources */,
 				0A1E33C62468D99300BE6410 /* LocalizedString.swift in Sources */,
 				E2FC04C3260342250011F49B /* SensorType.swift in Sources */,
 				0A63681A246C9A7500C2725D /* SetupTableViewHeader.swift in Sources */,
@@ -637,7 +639,8 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.Libre2Client;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ReimarMetzen.Libre2Client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -673,7 +676,8 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.Libre2Client;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ReimarMetzen.Libre2Client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -715,7 +719,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.Libre2ClientUI;
+				PRODUCT_BUNDLE_IDENTIFIER = ReimarMetzen.Libre2ClientUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -758,7 +762,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.Libre2ClientUI;
+				PRODUCT_BUNDLE_IDENTIFIER = ReimarMetzen.Libre2ClientUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";

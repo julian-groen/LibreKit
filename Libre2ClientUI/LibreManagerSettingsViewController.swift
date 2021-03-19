@@ -104,6 +104,8 @@ public class LibreManagerSettingsViewController: UITableViewController {
         case state
         case connection
         case age
+        case uid
+        case patchInfo
     }
 
     private enum CalibrationRow: Int, CaseIterable {
@@ -262,7 +264,24 @@ public class LibreManagerSettingsViewController: UITableViewController {
                 } else {
                     cell.detailTextLabel?.text = SettingsTableViewCell.NoValueString
                 }
+            case .uid:
+                cell.textLabel?.text = LocalizedString("Sensor UID")
 
+                if let sensorUID = UserDefaults.standard.sensorUID {
+                    cell.detailTextLabel?.text = sensorUID.hex.uppercased()
+                } else {
+                    cell.detailTextLabel?.text = SettingsTableViewCell.NoValueString
+                }
+            case .patchInfo:
+                cell.textLabel?.text = LocalizedString("Sensor PatchInfo")
+
+                if let sensorPatchInfo = UserDefaults.standard.sensorPatchInfo {
+                    cell.detailTextLabel?.text = sensorPatchInfo.hex.uppercased()
+                } else {
+                    cell.detailTextLabel?.text = SettingsTableViewCell.NoValueString
+                }
+                
+                
             }
             cell.selectionStyle = .none
 
