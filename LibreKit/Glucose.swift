@@ -11,39 +11,32 @@ import HealthKit
 import LoopKit
 
 public struct Glucose {
-    
     let glucose: Double
-    
     var trend: GlucoseTrend
-    
-    let minutes: Int
-    
+    let wearTimeMinutes: Int
     let state: SensorState
-    
-    let timestamp: TimeInterval
+    let date: Date
 }
 
 extension Glucose: GlucoseValue {
-    
     public var quantity: HKQuantity {
         return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: glucose)
     }
     
     public var startDate: Date {
-        return Date(timeIntervalSince1970: timestamp)
+        return date
     }
 }
 
 extension Glucose: SensorDisplayable {
-    
     public var isStateValid: Bool {
-        return glucose >= 39
+        return glucose >= 39 && glucose <= 501
     }
     
     public var sensorAge: String {
-        let days  = (minutes / 60) / 24
-        let hours = (minutes / 60) - (days * 24)
-        return String(format: LocalizedString("%1$@ day(s) and %2$@ hour(s)", comment: "Title describing sensor age. (1: day left, 2: hours left)"), "\(days)", "\(hours)")
+        let days  = (wearTimeMinutes / 60) / 24
+        let hours = (wearTimeMinutes / 60) - (days * 24)
+        return String(format: LocalizedString("%1$@ day(s) and %2$@ hour(s)"), "\(days)", "\(hours)")
     }
     
     public var sensorStatus: String {

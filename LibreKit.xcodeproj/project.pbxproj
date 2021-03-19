@@ -3,14 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A06541E246F64990078D77B /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A06541D246F64990078D77B /* NotificationSettingsViewController.swift */; };
-		0A065420246F6C530078D77B /* UserDefaults+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A06541F246F6C530078D77B /* UserDefaults+Notifications.swift */; };
-		0A065421246F6D060078D77B /* UserDefaults+Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A06541F246F6C530078D77B /* UserDefaults+Notifications.swift */; };
-		0A06542324700D980078D77B /* AlarmSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A06542224700D980078D77B /* AlarmSettingsViewController.swift */; };
 		0A127DD02472DE7900505869 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A127DCF2472DE7900505869 /* NotificationManager.swift */; };
 		0A1E33C12468D84400BE6410 /* LibreCGMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33C02468D84400BE6410 /* LibreCGMManager.swift */; };
 		0A1E33C42468D90300BE6410 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33C32468D90300BE6410 /* LocalizedString.swift */; };
@@ -18,13 +14,9 @@
 		0A1E33C82468DADA00BE6410 /* Glucose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33C72468DADA00BE6410 /* Glucose.swift */; };
 		0A1E33CE2469579F00BE6410 /* SensorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33CD2469579F00BE6410 /* SensorState.swift */; };
 		0A1E33D224695C4C00BE6410 /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33D124695C4C00BE6410 /* Transmitter.swift */; };
-		0A1E33D524695D2B00BE6410 /* Transmitter+MiaoMiao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33D424695D2B00BE6410 /* Transmitter+MiaoMiao.swift */; };
 		0A1E33D724695FA800BE6410 /* TransmitterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33D624695FA800BE6410 /* TransmitterManager.swift */; };
 		0A1E33D924695FDE00BE6410 /* SensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33D824695FDE00BE6410 /* SensorData.swift */; };
-		0A1E33DB2469885200BE6410 /* UserDefaults+Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33DA2469885200BE6410 /* UserDefaults+Bluetooth.swift */; };
-		0A1E33DD2469E18400BE6410 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33DC2469E18400BE6410 /* Data.swift */; };
 		0A1E33DF2469E85C00BE6410 /* CRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33DE2469E85C00BE6410 /* CRC.swift */; };
-		0A2A4372246DE1B0009A160E /* RawGlucose.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0A2A4371246DE1B0009A160E /* RawGlucose.mlmodel */; };
 		0A2A4374246DF436009A160E /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2A4373246DF436009A160E /* Measurement.swift */; };
 		0A2E0B172429CE0700FB3D14 /* LibreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 432B0E881CDFC3C50045347B /* LibreKit.framework */; };
 		0A6367EF246A9F1300C2725D /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367EE246A9F1300C2725D /* HKUnit.swift */; };
@@ -36,7 +28,6 @@
 		0A6367FE246C3D1F00C2725D /* LibreManagerSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367FD246C3D1F00C2725D /* LibreManagerSettingsViewController.swift */; };
 		0A636800246C3D3E00C2725D /* LibreManagerSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367FF246C3D3D00C2725D /* LibreManagerSetupViewController.swift */; };
 		0A636802246C3E9200C2725D /* TransmitterSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A636801246C3E9200C2725D /* TransmitterSetupViewController.swift */; };
-		0A636804246C3EA000C2725D /* TransmitterSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A636803246C3EA000C2725D /* TransmitterSettingsViewController.swift */; };
 		0A63680E246C6D3C00C2725D /* CBPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63680D246C6D3C00C2725D /* CBPeripheral.swift */; };
 		0A636810246C700300C2725D /* Collection+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63680F246C700300C2725D /* Collection+Array.swift */; };
 		0A636813246C91F200C2725D /* Collection+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63680F246C700300C2725D /* Collection+Array.swift */; };
@@ -45,89 +36,43 @@
 		0A63681C246C9AA300C2725D /* IdentifiableClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63681B246C9AA300C2725D /* IdentifiableClass.swift */; };
 		0A63681E246C9B7500C2725D /* AnnotatedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63681D246C9B7500C2725D /* AnnotatedTableViewCell.swift */; };
 		0A636820246C9FFA00C2725D /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63681F246C9FFA00C2725D /* UITableView.swift */; };
-		0A636821246CBAA400C2725D /* UserDefaults+Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33DA2469885200BE6410 /* UserDefaults+Bluetooth.swift */; };
 		0A636822246CBAA400C2725D /* UserDefaults+Glucose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367F7246B773F00C2725D /* UserDefaults+Glucose.swift */; };
 		0A636824246CBC2D00C2725D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A636823246CBC2D00C2725D /* UIColor.swift */; };
-		0A73B85F23A57F0800663B46 /* LibreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 432B0E881CDFC3C50045347B /* LibreKit.framework */; };
-		0A73B86023A57F0800663B46 /* LibreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 432B0E881CDFC3C50045347B /* LibreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0A73B86323A57F0C00663B46 /* LibreKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A8EC82210E664300A81379 /* LibreKitUI.framework */; };
-		0A73B86423A57F0C00663B46 /* LibreKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 43A8EC82210E664300A81379 /* LibreKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0A7737542472A79600DD4CFC /* GlucoseAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7737532472A79600DD4CFC /* GlucoseAlarm.swift */; };
 		0A7737562472AB4E00DD4CFC /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7737552472AB4E00DD4CFC /* Double.swift */; };
-		0A7737572472AE3100DD4CFC /* GlucoseAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7737532472A79600DD4CFC /* GlucoseAlarm.swift */; };
-		0A77375A2472AEC100DD4CFC /* GlucoseInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7737582472AEC100DD4CFC /* GlucoseInputTableViewCell.xib */; };
-		0A77375B2472AEC100DD4CFC /* GlucoseInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7737592472AEC100DD4CFC /* GlucoseInputTableViewCell.swift */; };
 		0A77375C2472B11A00DD4CFC /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367EE246A9F1300C2725D /* HKUnit.swift */; };
 		0A77375D2472B21500DD4CFC /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7737552472AB4E00DD4CFC /* Double.swift */; };
-		0AA0ABF52476C8CD00F73ABC /* 1587335024.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0AA0ABF32476C6BB00F73ABC /* 1587335024.txt */; };
-		0AA4403F239F396200244471 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A8EC94210E67B000A81379 /* HealthKit.framework */; };
-		0AAE8233239215F60072996E /* LoopKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF7ACDC23921419004C8D5C /* LoopKit.framework */; };
-		0AAE8234239215F60072996E /* LoopKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF7ACDC23921419004C8D5C /* LoopKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0AAE8235239216030072996E /* LoopKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF7ACDE2392141E004C8D5C /* LoopKitUI.framework */; };
-		0AAE8236239216030072996E /* LoopKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF7ACDE2392141E004C8D5C /* LoopKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0AF7ACBD239210B7004C8D5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF7ACBC239210B7004C8D5C /* AppDelegate.swift */; };
-		0AF7ACC1239210B7004C8D5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF7ACC0239210B7004C8D5C /* ViewController.swift */; };
-		0AF7ACC4239210B7004C8D5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AF7ACC2239210B7004C8D5C /* Main.storyboard */; };
-		0AF7ACC6239210B8004C8D5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF7ACC5239210B8004C8D5C /* Assets.xcassets */; };
-		0AF7ACC9239210B8004C8D5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AF7ACC7239210B8004C8D5C /* LaunchScreen.storyboard */; };
 		43A8EC95210E67B000A81379 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A8EC94210E67B000A81379 /* HealthKit.framework */; };
 		43AB511B21330D1400B3D58D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43AB511921330D1400B3D58D /* Localizable.strings */; };
 		43AB5127213315D300B3D58D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43AB5125213315D300B3D58D /* Localizable.strings */; };
+		E244447625E67664007D6354 /* CalibrationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E244447525E67664007D6354 /* CalibrationInfo.swift */; };
+		E2978CC025FA2FCD0062BE3A /* UserDefaults+Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2978CBF25FA2FCD0062BE3A /* UserDefaults+Sensor.swift */; };
+		E298AD2825F2795600F739F7 /* Transmitter+Libre2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E298AD2725F2795600F739F7 /* Transmitter+Libre2.swift */; };
+		E2A9691825F7AB5B00CA01E5 /* SensorSerialNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9691725F7AB5B00CA01E5 /* SensorSerialNumber.swift */; };
+		E2A9694C25F7B70A00CA01E5 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E2A9694B25F7B70A00CA01E5 /* CryptoSwift */; };
+		E2BEE45125ED393300F2EC76 /* SensorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BEE45025ED393300F2EC76 /* SensorType.swift */; };
+		E2EA5EE325FB5D1C00FB3835 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EA5EE225FB5D1C00FB3835 /* Utility.swift */; };
+		E2EA5EEC25FB5F7E00FB3835 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EA5EEB25FB5F7E00FB3835 /* Extensions.swift */; };
+		E2FAC2C225FACAFF00FC0385 /* NFC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FAC2C125FACAFF00FC0385 /* NFC.swift */; };
+		E2FC04BA26033BE90011F49B /* SensorRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FC04B926033BE90011F49B /* SensorRegion.swift */; };
+		E2FC04BD260341F60011F49B /* UserDefaults+Sensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2978CBF25FA2FCD0062BE3A /* UserDefaults+Sensor.swift */; };
+		E2FC04C0260342200011F49B /* SensorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33CD2469579F00BE6410 /* SensorState.swift */; };
+		E2FC04C3260342250011F49B /* SensorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BEE45025ED393300F2EC76 /* SensorType.swift */; };
+		E2FC04C6260342290011F49B /* SensorRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FC04B926033BE90011F49B /* SensorRegion.swift */; };
+		E2FC04C92603423E0011F49B /* CalibrationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E244447525E67664007D6354 /* CalibrationInfo.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		0A73B86123A57F0800663B46 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 432B0E7F1CDFC3C50045347B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 432B0E871CDFC3C50045347B;
-			remoteInfo = LibreKit;
-		};
-		0A73B86523A57F0C00663B46 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 432B0E7F1CDFC3C50045347B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 43A8EC81210E664300A81379;
-			remoteInfo = LibreKitUI;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		0AF7ACD92392133C004C8D5C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				0A73B86423A57F0C00663B46 /* LibreKitUI.framework in Embed Frameworks */,
-				0AAE8234239215F60072996E /* LoopKit.framework in Embed Frameworks */,
-				0A73B86023A57F0800663B46 /* LibreKit.framework in Embed Frameworks */,
-				0AAE8236239216030072996E /* LoopKitUI.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		0A06541D246F64990078D77B /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
-		0A06541F246F6C530078D77B /* UserDefaults+Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Notifications.swift"; sourceTree = "<group>"; };
-		0A06542224700D980078D77B /* AlarmSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingsViewController.swift; sourceTree = "<group>"; };
 		0A127DCF2472DE7900505869 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0A1E33C02468D84400BE6410 /* LibreCGMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreCGMManager.swift; sourceTree = "<group>"; };
 		0A1E33C32468D90300BE6410 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		0A1E33C72468DADA00BE6410 /* Glucose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glucose.swift; sourceTree = "<group>"; };
 		0A1E33CD2469579F00BE6410 /* SensorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorState.swift; sourceTree = "<group>"; };
 		0A1E33D124695C4C00BE6410 /* Transmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transmitter.swift; sourceTree = "<group>"; };
-		0A1E33D424695D2B00BE6410 /* Transmitter+MiaoMiao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transmitter+MiaoMiao.swift"; sourceTree = "<group>"; };
 		0A1E33D624695FA800BE6410 /* TransmitterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterManager.swift; sourceTree = "<group>"; };
 		0A1E33D824695FDE00BE6410 /* SensorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorData.swift; sourceTree = "<group>"; };
-		0A1E33DA2469885200BE6410 /* UserDefaults+Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Bluetooth.swift"; sourceTree = "<group>"; };
-		0A1E33DC2469E18400BE6410 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		0A1E33DE2469E85C00BE6410 /* CRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRC.swift; sourceTree = "<group>"; };
 		0A27F25B238EBA170074FE36 /* LibreKitUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibreKitUI.h; sourceTree = "<group>"; };
 		0A27F25C238EBA210074FE36 /* LibreKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibreKit.h; sourceTree = "<group>"; };
-		0A2A4371246DE1B0009A160E /* RawGlucose.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RawGlucose.mlmodel; sourceTree = SOURCE_ROOT; };
 		0A2A4373246DF436009A160E /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		0A6367EE246A9F1300C2725D /* HKUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKUnit.swift; sourceTree = "<group>"; };
 		0A6367F0246AC1B100C2725D /* SensorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorError.swift; sourceTree = "<group>"; };
@@ -138,7 +83,6 @@
 		0A6367FD246C3D1F00C2725D /* LibreManagerSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreManagerSettingsViewController.swift; sourceTree = "<group>"; };
 		0A6367FF246C3D3D00C2725D /* LibreManagerSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreManagerSetupViewController.swift; sourceTree = "<group>"; };
 		0A636801246C3E9200C2725D /* TransmitterSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterSetupViewController.swift; sourceTree = "<group>"; };
-		0A636803246C3EA000C2725D /* TransmitterSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterSettingsViewController.swift; sourceTree = "<group>"; };
 		0A63680D246C6D3C00C2725D /* CBPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBPeripheral.swift; sourceTree = "<group>"; };
 		0A63680F246C700300C2725D /* Collection+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Array.swift"; sourceTree = "<group>"; };
 		0A636819246C9A7500C2725D /* SetupTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupTableViewHeader.swift; sourceTree = "<group>"; };
@@ -146,19 +90,7 @@
 		0A63681D246C9B7500C2725D /* AnnotatedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotatedTableViewCell.swift; sourceTree = "<group>"; };
 		0A63681F246C9FFA00C2725D /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		0A636823246CBC2D00C2725D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		0A7737532472A79600DD4CFC /* GlucoseAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseAlarm.swift; sourceTree = "<group>"; };
 		0A7737552472AB4E00DD4CFC /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
-		0A7737582472AEC100DD4CFC /* GlucoseInputTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GlucoseInputTableViewCell.xib; sourceTree = "<group>"; };
-		0A7737592472AEC100DD4CFC /* GlucoseInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlucoseInputTableViewCell.swift; sourceTree = "<group>"; };
-		0AA0ABF32476C6BB00F73ABC /* 1587335024.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 1587335024.txt; sourceTree = "<group>"; };
-		0AA4403E239F396200244471 /* TestApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestApp.entitlements; sourceTree = "<group>"; };
-		0AF7ACBA239210B7004C8D5C /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0AF7ACBC239210B7004C8D5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0AF7ACC0239210B7004C8D5C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0AF7ACC3239210B7004C8D5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0AF7ACC5239210B8004C8D5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0AF7ACC8239210B8004C8D5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		0AF7ACCA239210B8004C8D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0AF7ACDC23921419004C8D5C /* LoopKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopKit.framework; path = Carthage/Build/iOS/LoopKit.framework; sourceTree = "<group>"; };
 		0AF7ACDE2392141E004C8D5C /* LoopKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopKitUI.framework; path = Carthage/Build/iOS/LoopKitUI.framework; sourceTree = "<group>"; };
 		432B0E881CDFC3C50045347B /* LibreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,29 +99,29 @@
 		43A8EC85210E664300A81379 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43A8EC94210E67B000A81379 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		43AB511A21330D1400B3D58D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		43AB512121330D8600B3D58D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		43AB5126213315D300B3D58D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		43AB512D2133161800B3D58D /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E23BB47F25F12CB200F91A8A /* LoopKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LoopKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E23BB48025F12CB200F91A8A /* LoopKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LoopKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E244447525E67664007D6354 /* CalibrationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationInfo.swift; sourceTree = "<group>"; };
+		E2978CBF25FA2FCD0062BE3A /* UserDefaults+Sensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Sensor.swift"; sourceTree = "<group>"; };
+		E298AD2725F2795600F739F7 /* Transmitter+Libre2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transmitter+Libre2.swift"; sourceTree = "<group>"; };
+		E2A9691725F7AB5B00CA01E5 /* SensorSerialNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorSerialNumber.swift; sourceTree = "<group>"; };
+		E2BEE45025ED393300F2EC76 /* SensorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorType.swift; sourceTree = "<group>"; };
+		E2EA5EE225FB5D1C00FB3835 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		E2EA5EEB25FB5F7E00FB3835 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E2FAC2C125FACAFF00FC0385 /* NFC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFC.swift; sourceTree = "<group>"; };
+		E2FC04B926033BE90011F49B /* SensorRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorRegion.swift; sourceTree = "<group>"; };
+		E2FC04DA2603853E0011F49B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E2FC04DB2603853E0011F49B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0AF7ACB7239210B7004C8D5C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0A73B86323A57F0C00663B46 /* LibreKitUI.framework in Frameworks */,
-				0A73B85F23A57F0800663B46 /* LibreKit.framework in Frameworks */,
-				0AAE8233239215F60072996E /* LoopKit.framework in Frameworks */,
-				0AAE8235239216030072996E /* LoopKitUI.framework in Frameworks */,
-				0AA4403F239F396200244471 /* HealthKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		432B0E841CDFC3C50045347B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				43A8EC95210E67B000A81379 /* HealthKit.framework in Frameworks */,
+				E2A9694C25F7B70A00CA01E5 /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,69 +139,29 @@
 		0A1E33C92468DB0400BE6410 /* Transmitter */ = {
 			isa = PBXGroup;
 			children = (
-				0A1E33D124695C4C00BE6410 /* Transmitter.swift */,
 				0A1E33D624695FA800BE6410 /* TransmitterManager.swift */,
-				0A1E33D324695CA200BE6410 /* MiaoMiao */,
+				0A1E33D124695C4C00BE6410 /* Transmitter.swift */,
+				E298AD2725F2795600F739F7 /* Transmitter+Libre2.swift */,
 			);
 			path = Transmitter;
-			sourceTree = "<group>";
-		};
-		0A1E33CC2469574200BE6410 /* Sensor */ = {
-			isa = PBXGroup;
-			children = (
-				0A1E33CD2469579F00BE6410 /* SensorState.swift */,
-				0A1E33D824695FDE00BE6410 /* SensorData.swift */,
-				0A6367F0246AC1B100C2725D /* SensorError.swift */,
-				0A6367F3246B6C6600C2725D /* TrendCalculation.swift */,
-				0A2A4373246DF436009A160E /* Measurement.swift */,
-				0A1E33DE2469E85C00BE6410 /* CRC.swift */,
-			);
-			path = Sensor;
-			sourceTree = "<group>";
-		};
-		0A1E33D324695CA200BE6410 /* MiaoMiao */ = {
-			isa = PBXGroup;
-			children = (
-				0A1E33D424695D2B00BE6410 /* Transmitter+MiaoMiao.swift */,
-			);
-			path = MiaoMiao;
 			sourceTree = "<group>";
 		};
 		0A636818246C98A900C2725D /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				0A636819246C9A7500C2725D /* SetupTableViewHeader.swift */,
-				0A7737592472AEC100DD4CFC /* GlucoseInputTableViewCell.swift */,
-				0A7737582472AEC100DD4CFC /* GlucoseInputTableViewCell.xib */,
 				0A63681D246C9B7500C2725D /* AnnotatedTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		0AF7ACBB239210B7004C8D5C /* TestApp */ = {
-			isa = PBXGroup;
-			children = (
-				0AA4403E239F396200244471 /* TestApp.entitlements */,
-				0AF7ACBC239210B7004C8D5C /* AppDelegate.swift */,
-				0AF7ACC0239210B7004C8D5C /* ViewController.swift */,
-				0AF7ACC2239210B7004C8D5C /* Main.storyboard */,
-				0AF7ACC5239210B8004C8D5C /* Assets.xcassets */,
-				0AA0ABF32476C6BB00F73ABC /* 1587335024.txt */,
-				0AF7ACC7239210B8004C8D5C /* LaunchScreen.storyboard */,
-				0AF7ACCA239210B8004C8D5C /* Info.plist */,
-			);
-			path = TestApp;
-			sourceTree = "<group>";
-		};
 		432B0E7E1CDFC3C50045347B = {
 			isa = PBXGroup;
 			children = (
-				0A1E33CC2469574200BE6410 /* Sensor */,
-				0A1E33C92468DB0400BE6410 /* Transmitter */,
-				432B0E8A1CDFC3C50045347B /* LibreKit */,
+				E2EA5EE825FB5ED300FB3835 /* Libre */,
 				43AB51342133176B00B3D58D /* Common */,
+				432B0E8A1CDFC3C50045347B /* LibreKit */,
 				43A8EC83210E664300A81379 /* LibreKitUI */,
-				0AF7ACBB239210B7004C8D5C /* TestApp */,
 				432B0E891CDFC3C50045347B /* Products */,
 				43A8EC7A210E661300A81379 /* Frameworks */,
 			);
@@ -280,7 +172,6 @@
 			children = (
 				432B0E881CDFC3C50045347B /* LibreKit.framework */,
 				43A8EC82210E664300A81379 /* LibreKitUI.framework */,
-				0AF7ACBA239210B7004C8D5C /* TestApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -293,7 +184,6 @@
 				0A127DCF2472DE7900505869 /* NotificationManager.swift */,
 				0A1E33C72468DADA00BE6410 /* Glucose.swift */,
 				0A1E33C02468D84400BE6410 /* LibreCGMManager.swift */,
-				0A2A4371246DE1B0009A160E /* RawGlucose.mlmodel */,
 				0A27F25C238EBA210074FE36 /* LibreKit.h */,
 			);
 			path = LibreKit;
@@ -302,6 +192,8 @@
 		43A8EC7A210E661300A81379 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E23BB47F25F12CB200F91A8A /* LoopKit.framework */,
+				E23BB48025F12CB200F91A8A /* LoopKitUI.framework */,
 				0AF7ACDE2392141E004C8D5C /* LoopKitUI.framework */,
 				0AF7ACDC23921419004C8D5C /* LoopKit.framework */,
 				43A8EC94210E67B000A81379 /* HealthKit.framework */,
@@ -318,9 +210,6 @@
 				0A6367FF246C3D3D00C2725D /* LibreManagerSetupViewController.swift */,
 				0A6367FD246C3D1F00C2725D /* LibreManagerSettingsViewController.swift */,
 				0A636801246C3E9200C2725D /* TransmitterSetupViewController.swift */,
-				0A636803246C3EA000C2725D /* TransmitterSettingsViewController.swift */,
-				0A06541D246F64990078D77B /* NotificationSettingsViewController.swift */,
-				0A06542224700D980078D77B /* AlarmSettingsViewController.swift */,
 				0A27F25B238EBA170074FE36 /* LibreKitUI.h */,
 				0A636818246C98A900C2725D /* Views */,
 			);
@@ -333,19 +222,53 @@
 				0A6367EE246A9F1300C2725D /* HKUnit.swift */,
 				0A1E33C32468D90300BE6410 /* LocalizedString.swift */,
 				0A63680F246C700300C2725D /* Collection+Array.swift */,
-				0A6367F9246B77BA00C2725D /* UserDefaults.swift */,
-				0A1E33DA2469885200BE6410 /* UserDefaults+Bluetooth.swift */,
-				0A6367F7246B773F00C2725D /* UserDefaults+Glucose.swift */,
-				0A06541F246F6C530078D77B /* UserDefaults+Notifications.swift */,
-				0A7737532472A79600DD4CFC /* GlucoseAlarm.swift */,
-				0A1E33DC2469E18400BE6410 /* Data.swift */,
 				0A63680D246C6D3C00C2725D /* CBPeripheral.swift */,
 				0A63681B246C9AA300C2725D /* IdentifiableClass.swift */,
 				0A63681F246C9FFA00C2725D /* UITableView.swift */,
 				0A636823246CBC2D00C2725D /* UIColor.swift */,
 				0A7737552472AB4E00DD4CFC /* Double.swift */,
+				0A6367F9246B77BA00C2725D /* UserDefaults.swift */,
+				0A6367F7246B773F00C2725D /* UserDefaults+Glucose.swift */,
+				E2978CBF25FA2FCD0062BE3A /* UserDefaults+Sensor.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		E2EA5EE825FB5ED300FB3835 /* Libre */ = {
+			isa = PBXGroup;
+			children = (
+				E2FAC2C125FACAFF00FC0385 /* NFC.swift */,
+				0A1E33DE2469E85C00BE6410 /* CRC.swift */,
+				E2EA5EE225FB5D1C00FB3835 /* Utility.swift */,
+				E2EA5EEB25FB5F7E00FB3835 /* Extensions.swift */,
+				0A1E33C92468DB0400BE6410 /* Transmitter */,
+				E2EA5EE925FB5EE400FB3835 /* Sensor */,
+				E2EA5EF325FB616B00FB3835 /* Calculation */,
+			);
+			path = Libre;
+			sourceTree = "<group>";
+		};
+		E2EA5EE925FB5EE400FB3835 /* Sensor */ = {
+			isa = PBXGroup;
+			children = (
+				E244447525E67664007D6354 /* CalibrationInfo.swift */,
+				E2A9691725F7AB5B00CA01E5 /* SensorSerialNumber.swift */,
+				0A1E33CD2469579F00BE6410 /* SensorState.swift */,
+				E2BEE45025ED393300F2EC76 /* SensorType.swift */,
+				0A1E33D824695FDE00BE6410 /* SensorData.swift */,
+				0A6367F0246AC1B100C2725D /* SensorError.swift */,
+				E2FC04B926033BE90011F49B /* SensorRegion.swift */,
+			);
+			path = Sensor;
+			sourceTree = "<group>";
+		};
+		E2EA5EF325FB616B00FB3835 /* Calculation */ = {
+			isa = PBXGroup;
+			children = (
+				0A2A4373246DF436009A160E /* Measurement.swift */,
+				0A6367F3246B6C6600C2725D /* TrendCalculation.swift */,
+			);
+			path = Calculation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,27 +291,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0AF7ACB9239210B7004C8D5C /* TestApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0AF7ACCD239210B8004C8D5C /* Build configuration list for PBXNativeTarget "TestApp" */;
-			buildPhases = (
-				0AF7ACB6239210B7004C8D5C /* Sources */,
-				0AF7ACB7239210B7004C8D5C /* Frameworks */,
-				0AF7ACB8239210B7004C8D5C /* Resources */,
-				0AF7ACD92392133C004C8D5C /* Embed Frameworks */,
-				0AA4403D239F384B00244471 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0A73B86223A57F0800663B46 /* PBXTargetDependency */,
-				0A73B86623A57F0C00663B46 /* PBXTargetDependency */,
-			);
-			name = TestApp;
-			productName = TestApp;
-			productReference = 0AF7ACBA239210B7004C8D5C /* TestApp.app */;
-			productType = "com.apple.product-type.application";
-		};
 		432B0E871CDFC3C50045347B /* LibreKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 432B0E9C1CDFC3C50045347B /* Build configuration list for PBXNativeTarget "LibreKit" */;
@@ -403,6 +305,9 @@
 			dependencies = (
 			);
 			name = LibreKit;
+			packageProductDependencies = (
+				E2A9694B25F7B70A00CA01E5 /* CryptoSwift */,
+			);
 			productName = MiaomiaoClient;
 			productReference = 432B0E881CDFC3C50045347B /* LibreKit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -435,18 +340,12 @@
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Mark Wilson";
 				TargetAttributes = {
-					0AF7ACB9239210B7004C8D5C = {
-						CreatedOnToolsVersion = 11.2.1;
-						DevelopmentTeam = 2KC48ABXJN;
-						ProvisioningStyle = Automatic;
-					};
 					432B0E871CDFC3C50045347B = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 1140;
 					};
 					43A8EC81210E664300A81379 = {
 						CreatedOnToolsVersion = 9.4.1;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -457,32 +356,23 @@
 			knownRegions = (
 				en,
 				Base,
-				nl,
+				de,
 			);
 			mainGroup = 432B0E7E1CDFC3C50045347B;
+			packageReferences = (
+				E2A9694A25F7B70A00CA01E5 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
+			);
 			productRefGroup = 432B0E891CDFC3C50045347B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				432B0E871CDFC3C50045347B /* LibreKit */,
 				43A8EC81210E664300A81379 /* LibreKitUI */,
-				0AF7ACB9239210B7004C8D5C /* TestApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0AF7ACB8239210B7004C8D5C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0AA0ABF52476C8CD00F73ABC /* 1587335024.txt in Resources */,
-				0AF7ACC9239210B8004C8D5C /* LaunchScreen.storyboard in Resources */,
-				0AF7ACC6239210B8004C8D5C /* Assets.xcassets in Resources */,
-				0AF7ACC4239210B7004C8D5C /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		432B0E861CDFC3C50045347B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -495,72 +385,43 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A77375A2472AEC100DD4CFC /* GlucoseInputTableViewCell.xib in Resources */,
 				43AB511B21330D1400B3D58D /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		0AA4403D239F384B00244471 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/LoopKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/LoopKitUI.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		0AF7ACB6239210B7004C8D5C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0AF7ACC1239210B7004C8D5C /* ViewController.swift in Sources */,
-				0AF7ACBD239210B7004C8D5C /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		432B0E831CDFC3C50045347B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A1E33D524695D2B00BE6410 /* Transmitter+MiaoMiao.swift in Sources */,
 				0A1E33DF2469E85C00BE6410 /* CRC.swift in Sources */,
 				0A2A4374246DF436009A160E /* Measurement.swift in Sources */,
 				0A1E33CE2469579F00BE6410 /* SensorState.swift in Sources */,
 				0A1E33D924695FDE00BE6410 /* SensorData.swift in Sources */,
-				0A2A4372246DE1B0009A160E /* RawGlucose.mlmodel in Sources */,
 				0A127DD02472DE7900505869 /* NotificationManager.swift in Sources */,
 				0A6367FA246B77BA00C2725D /* UserDefaults.swift in Sources */,
+				E2978CC025FA2FCD0062BE3A /* UserDefaults+Sensor.swift in Sources */,
 				0A1E33C82468DADA00BE6410 /* Glucose.swift in Sources */,
 				0A1E33C42468D90300BE6410 /* LocalizedString.swift in Sources */,
+				E298AD2825F2795600F739F7 /* Transmitter+Libre2.swift in Sources */,
+				E244447625E67664007D6354 /* CalibrationInfo.swift in Sources */,
+				E2FC04BA26033BE90011F49B /* SensorRegion.swift in Sources */,
+				E2EA5EE325FB5D1C00FB3835 /* Utility.swift in Sources */,
 				0A6367EF246A9F1300C2725D /* HKUnit.swift in Sources */,
 				0A6367F4246B6C6600C2725D /* TrendCalculation.swift in Sources */,
 				0A7737562472AB4E00DD4CFC /* Double.swift in Sources */,
 				0A6367F8246B773F00C2725D /* UserDefaults+Glucose.swift in Sources */,
 				0A6367F1246AC1B100C2725D /* SensorError.swift in Sources */,
 				0A1E33D724695FA800BE6410 /* TransmitterManager.swift in Sources */,
-				0A7737542472A79600DD4CFC /* GlucoseAlarm.swift in Sources */,
-				0A1E33DD2469E18400BE6410 /* Data.swift in Sources */,
+				E2BEE45125ED393300F2EC76 /* SensorType.swift in Sources */,
+				E2FAC2C225FACAFF00FC0385 /* NFC.swift in Sources */,
 				0A63680E246C6D3C00C2725D /* CBPeripheral.swift in Sources */,
-				0A065420246F6C530078D77B /* UserDefaults+Notifications.swift in Sources */,
 				0A1E33C12468D84400BE6410 /* LibreCGMManager.swift in Sources */,
+				E2EA5EEC25FB5F7E00FB3835 /* Extensions.swift in Sources */,
 				0A1E33D224695C4C00BE6410 /* Transmitter.swift in Sources */,
-				0A1E33DB2469885200BE6410 /* UserDefaults+Bluetooth.swift in Sources */,
+				E2A9691825F7AB5B00CA01E5 /* SensorSerialNumber.swift in Sources */,
 				0A636810246C700300C2725D /* Collection+Array.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,66 +432,35 @@
 			files = (
 				0A77375D2472B21500DD4CFC /* Double.swift in Sources */,
 				0A77375C2472B11A00DD4CFC /* HKUnit.swift in Sources */,
-				0A7737572472AE3100DD4CFC /* GlucoseAlarm.swift in Sources */,
-				0A065421246F6D060078D77B /* UserDefaults+Notifications.swift in Sources */,
-				0A636821246CBAA400C2725D /* UserDefaults+Bluetooth.swift in Sources */,
-				0A77375B2472AEC100DD4CFC /* GlucoseInputTableViewCell.swift in Sources */,
 				0A636822246CBAA400C2725D /* UserDefaults+Glucose.swift in Sources */,
 				0A63681E246C9B7500C2725D /* AnnotatedTableViewCell.swift in Sources */,
 				0A636817246C92FC00C2725D /* CBPeripheral.swift in Sources */,
 				0A636824246CBC2D00C2725D /* UIColor.swift in Sources */,
+				E2FC04C92603423E0011F49B /* CalibrationInfo.swift in Sources */,
 				0A636813246C91F200C2725D /* Collection+Array.swift in Sources */,
-				0A06542324700D980078D77B /* AlarmSettingsViewController.swift in Sources */,
 				0A63681C246C9AA300C2725D /* IdentifiableClass.swift in Sources */,
+				E2FC04C6260342290011F49B /* SensorRegion.swift in Sources */,
 				0A6367FE246C3D1F00C2725D /* LibreManagerSettingsViewController.swift in Sources */,
 				0A636820246C9FFA00C2725D /* UITableView.swift in Sources */,
 				0A6367FC246C372900C2725D /* LibreCGMManager+UI.swift in Sources */,
-				0A06541E246F64990078D77B /* NotificationSettingsViewController.swift in Sources */,
 				0A1E33C62468D99300BE6410 /* LocalizedString.swift in Sources */,
+				E2FC04C3260342250011F49B /* SensorType.swift in Sources */,
 				0A63681A246C9A7500C2725D /* SetupTableViewHeader.swift in Sources */,
-				0A636804246C3EA000C2725D /* TransmitterSettingsViewController.swift in Sources */,
 				0A636800246C3D3E00C2725D /* LibreManagerSetupViewController.swift in Sources */,
 				0A636802246C3E9200C2725D /* TransmitterSetupViewController.swift in Sources */,
+				E2FC04BD260341F60011F49B /* UserDefaults+Sensor.swift in Sources */,
+				E2FC04C0260342200011F49B /* SensorState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		0A73B86223A57F0800663B46 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 432B0E871CDFC3C50045347B /* LibreKit */;
-			targetProxy = 0A73B86123A57F0800663B46 /* PBXContainerItemProxy */;
-		};
-		0A73B86623A57F0C00663B46 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 43A8EC81210E664300A81379 /* LibreKitUI */;
-			targetProxy = 0A73B86523A57F0C00663B46 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		0AF7ACC2239210B7004C8D5C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0AF7ACC3239210B7004C8D5C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0AF7ACC7239210B8004C8D5C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0AF7ACC8239210B8004C8D5C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		43AB511921330D1400B3D58D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				43AB511A21330D1400B3D58D /* Base */,
-				43AB512121330D8600B3D58D /* nl */,
+				E2FC04DB2603853E0011F49B /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -639,7 +469,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				43AB5126213315D300B3D58D /* Base */,
-				43AB512D2133161800B3D58D /* nl */,
+				E2FC04DA2603853E0011F49B /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -647,70 +477,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		0AF7ACCB239210B8004C8D5C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = TestApp/TestApp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2KC48ABXJN;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TestApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.2KC48ABXJN.TestApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		0AF7ACCC239210B8004C8D5C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = TestApp/TestApp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2KC48ABXJN;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = TestApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.2KC48ABXJN.TestApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		432B0E9A1CDFC3C50045347B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -836,7 +602,8 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -848,9 +615,9 @@
 		432B0E9D1CDFC3C50045347B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -864,8 +631,12 @@
 				);
 				INFOPLIST_FILE = LibreKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.LibreKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -879,9 +650,9 @@
 		432B0E9E1CDFC3C50045347B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -896,8 +667,12 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = LibreKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.LibreKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -919,9 +694,10 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -933,10 +709,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LibreKitUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.LibreKitUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 4.0;
@@ -955,9 +737,10 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -969,10 +752,16 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = LibreKitUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.LibreKitUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -982,15 +771,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0AF7ACCD239210B8004C8D5C /* Build configuration list for PBXNativeTarget "TestApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0AF7ACCB239210B8004C8D5C /* Debug */,
-				0AF7ACCC239210B8004C8D5C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		432B0E821CDFC3C50045347B /* Build configuration list for PBXProject "LibreKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1019,6 +799,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E2A9694A25F7B70A00CA01E5 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E2A9694B25F7B70A00CA01E5 /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2A9694A25F7B70A00CA01E5 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 432B0E7F1CDFC3C50045347B /* Project object */;
 }

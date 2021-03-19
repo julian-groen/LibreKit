@@ -13,9 +13,7 @@ import UIKit
 import CoreBluetooth
 
 class LibreManagerSetupViewController: UINavigationController, CGMManagerSetupViewController, UINavigationControllerDelegate, CompletionNotifying {
-    
     weak var setupDelegate: CGMManagerSetupViewControllerDelegate?
-    
     weak var completionDelegate: CompletionDelegate?
     
     init() {
@@ -57,11 +55,9 @@ class LibreManagerSetupViewController: UINavigationController, CGMManagerSetupVi
             navigationBar.shadowImage = nil
         }
     }
-    
 }
 
 extension LibreManagerSetupViewController: TransmitterSetupViewControllerDelegate {
-    
     func transmitterSetupViewControllerCancelButtonPressed(_ viewController: TransmitterSetupViewController) {
         completionDelegate?.completionNotifyingDidComplete(self)
     }
@@ -72,5 +68,4 @@ extension LibreManagerSetupViewController: TransmitterSetupViewControllerDelegat
     }
     
     func setupTableViewControllerCancelButtonPressed(_ viewController: SetupTableViewController) { }
-    
 }

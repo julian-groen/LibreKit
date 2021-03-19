@@ -13,14 +13,11 @@ import UIKit
 import CoreBluetooth
 
 protocol TransmitterSetupViewControllerDelegate: SetupTableViewControllerDelegate {
-    
     func transmitterSetupViewControllerCancelButtonPressed(_ viewController: TransmitterSetupViewController)
-    
     func transmitterSetupViewControllerContinueButtonPressed(_ viewController: TransmitterSetupViewController)
 }
 
 public class TransmitterSetupViewController: SetupTableViewController, TransmitterSetupManagerDelegate {
-    
     private var bluetoothManager: TransmitterSetupManager? = nil
     
     private var peripherals: [CBPeripheral] = [CBPeripheral]() {
@@ -80,7 +77,7 @@ public class TransmitterSetupViewController: SetupTableViewController, Transmitt
     }
     
     override public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return LocalizedString("Nearby Transmitters", comment: "Section title for nearby transmitters")
+        return LocalizedString("Nearby Transmitters")
     }
     
     override public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -142,5 +139,4 @@ public class TransmitterSetupViewController: SetupTableViewController, Transmitt
     private func updateContinueButton() {
         footerView.primaryButton.isEnabled = (UserDefaults.standard.transmitterID != nil || UserDefaults.standard.debugModeActivated)
     }
-    
 }

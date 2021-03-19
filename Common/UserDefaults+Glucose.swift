@@ -13,7 +13,6 @@ extension UserDefaults {
     private enum Key: String {
         case glucoseUnit    = "com.librekit.glucose.unit"
         case glucoseSync    = "com.librekit.glucose.sync"
-        case glucoseAlarm   = "com.librekit.glucose.alarm"
     }
     
     var glucoseSync: Bool {
@@ -22,24 +21,6 @@ extension UserDefaults {
         }
         set {
             set(newValue, forKey: Key.glucoseSync.rawValue)
-        }
-    }
-    
-    var glucoseAlarm: GlucoseAlarm? {
-        get {
-            if let savedGlucoseAlarm = object(forKey: Key.glucoseAlarm.rawValue) as? Data {
-                let decoder = JSONDecoder()
-                if let loadedGlucoseAlarm = try? decoder.decode(GlucoseAlarm.self, from: savedGlucoseAlarm) {
-                    return loadedGlucoseAlarm
-                }
-            }
-            return nil
-        }
-        set {
-            let encoder = JSONEncoder()
-            if let val = newValue, let encoded = try? encoder.encode(val) {
-                set(encoded, forKey: Key.glucoseAlarm.rawValue)
-            }
         }
     }
     

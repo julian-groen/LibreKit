@@ -12,11 +12,11 @@ internal class FrameworkBundle {
     static let main = Bundle(for: FrameworkBundle.self)
 }
 
-func LocalizedString(_ key: String, tableName: String? = nil, value: String? = nil, comment: String) -> String {
+func LocalizedString(_ key: String, tableName: String? = nil, value: String? = nil) -> String {
     if let value = value {
-        return NSLocalizedString(key, tableName: tableName, bundle: FrameworkBundle.main, value: value, comment: comment)
+        return NSLocalizedString(key, tableName: tableName, bundle: FrameworkBundle.main, value: value, comment: "") //, comment: comment
     } else {
-        return NSLocalizedString(key, tableName: tableName, bundle: FrameworkBundle.main, comment: comment)
+        return NSLocalizedString(key, tableName: tableName, bundle: FrameworkBundle.main, comment: "") //, comment: comment
     }
 }
 

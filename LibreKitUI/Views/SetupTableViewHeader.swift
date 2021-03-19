@@ -11,7 +11,6 @@ import LoopKitUI
 import UIKit
 
 public class SetupTableViewHeader: UITableViewHeaderFooterView, IdentifiableClass {
-    
     public var spinner = UIActivityIndicatorView()
     
     override public init(reuseIdentifier: String?) {

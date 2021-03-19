@@ -11,7 +11,6 @@ import LoopKitUI
 import LibreKit
 
 extension LibreCGMManager: CGMManagerUI {
-    
     public static func setupViewController() -> (UIViewController & CGMManagerSetupViewController & CompletionNotifying)? {
         return LibreManagerSetupViewController()
     }
@@ -28,5 +27,4 @@ extension LibreCGMManager: CGMManagerUI {
     public var smallImage: UIImage? {
         return nil
     }
-    
 }

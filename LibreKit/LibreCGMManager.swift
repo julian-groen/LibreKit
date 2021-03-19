@@ -12,23 +12,14 @@ import LoopKitUI
 import HealthKit
 
 public class LibreCGMManager: CGMManager, TransmitterManagerDelegate {
-    
-    public static let localizedTitle = LocalizedString("FreeStyle Libre", comment: "Title for the CGMManager")
-    
-    public static var managerIdentifier = "LibreKit"
-    
-    public let appURL: URL? = nil
-    
-    public let providesBLEHeartbeat = true
-    
-    public private(set) var lastConnected: Date?
-
-    public var managedDataInterval: TimeInterval? = nil
-    
     private lazy var bluetoothManager: TransmitterManager? = TransmitterManager()
     
-    private lazy var calibrationManager: RawGlucose = RawGlucose()
-    
+    public static let localizedTitle = LocalizedString("FreeStyle Libre 2")
+    public static var managerIdentifier = "LibreKit"
+    public let appURL: URL? = nil
+    public let providesBLEHeartbeat = true
+    public private(set) var lastConnected: Date?
+    public var managedDataInterval: TimeInterval? = nil
     public let delegate = WeakSynchronizedDelegate<CGMManagerDelegate>()
     
     public var shouldSyncToRemoteService: Bool {
@@ -41,7 +32,11 @@ public class LibreCGMManager: CGMManager, TransmitterManagerDelegate {
     
     public private(set) var latestReading: Glucose? {
         didSet {
-            NotificationManager.sendGlucoseNotificationIfNeeded(current: latestReading, last: oldValue)
+            if let currentGlucose = latestReading {
+                DispatchQueue.main.async(execute: {
+                    UIApplication.shared.applicationIconBadgeNumber = Int(currentGlucose.glucose)
+                })
+            }
         }
     }
 
@@ -84,15 +79,21 @@ public class LibreCGMManager: CGMManager, TransmitterManagerDelegate {
         bluetoothManager?.delegate = nil
     }
     
+    public func resetConnection() {
+        bluetoothManager?.transmitter?.resetConnection()
+    }
+    
     public func fetchNewDataIfNeeded(_ completion: @escaping (CGMResult) -> Void) {
         completion(.noData)
     }
     
     // MARK: - TransmitterManagerDelegate
-    
+       
     public func transmitterManager(_ transmitter: Transmitter?, didChangeTransmitterState state: TransmitterState) {
         switch state {
         case .connected:
+            lastConnected = Date()
+        case .notifying:
             lastConnected = Date()
         default:
             break
@@ -100,59 +101,42 @@ public class LibreCGMManager: CGMManager, TransmitterManagerDelegate {
     }
     
     public func transmitterManager(_ transmitter: Transmitter?, didUpdateSensorData data: SensorData) {
-        NotificationManager.sendLowBatteryNotificationIfNeeded(transmitter)
-        
-        guard data.isValidSensor && data.hasValidCRCs else {
-            delegateQueue.async {
-                self.cgmManagerDelegate?.cgmManager(self, didUpdateWith: .error(SensorError.invalid))
-            }
-            return
-        }
-        
-        guard data.state == .ready || data.state == .starting else {
-            delegateQueue.async {
-                self.cgmManagerDelegate?.cgmManager(self, didUpdateWith: .error(SensorError.expired))
-            }
-            return
-        }
-        
         NotificationManager.sendSensorExpireNotificationIfNeeded(data)
         
         guard let glucose = readingToGlucose(data), glucose.count > 0 else {
             delegateQueue.async {
                 self.cgmManagerDelegate?.cgmManager(self, didUpdateWith: .noData)
             }
+            
             return
         }
     
         let startDate = latestReading?.startDate.addingTimeInterval(1)
         let glucoseSamples = glucose.filterDateRange(startDate, nil).filter({ $0.isStateValid }).map { glucose -> NewGlucoseSample in
-            return NewGlucoseSample(date: glucose.startDate, quantity: glucose.quantity, isDisplayOnly: false, syncIdentifier: "\(Int(glucose.timestamp))", device: device)
+            return NewGlucoseSample(date: glucose.startDate, quantity: glucose.quantity, isDisplayOnly: false, syncIdentifier: glucose.date.timeIntervalSince1970.description, device: device)
         }
         
         delegateQueue.async {
             self.cgmManagerDelegate?.cgmManager(self, didUpdateWith: (glucoseSamples.isEmpty ? .noData : .newData(glucoseSamples)))
         }
-        latestReading = glucose.filter({ $0.isStateValid }).max { $0.startDate < $1.startDate }
+        
+        latestReading = glucose.first //glucose.filter({ $0.isStateValid }).max { $0.startDate < $1.startDate }
+        lastConnected = Date()
     }
     
     private func readingToGlucose(_ data: SensorData) -> [Glucose]? {
         var entries = [Glucose]()
-        var i: Int = 0
-        
-        for measurement in data.trend(reversed: true) {
-            if i % 5 == 0 {
-                guard let output = try? calibrationManager.prediction(raw: Double(measurement.rawGlucose)) else {
-                    break
-                }
-                var glucose = Glucose(glucose: output.glucose, trend: .flat, minutes: data.minutes, state: data.state, timestamp: measurement.timestamp)
-                glucose.trend = TrendCalculation.calculateTrend(current: glucose, last: entries.last)
-                entries.append(glucose)
-            }
-            i += 1
+
+        var lastGlucose: Glucose? = nil
+        for measurement in data.trend {
+            var glucose = Glucose(glucose: Double(measurement.value), trend: .flat, wearTimeMinutes: data.wearTimeMinutes, state: UserDefaults.standard.sensorState ?? .unknown, date: measurement.date)
+            glucose.trend = TrendCalculation.calculateTrend(current: glucose, last: lastGlucose)
+            
+            entries.append(glucose)
+            lastGlucose = glucose
         }
  
-        return entries
+        return entries.reversed()
     }
     
     public var debugDescription: String {
@@ -166,15 +150,9 @@ public class LibreCGMManager: CGMManager, TransmitterManagerDelegate {
             ""
         ].joined(separator: "\n")
     }
-    
 }
 
 extension LibreCGMManager {
-    
-    public var name: String? {
-        return bluetoothManager?.transmitter?.name
-    }
-    
     public var identifier: String? {
         return bluetoothManager?.transmitter?.identifier
     }
@@ -182,24 +160,9 @@ extension LibreCGMManager {
     public var manufacturer: String? {
         return bluetoothManager?.transmitter?.manufacturer
     }
-
-    public var hardware: String? {
-        return bluetoothManager?.transmitter?.hardware
-    }
-    
-    public var firmware: String? {
-        return bluetoothManager?.transmitter?.firmware
-    }
     
     public var connection: String? {
         return bluetoothManager?.state.rawValue
-    }
-    
-    public var battery: String? {
-        if let percentage = bluetoothManager?.transmitter?.battery {
-            return "\(percentage)%"
-        }
-        return nil
     }
     
     public var device: HKDevice? {
@@ -207,14 +170,13 @@ extension LibreCGMManager {
             name: "LibreKit",
             manufacturer: manufacturer,
             model: nil,
-            hardwareVersion: hardware,
-            firmwareVersion: firmware,
+            hardwareVersion: nil,
+            firmwareVersion: nil,
             softwareVersion: nil,
             localIdentifier: identifier,
             udiDeviceIdentifier: nil
         )
     }
-    
 }
 
 extension UserDefaults {
