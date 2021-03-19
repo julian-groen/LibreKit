@@ -1,6 +1,6 @@
 //
 //  TransmitterManager.swift
-//  LibreKit
+//  Libre2Client
 //
 //  Created by Julian Groen on 11/05/2020.
 //  Copyright © 2020 Julian Groen. All rights reserved.
@@ -22,10 +22,10 @@ public protocol TransmitterSetupManagerDelegate: class {
 
 public class TransmitterManager: NSObject {
     private var manager: CBCentralManager! = nil
-    private let managerQueue = DispatchQueue(label: "com.librekit.bluetooth.queue", qos: .unspecified)
+    private let managerQueue = DispatchQueue(label: "com.libre2client.bluetooth.queue", qos: .unspecified)
     
     weak var delegate: TransmitterManagerDelegate?
-    var logger: Logger = Logger(subsystem: "LibreKit", category: "TransmitterManager")
+    var logger: Logger = Logger(subsystem: "Libre2Client", category: "TransmitterManager")
     
     private var peripheral: CBPeripheral? {
         didSet {

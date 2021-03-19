@@ -1,6 +1,6 @@
 //
 //  LibreManagerSetupViewController.swift
-//  LibreKitUI
+//  Libre2ClientUI
 //
 //  Created by Julian Groen on 13/05/2020.
 //  Copyright © 2020 Julian Groen. All rights reserved.
@@ -8,7 +8,7 @@
 
 import LoopKit
 import LoopKitUI
-import LibreKit
+import Libre2Client
 import UIKit
 import CoreBluetooth
 
@@ -63,7 +63,7 @@ extension LibreManagerSetupViewController: TransmitterSetupViewControllerDelegat
     }
     
     func transmitterSetupViewControllerContinueButtonPressed(_ viewController: TransmitterSetupViewController) {
-        setupDelegate?.cgmManagerSetupViewController(self, didSetUpCGMManager: LibreCGMManager())
+        setupDelegate?.cgmManagerSetupViewController(self, didSetUpCGMManager: Libre2CGMManager())
         completionDelegate?.completionNotifyingDidComplete(self)
     }
     

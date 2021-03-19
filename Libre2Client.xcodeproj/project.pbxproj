@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A127DD02472DE7900505869 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A127DCF2472DE7900505869 /* NotificationManager.swift */; };
-		0A1E33C12468D84400BE6410 /* LibreCGMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33C02468D84400BE6410 /* LibreCGMManager.swift */; };
+		0A1E33C12468D84400BE6410 /* Libre2CGMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33C02468D84400BE6410 /* Libre2CGMManager.swift */; };
 		0A1E33C42468D90300BE6410 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33C32468D90300BE6410 /* LocalizedString.swift */; };
 		0A1E33C62468D99300BE6410 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33C32468D90300BE6410 /* LocalizedString.swift */; };
 		0A1E33C82468DADA00BE6410 /* Glucose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33C72468DADA00BE6410 /* Glucose.swift */; };
@@ -18,13 +18,13 @@
 		0A1E33D924695FDE00BE6410 /* SensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33D824695FDE00BE6410 /* SensorData.swift */; };
 		0A1E33DF2469E85C00BE6410 /* CRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1E33DE2469E85C00BE6410 /* CRC.swift */; };
 		0A2A4374246DF436009A160E /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2A4373246DF436009A160E /* Measurement.swift */; };
-		0A2E0B172429CE0700FB3D14 /* LibreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 432B0E881CDFC3C50045347B /* LibreKit.framework */; };
+		0A2E0B172429CE0700FB3D14 /* Libre2Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 432B0E881CDFC3C50045347B /* Libre2Client.framework */; };
 		0A6367EF246A9F1300C2725D /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367EE246A9F1300C2725D /* HKUnit.swift */; };
 		0A6367F1246AC1B100C2725D /* SensorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367F0246AC1B100C2725D /* SensorError.swift */; };
 		0A6367F4246B6C6600C2725D /* TrendCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367F3246B6C6600C2725D /* TrendCalculation.swift */; };
 		0A6367F8246B773F00C2725D /* UserDefaults+Glucose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367F7246B773F00C2725D /* UserDefaults+Glucose.swift */; };
 		0A6367FA246B77BA00C2725D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367F9246B77BA00C2725D /* UserDefaults.swift */; };
-		0A6367FC246C372900C2725D /* LibreCGMManager+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367FB246C372900C2725D /* LibreCGMManager+UI.swift */; };
+		0A6367FC246C372900C2725D /* Libre2CGMManager+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367FB246C372900C2725D /* Libre2CGMManager+UI.swift */; };
 		0A6367FE246C3D1F00C2725D /* LibreManagerSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367FD246C3D1F00C2725D /* LibreManagerSettingsViewController.swift */; };
 		0A636800246C3D3E00C2725D /* LibreManagerSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6367FF246C3D3D00C2725D /* LibreManagerSetupViewController.swift */; };
 		0A636802246C3E9200C2725D /* TransmitterSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A636801246C3E9200C2725D /* TransmitterSetupViewController.swift */; };
@@ -63,7 +63,7 @@
 
 /* Begin PBXFileReference section */
 		0A127DCF2472DE7900505869 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		0A1E33C02468D84400BE6410 /* LibreCGMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreCGMManager.swift; sourceTree = "<group>"; };
+		0A1E33C02468D84400BE6410 /* Libre2CGMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Libre2CGMManager.swift; sourceTree = "<group>"; };
 		0A1E33C32468D90300BE6410 /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		0A1E33C72468DADA00BE6410 /* Glucose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glucose.swift; sourceTree = "<group>"; };
 		0A1E33CD2469579F00BE6410 /* SensorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorState.swift; sourceTree = "<group>"; };
@@ -71,15 +71,15 @@
 		0A1E33D624695FA800BE6410 /* TransmitterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterManager.swift; sourceTree = "<group>"; };
 		0A1E33D824695FDE00BE6410 /* SensorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorData.swift; sourceTree = "<group>"; };
 		0A1E33DE2469E85C00BE6410 /* CRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRC.swift; sourceTree = "<group>"; };
-		0A27F25B238EBA170074FE36 /* LibreKitUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibreKitUI.h; sourceTree = "<group>"; };
-		0A27F25C238EBA210074FE36 /* LibreKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibreKit.h; sourceTree = "<group>"; };
+		0A27F25B238EBA170074FE36 /* Libre2ClientUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Libre2ClientUI.h; sourceTree = "<group>"; };
+		0A27F25C238EBA210074FE36 /* Libre2Client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Libre2Client.h; sourceTree = "<group>"; };
 		0A2A4373246DF436009A160E /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		0A6367EE246A9F1300C2725D /* HKUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKUnit.swift; sourceTree = "<group>"; };
 		0A6367F0246AC1B100C2725D /* SensorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorError.swift; sourceTree = "<group>"; };
 		0A6367F3246B6C6600C2725D /* TrendCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendCalculation.swift; sourceTree = "<group>"; };
 		0A6367F7246B773F00C2725D /* UserDefaults+Glucose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Glucose.swift"; sourceTree = "<group>"; };
 		0A6367F9246B77BA00C2725D /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		0A6367FB246C372900C2725D /* LibreCGMManager+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LibreCGMManager+UI.swift"; sourceTree = "<group>"; };
+		0A6367FB246C372900C2725D /* Libre2CGMManager+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Libre2CGMManager+UI.swift"; sourceTree = "<group>"; };
 		0A6367FD246C3D1F00C2725D /* LibreManagerSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreManagerSettingsViewController.swift; sourceTree = "<group>"; };
 		0A6367FF246C3D3D00C2725D /* LibreManagerSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreManagerSetupViewController.swift; sourceTree = "<group>"; };
 		0A636801246C3E9200C2725D /* TransmitterSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterSetupViewController.swift; sourceTree = "<group>"; };
@@ -93,9 +93,9 @@
 		0A7737552472AB4E00DD4CFC /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		0AF7ACDC23921419004C8D5C /* LoopKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopKit.framework; path = Carthage/Build/iOS/LoopKit.framework; sourceTree = "<group>"; };
 		0AF7ACDE2392141E004C8D5C /* LoopKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopKitUI.framework; path = Carthage/Build/iOS/LoopKitUI.framework; sourceTree = "<group>"; };
-		432B0E881CDFC3C50045347B /* LibreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		432B0E881CDFC3C50045347B /* Libre2Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Libre2Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		432B0E8D1CDFC3C50045347B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		43A8EC82210E664300A81379 /* LibreKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibreKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43A8EC82210E664300A81379 /* Libre2ClientUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Libre2ClientUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43A8EC85210E664300A81379 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43A8EC94210E67B000A81379 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		43AB511A21330D1400B3D58D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A2E0B172429CE0700FB3D14 /* LibreKit.framework in Frameworks */,
+				0A2E0B172429CE0700FB3D14 /* Libre2Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,8 +160,8 @@
 			children = (
 				E2EA5EE825FB5ED300FB3835 /* Libre */,
 				43AB51342133176B00B3D58D /* Common */,
-				432B0E8A1CDFC3C50045347B /* LibreKit */,
-				43A8EC83210E664300A81379 /* LibreKitUI */,
+				432B0E8A1CDFC3C50045347B /* Libre2Client */,
+				43A8EC83210E664300A81379 /* Libre2ClientUI */,
 				432B0E891CDFC3C50045347B /* Products */,
 				43A8EC7A210E661300A81379 /* Frameworks */,
 			);
@@ -170,23 +170,23 @@
 		432B0E891CDFC3C50045347B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				432B0E881CDFC3C50045347B /* LibreKit.framework */,
-				43A8EC82210E664300A81379 /* LibreKitUI.framework */,
+				432B0E881CDFC3C50045347B /* Libre2Client.framework */,
+				43A8EC82210E664300A81379 /* Libre2ClientUI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		432B0E8A1CDFC3C50045347B /* LibreKit */ = {
+		432B0E8A1CDFC3C50045347B /* Libre2Client */ = {
 			isa = PBXGroup;
 			children = (
 				432B0E8D1CDFC3C50045347B /* Info.plist */,
+				0A27F25C238EBA210074FE36 /* Libre2Client.h */,
 				43AB5125213315D300B3D58D /* Localizable.strings */,
-				0A127DCF2472DE7900505869 /* NotificationManager.swift */,
 				0A1E33C72468DADA00BE6410 /* Glucose.swift */,
-				0A1E33C02468D84400BE6410 /* LibreCGMManager.swift */,
-				0A27F25C238EBA210074FE36 /* LibreKit.h */,
+				0A1E33C02468D84400BE6410 /* Libre2CGMManager.swift */,
+				0A127DCF2472DE7900505869 /* NotificationManager.swift */,
 			);
-			path = LibreKit;
+			path = Libre2Client;
 			sourceTree = "<group>";
 		};
 		43A8EC7A210E661300A81379 /* Frameworks */ = {
@@ -201,19 +201,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		43A8EC83210E664300A81379 /* LibreKitUI */ = {
+		43A8EC83210E664300A81379 /* Libre2ClientUI */ = {
 			isa = PBXGroup;
 			children = (
 				43A8EC85210E664300A81379 /* Info.plist */,
+				0A27F25B238EBA170074FE36 /* Libre2ClientUI.h */,
 				43AB511921330D1400B3D58D /* Localizable.strings */,
-				0A6367FB246C372900C2725D /* LibreCGMManager+UI.swift */,
+				0A6367FB246C372900C2725D /* Libre2CGMManager+UI.swift */,
+				0A636801246C3E9200C2725D /* TransmitterSetupViewController.swift */,
 				0A6367FF246C3D3D00C2725D /* LibreManagerSetupViewController.swift */,
 				0A6367FD246C3D1F00C2725D /* LibreManagerSettingsViewController.swift */,
-				0A636801246C3E9200C2725D /* TransmitterSetupViewController.swift */,
-				0A27F25B238EBA170074FE36 /* LibreKitUI.h */,
 				0A636818246C98A900C2725D /* Views */,
 			);
-			path = LibreKitUI;
+			path = Libre2ClientUI;
 			sourceTree = "<group>";
 		};
 		43AB51342133176B00B3D58D /* Common */ = {
@@ -291,9 +291,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		432B0E871CDFC3C50045347B /* LibreKit */ = {
+		432B0E871CDFC3C50045347B /* Libre2Client */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 432B0E9C1CDFC3C50045347B /* Build configuration list for PBXNativeTarget "LibreKit" */;
+			buildConfigurationList = 432B0E9C1CDFC3C50045347B /* Build configuration list for PBXNativeTarget "Libre2Client" */;
 			buildPhases = (
 				432B0E831CDFC3C50045347B /* Sources */,
 				432B0E841CDFC3C50045347B /* Frameworks */,
@@ -304,17 +304,17 @@
 			);
 			dependencies = (
 			);
-			name = LibreKit;
+			name = Libre2Client;
 			packageProductDependencies = (
 				E2A9694B25F7B70A00CA01E5 /* CryptoSwift */,
 			);
 			productName = MiaomiaoClient;
-			productReference = 432B0E881CDFC3C50045347B /* LibreKit.framework */;
+			productReference = 432B0E881CDFC3C50045347B /* Libre2Client.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		43A8EC81210E664300A81379 /* LibreKitUI */ = {
+		43A8EC81210E664300A81379 /* Libre2ClientUI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 43A8EC87210E664300A81379 /* Build configuration list for PBXNativeTarget "LibreKitUI" */;
+			buildConfigurationList = 43A8EC87210E664300A81379 /* Build configuration list for PBXNativeTarget "Libre2ClientUI" */;
 			buildPhases = (
 				43A8EC7D210E664300A81379 /* Sources */,
 				43A8EC7E210E664300A81379 /* Frameworks */,
@@ -325,9 +325,9 @@
 			);
 			dependencies = (
 			);
-			name = LibreKitUI;
+			name = Libre2ClientUI;
 			productName = MiaomiaoClientUI;
-			productReference = 43A8EC82210E664300A81379 /* LibreKitUI.framework */;
+			productReference = 43A8EC82210E664300A81379 /* Libre2ClientUI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -349,7 +349,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 432B0E821CDFC3C50045347B /* Build configuration list for PBXProject "LibreKit" */;
+			buildConfigurationList = 432B0E821CDFC3C50045347B /* Build configuration list for PBXProject "Libre2Client" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -366,8 +366,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				432B0E871CDFC3C50045347B /* LibreKit */,
-				43A8EC81210E664300A81379 /* LibreKitUI */,
+				432B0E871CDFC3C50045347B /* Libre2Client */,
+				43A8EC81210E664300A81379 /* Libre2ClientUI */,
 			);
 		};
 /* End PBXProject section */
@@ -418,7 +418,7 @@
 				E2BEE45125ED393300F2EC76 /* SensorType.swift in Sources */,
 				E2FAC2C225FACAFF00FC0385 /* NFC.swift in Sources */,
 				0A63680E246C6D3C00C2725D /* CBPeripheral.swift in Sources */,
-				0A1E33C12468D84400BE6410 /* LibreCGMManager.swift in Sources */,
+				0A1E33C12468D84400BE6410 /* Libre2CGMManager.swift in Sources */,
 				E2EA5EEC25FB5F7E00FB3835 /* Extensions.swift in Sources */,
 				0A1E33D224695C4C00BE6410 /* Transmitter.swift in Sources */,
 				E2A9691825F7AB5B00CA01E5 /* SensorSerialNumber.swift in Sources */,
@@ -442,7 +442,7 @@
 				E2FC04C6260342290011F49B /* SensorRegion.swift in Sources */,
 				0A6367FE246C3D1F00C2725D /* LibreManagerSettingsViewController.swift in Sources */,
 				0A636820246C9FFA00C2725D /* UITableView.swift in Sources */,
-				0A6367FC246C372900C2725D /* LibreCGMManager+UI.swift in Sources */,
+				0A6367FC246C372900C2725D /* Libre2CGMManager+UI.swift in Sources */,
 				0A1E33C62468D99300BE6410 /* LocalizedString.swift in Sources */,
 				E2FC04C3260342250011F49B /* SensorType.swift in Sources */,
 				0A63681A246C9A7500C2725D /* SetupTableViewHeader.swift in Sources */,
@@ -629,7 +629,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/$(CARTHAGE_PLATFORM_PATH_$(PLATFORM_NAME))",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = LibreKit/Info.plist;
+				INFOPLIST_FILE = Libre2Client/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -637,7 +637,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.LibreKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.Libre2Client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -665,7 +665,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = LibreKit/Info.plist;
+				INFOPLIST_FILE = Libre2Client/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -673,7 +673,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.LibreKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.Libre2Client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -707,7 +707,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = LibreKitUI/Info.plist;
+				INFOPLIST_FILE = Libre2ClientUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -715,7 +715,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.LibreKitUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.Libre2ClientUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -750,7 +750,7 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = LibreKitUI/Info.plist;
+				INFOPLIST_FILE = Libre2ClientUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -758,7 +758,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.LibreKitUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loopkit.Libre2ClientUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
@@ -771,7 +771,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		432B0E821CDFC3C50045347B /* Build configuration list for PBXProject "LibreKit" */ = {
+		432B0E821CDFC3C50045347B /* Build configuration list for PBXProject "Libre2Client" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				432B0E9A1CDFC3C50045347B /* Debug */,
@@ -780,7 +780,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		432B0E9C1CDFC3C50045347B /* Build configuration list for PBXNativeTarget "LibreKit" */ = {
+		432B0E9C1CDFC3C50045347B /* Build configuration list for PBXNativeTarget "Libre2Client" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				432B0E9D1CDFC3C50045347B /* Debug */,
@@ -789,7 +789,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		43A8EC87210E664300A81379 /* Build configuration list for PBXNativeTarget "LibreKitUI" */ = {
+		43A8EC87210E664300A81379 /* Build configuration list for PBXNativeTarget "Libre2ClientUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43A8EC88210E664300A81379 /* Debug */,

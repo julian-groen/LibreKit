@@ -1,6 +1,6 @@
 //
-//  LibreCGMManager+UI.swift
-//  LibreKitUI
+//  Libre2CGMManager+UI.swift
+//  Libre2ClientUI
 //
 //  Created by Julian Groen on 13/05/2020.
 //  Copyright © 2020 Julian Groen. All rights reserved.
@@ -8,9 +8,9 @@
 
 import HealthKit
 import LoopKitUI
-import LibreKit
+import Libre2Client
 
-extension LibreCGMManager: CGMManagerUI {
+extension Libre2CGMManager: CGMManagerUI {
     public static func setupViewController() -> (UIViewController & CGMManagerSetupViewController & CompletionNotifying)? {
         return LibreManagerSetupViewController()
     }

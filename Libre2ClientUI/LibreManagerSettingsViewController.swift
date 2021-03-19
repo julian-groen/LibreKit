@@ -1,6 +1,6 @@
 //
 //  LibreManagerSettingsViewController.swift
-//  LibreKitUI
+//  Libre2ClientUI
 //
 //  Created by Julian Groen on 13/05/2020.
 //  Copyright © 2020 Julian Groen. All rights reserved.
@@ -8,12 +8,12 @@
 
 import LoopKit
 import LoopKitUI
-import LibreKit
+import Libre2Client
 import UIKit
 import HealthKit
 
 public class LibreManagerSettingsViewController: UITableViewController {
-    public let cgmManager: LibreCGMManager
+    public let cgmManager: Libre2CGMManager
     public let glucoseUnit: HKUnit
     public let allowsDeletion: Bool
 
@@ -31,7 +31,7 @@ public class LibreManagerSettingsViewController: UITableViewController {
         return formatter
     }()
 
-    public init(cgmManager: LibreCGMManager, glucoseUnit: HKUnit, allowsDeletion: Bool) {
+    public init(cgmManager: Libre2CGMManager, glucoseUnit: HKUnit, allowsDeletion: Bool) {
         self.cgmManager = cgmManager
         self.glucoseUnit = glucoseUnit
         self.allowsDeletion = allowsDeletion

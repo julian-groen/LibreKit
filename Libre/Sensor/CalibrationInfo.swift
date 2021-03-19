@@ -1,6 +1,6 @@
 //
 //  CalibrationInfo.swift
-//  LibreKit
+//  Libre2Client
 //
 //  Created by Reimar Metzen on 24.02.21.
 //  Copyright © 2021 Mark Wilson. All rights reserved.

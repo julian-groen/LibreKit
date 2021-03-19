@@ -1,6 +1,6 @@
 //
 //  Transmitter.swift
-//  LibreKit
+//  Libre2Client
 //
 //  Created by Julian Groen on 11/05/2020.
 //  Copyright © 2020 Julian Groen. All rights reserved.
@@ -43,7 +43,7 @@ public protocol TransmitterProtocol {
 }
 
 public class TransmitterClass {
-    var logger: Logger = Logger(subsystem: "LibreKit", category: "Transmitter")
+    var logger: Logger = Logger(subsystem: "Libre2Client", category: "Transmitter")
     var identifier: String
     var readCharacteristic: CBCharacteristic?
     var writeCharacteristic: CBCharacteristic?

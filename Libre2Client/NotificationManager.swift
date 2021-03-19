@@ -1,6 +1,6 @@
 //
 //  NotificationManager.swift
-//  LibreKit
+//  Libre2Client
 //
 //  Created by Julian Groen on 18/05/2020.
 //  Copyright © 2020 Julian Groen. All rights reserved.
@@ -13,7 +13,7 @@ import AudioToolbox
 
 struct NotificationManager {
     enum Identifier: String {
-        case sensorExpire = "com.librekit.notifications.sensorExpire"
+        case sensorExpire = "com.libre2client.notifications.sensorExpire"
     }
     
     private static func add(identifier: Identifier, content: UNMutableNotificationContent) {

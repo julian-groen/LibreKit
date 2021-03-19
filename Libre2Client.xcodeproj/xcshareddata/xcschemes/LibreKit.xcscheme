@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "432B0E871CDFC3C50045347B"
-               BuildableName = "LibreKit.framework"
-               BlueprintName = "LibreKit"
-               ReferencedContainer = "container:LibreKit.xcodeproj">
+               BuildableName = "Libre2Client.framework"
+               BlueprintName = "Libre2Client"
+               ReferencedContainer = "container:Libre2Client.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -51,9 +51,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "432B0E871CDFC3C50045347B"
-            BuildableName = "LibreKit.framework"
-            BlueprintName = "LibreKit"
-            ReferencedContainer = "container:LibreKit.xcodeproj">
+            BuildableName = "Libre2Client.framework"
+            BlueprintName = "Libre2Client"
+            ReferencedContainer = "container:Libre2Client.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

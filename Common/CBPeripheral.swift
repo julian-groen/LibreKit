@@ -1,6 +1,6 @@
 //
 //  CBPeripheral.swift
-//  LibreKit
+//  Libre2Client
 //
 //  Created by Julian Groen on 13/05/2020.
 //  Copyright © 2020 Julian Groen. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreBluetooth
-import LibreKit
+import Libre2Client
 
 extension CBPeripheral {
     var type: Transmitter.Type? {
