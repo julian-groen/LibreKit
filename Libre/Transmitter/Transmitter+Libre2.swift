@@ -1,6 +1,6 @@
 //
 //  Transmitter+Abbot.swift
-//  LibreKit
+//  Libre2Client
 //
 //  Created by Reimar Metzen on 05.03.21.
 //  Copyright © 2021 Mark Wilson. All rights reserved.

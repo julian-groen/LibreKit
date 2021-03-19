@@ -1,6 +1,6 @@
 //
 //  UserDefaults+Libre2.swift
-//  LibreKit
+//  Libre2Client
 //
 //  Created by Reimar Metzen on 11.03.21.
 //  Copyright © 2021 Mark Wilson. All rights reserved.
@@ -10,14 +10,14 @@ import Foundation
 
 extension UserDefaults {
     private enum Key: String {
-        case transmitterID = "com.librekit.sensor.transmitter"
-        case sensorUnlockCount = "com.librekit.sensor.sensorUnlockCount"
-        case sensorUID = "com.librekit.sensor.sensorUID"
-        case sensorPatchInfo = "com.librekit.sensor.sensorPatchInfo"
-        case sensorCalibrationInfo = "com.librekit.sensor.sensorCalibrationInfo"
-        case sensorState = "com.librekit.sensor.sensorState"
-        case sensorSerial = "com.librekit.sensor.sensorSerial"
-        case lastSensorAge = "com.librekit.sensor.lastSensorAge"
+        case transmitterID = "com.libre2client.sensor.transmitter"
+        case sensorUnlockCount = "com.libre2client.sensor.sensorUnlockCount"
+        case sensorUID = "com.libre2client.sensor.sensorUID"
+        case sensorPatchInfo = "com.libre2client.sensor.sensorPatchInfo"
+        case sensorCalibrationInfo = "com.libre2client.sensor.sensorCalibrationInfo"
+        case sensorState = "com.libre2client.sensor.sensorState"
+        case sensorSerial = "com.libre2client.sensor.sensorSerial"
+        case lastSensorAge = "com.libre2client.sensor.lastSensorAge"
     }
     
     public var transmitterID: String? {

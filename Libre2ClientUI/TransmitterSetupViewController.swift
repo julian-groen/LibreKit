@@ -1,6 +1,6 @@
 //
 //  TransmitterSetupViewController.swift
-//  LibreKitUI
+//  Libre2ClientUI
 //
 //  Created by Julian Groen on 13/05/2020.
 //  Copyright © 2020 Julian Groen. All rights reserved.
@@ -8,7 +8,7 @@
 
 import LoopKit
 import LoopKitUI
-import LibreKit
+import Libre2Client
 import UIKit
 import CoreBluetooth
 
@@ -45,7 +45,7 @@ public class TransmitterSetupViewController: SetupTableViewController, Transmitt
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        title = LibreCGMManager.localizedTitle
+        title = Libre2CGMManager.localizedTitle
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44

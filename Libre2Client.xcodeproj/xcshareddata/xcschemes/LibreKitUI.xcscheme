@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "43A8EC75210E653B00A81379"
-               BuildableName = "Cartfile"
-               BlueprintName = "Cartfile"
-               ReferencedContainer = "container:LibreKit.xcodeproj">
+               BlueprintIdentifier = "43A8EC81210E664300A81379"
+               BuildableName = "Libre2ClientUI.framework"
+               BlueprintName = "Libre2ClientUI"
+               ReferencedContainer = "container:Libre2Client.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -50,10 +50,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "43A8EC75210E653B00A81379"
-            BuildableName = "Cartfile"
-            BlueprintName = "Cartfile"
-            ReferencedContainer = "container:LibreKit.xcodeproj">
+            BlueprintIdentifier = "43A8EC81210E664300A81379"
+            BuildableName = "Libre2ClientUI.framework"
+            BlueprintName = "Libre2ClientUI"
+            ReferencedContainer = "container:Libre2Client.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -1,6 +1,6 @@
 //
-//  LibreCGMManager.swift
-//  LibreKit
+//  Libre2CGMManager.swift
+//  Libre2Client
 //
 //  Created by Julian Groen on 11/05/2020.
 //  Copyright © 2020 Julian Groen. All rights reserved.
@@ -11,11 +11,11 @@ import LoopKit
 import LoopKitUI
 import HealthKit
 
-public class LibreCGMManager: CGMManager, TransmitterManagerDelegate {
+public class Libre2CGMManager: CGMManager, TransmitterManagerDelegate {
     private lazy var bluetoothManager: TransmitterManager? = TransmitterManager()
     
     public static let localizedTitle = LocalizedString("FreeStyle Libre 2")
-    public static var managerIdentifier = "LibreKit"
+    public static var managerIdentifier = "Libre2Client"
     public let appURL: URL? = nil
     public let providesBLEHeartbeat = true
     public private(set) var lastConnected: Date?
@@ -152,7 +152,7 @@ public class LibreCGMManager: CGMManager, TransmitterManagerDelegate {
     }
 }
 
-extension LibreCGMManager {
+extension Libre2CGMManager {
     public var identifier: String? {
         return bluetoothManager?.transmitter?.identifier
     }
@@ -167,7 +167,7 @@ extension LibreCGMManager {
     
     public var device: HKDevice? {
         return HKDevice(
-            name: "LibreKit",
+            name: "Libre2Client",
             manufacturer: manufacturer,
             model: nil,
             hardwareVersion: nil,

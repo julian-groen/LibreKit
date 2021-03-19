@@ -1,6 +1,6 @@
 //
 //  Double.swift
-//  LibreKit
+//  Libre2Client
 //
 //  Created by Julian Groen on 18/05/2020.
 //  Copyright © 2020 Julian Groen. All rights reserved.
