@@ -171,20 +171,20 @@ class LibreNFC: NSObject, NFCTagReaderSessionDelegate {
         var dataArray = [Data](repeating: Data(), count: blocks)
 
         session.connect(to: firstTag) { error in
-            if let error = error {
+            if error != nil {
                 return
             }
 
             tag.getSystemInfo(requestFlags: [.address, .highDataRate]) { result in
                 switch result {
-                case .failure(let error):
+                case .failure( _):
                     return
-                case .success(let systemInfo):
+                case .success( _):
                     tag.customCommand(requestFlags: .highDataRate, customCommandCode: 0xA1, customRequestParameters: Data()) { response, error in
 
                         for i in 0 ..< requests {
                             tag.readMultipleBlocks(requestFlags: [.highDataRate, .address], blockRange: NSRange(UInt8(i * requestBlocks) ... UInt8(i * requestBlocks + (i == requests - 1 ? (remainder == 0 ? requestBlocks : remainder) : requestBlocks) - (requestBlocks > 1 ? 1 : 0)))) { blockArray, error in
-                                if let error = error {
+                                if error != nil {
                                     if i != requests - 1 { return }
                                 } else {
                                     for j in 0 ..< blockArray.count {
@@ -221,7 +221,7 @@ class LibreNFC: NSObject, NFCTagReaderSessionDelegate {
 
                                                 tag.customCommand(requestFlags: .highDataRate, customCommandCode: Int(cmd.code), customRequestParameters: cmd.parameters) { response, error in
                                                     if subCmd == .enableStreaming && response.count == 6 {
-                                                        let serialNumber: String = SensorSerialNumber(withUID: sensorUID, with: SensorType.type(patchInfo: patchInfo.toHexString()))?.serialNumber ?? "unknown"
+                                                        //let serialNumber: String = SensorSerialNumber(withUID: sensorUID, with: SensorType.type(patchInfo: patchInfo.toHexString()))?.serialNumber ?? "unknown"
                                                         self.libreNFCDelegate?.streamingEnabled(successful: true)
                                                     } else {
                                                         // enableStreaming failed ?
@@ -306,7 +306,7 @@ class LibreNFC: NSObject, NFCTagReaderSessionDelegate {
 
                         // FIXME: doesn't work as the custom commands C1 or A5 for other chips
                         tag.extendedWriteSingleBlock(requestFlags: .highDataRate, blockNumber: startBlock + i, dataBlock: blockToWrite) { error in
-                            if let error = error {
+                            if error != nil {
                                 if i != blocks - 1 { return }
                             }
 

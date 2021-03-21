@@ -29,7 +29,7 @@ class LibreManagerSetupViewController: UINavigationController, CGMManagerSetupVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .groupTableViewBackground
+        view.backgroundColor = .systemGroupedBackground
         navigationBar.shadowImage = UIImage()
         navigationBar.prefersLargeTitles = true
         delegate = self

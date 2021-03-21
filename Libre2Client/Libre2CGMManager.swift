@@ -152,6 +152,8 @@ public class Libre2CGMManager: CGMManager, TransmitterManagerDelegate {
     }
 }
 
+// MARK: - Libre2CGMManager
+
 extension Libre2CGMManager {
     public var identifier: String? {
         return bluetoothManager?.transmitter?.identifier

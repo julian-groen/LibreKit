@@ -20,7 +20,11 @@ public protocol TransmitterSetupManagerDelegate: class {
     func transmitterManager(_ peripheral: CBPeripheral?, didDiscoverPeripherals peripherals: [CBPeripheral])
 }
 
+// MARK: - TransmitterManager
+
 public class TransmitterManager: NSObject {
+    private static let unknownOutput = "-"
+    
     private var manager: CBCentralManager! = nil
     private let managerQueue = DispatchQueue(label: "com.libre2client.bluetooth.queue", qos: .unspecified)
     
@@ -127,7 +131,7 @@ public class TransmitterManager: NSObject {
     }
 }
 
-// MARK: - CBCentralManagerDelegate
+// MARK: - Extension TransmitterManager
 
 extension TransmitterManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -148,6 +152,7 @@ extension TransmitterManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         dispatchPrecondition(condition: .onQueue(managerQueue))
+        logger.debug("Discover: \(peripheral.name ?? TransmitterManager.unknownOutput)")
         
         guard peripheral.name?.lowercased() != nil, let transmitterID = UserDefaults.standard.transmitterID else {
             return
@@ -160,6 +165,7 @@ extension TransmitterManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         dispatchPrecondition(condition: .onQueue(managerQueue))
+        logger.debug("Connect: \(peripheral.name ?? TransmitterManager.unknownOutput)")
         
         state = .connected
         peripheral.discoverServices(transmitter?.serviceCharacteristicsUuid)
@@ -167,6 +173,7 @@ extension TransmitterManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         dispatchPrecondition(condition: .onQueue(managerQueue))
+        logger.debug("Fail to Connect: \(peripheral.name ?? TransmitterManager.unknownOutput)")
         
         guard let transmitterID = UserDefaults.standard.transmitterID else {
             return
@@ -180,6 +187,7 @@ extension TransmitterManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         dispatchPrecondition(condition: .onQueue(managerQueue))
+        logger.debug("Disconnect Peripheral: \(peripheral.name ?? TransmitterManager.unknownOutput)")
         
         guard let transmitterID = UserDefaults.standard.transmitterID else {
             return
@@ -193,18 +201,21 @@ extension TransmitterManager: CBCentralManagerDelegate, CBPeripheralDelegate {
 
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         dispatchPrecondition(condition: .onQueue(managerQueue))
+        logger.debug("Discover Services: \(peripheral.name ?? TransmitterManager.unknownOutput)")
         
         transmitter?.peripheral(peripheral, didDiscoverServices: error)
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         dispatchPrecondition(condition: .onQueue(managerQueue))
+        logger.debug("Discover Characteristics: \(peripheral.name ?? TransmitterManager.unknownOutput)")
         
         transmitter?.peripheral(peripheral, didDiscoverCharacteristicsFor: service)
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
         dispatchPrecondition(condition: .onQueue(managerQueue))
+        logger.debug("Update Notification State: \(peripheral.name ?? TransmitterManager.unknownOutput)")
         
         state = .notifying
         transmitter?.peripheral(peripheral, didUpdateNotificationStateFor: characteristic, error: error)
@@ -212,16 +223,20 @@ extension TransmitterManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         dispatchPrecondition(condition: .onQueue(managerQueue))
+        logger.debug("Update Value: \(peripheral.name ?? TransmitterManager.unknownOutput)")
 
         transmitter?.peripheral(peripheral, didUpdateValueFor: characteristic, error: error)
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         dispatchPrecondition(condition: .onQueue(managerQueue))
+        logger.debug("Write Value: \(peripheral.name ?? TransmitterManager.unknownOutput)")
 
         transmitter?.peripheral(peripheral, didWriteValueFor: characteristic, error: error)
     }
 }
+
+// MARK: - TransmitterSetupManager
 
 public class TransmitterSetupManager: NSObject {
     private var manager: CBCentralManager! = nil
@@ -245,6 +260,8 @@ public class TransmitterSetupManager: NSObject {
     }
     
 }
+
+// MARK: - Extension TransmitterSetupManager
 
 extension TransmitterSetupManager: CBCentralManagerDelegate {
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
