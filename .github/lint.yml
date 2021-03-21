@@ -6,6 +6,9 @@ on:
       - '.github/workflows/swiftlint.yml'
       - '.swiftlint.yml'
       - '**/*.swift'
+  watch:
+    types:
+      - started
 
 jobs:
   SwiftLint:
