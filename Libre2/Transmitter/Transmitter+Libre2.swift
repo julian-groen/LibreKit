@@ -59,9 +59,9 @@ public class Libre2Direct: Transmitter & LibreNFCDelegate {
             return
         }
         
-        let data = LibreUtility.decryptFRAM(sensorUID, patchInfo, fram)
+        let data = PreLibre.decryptFRAM(sensorUID, patchInfo, fram)
 
-        UserDefaults.standard.sensorCalibrationInfo = Libre2Utility.readCalibrationInfo(bytes: data)
+        UserDefaults.standard.sensorCalibrationInfo = Libre2.readCalibrationInfo(bytes: data)
         UserDefaults.standard.sensorState = SensorState(bytes: data)
         
         logger.debug("Calibration, i1: \(UserDefaults.standard.sensorCalibrationInfo?.i1.description ?? Libre2Direct.unknownOutput)")
@@ -142,10 +142,10 @@ public class Libre2Direct: Transmitter & LibreNFCDelegate {
                 }
                 
                 do {
-                    let decryptedBLE = Data(try Libre2Utility.decryptBLE(sensorUID: sensorUID, data: rxBuffer))
+                    let decryptedBLE = Data(try Libre2.decryptBLE(sensorUID: sensorUID, data: rxBuffer))
                     logger.debug("Update Value: \(decryptedBLE.hex)")
                     
-                    let measurements = Libre2Utility.parseBLEData(decryptedBLE, calibrationInfo: calibrationInfo)
+                    let measurements = Libre2.parseBLEData(decryptedBLE, calibrationInfo: calibrationInfo)
                     let sensorData = SensorData(bytes: decryptedBLE, sensorUID: sensorUID, patchInfo: patchInfo, calibrationInfo: calibrationInfo, wearTimeMinutes: measurements.wearTimeMinutes, trend: measurements.trend, history: measurements.history)
 
                     if let sensorData = sensorData {
@@ -192,7 +192,7 @@ public class Libre2Direct: Transmitter & LibreNFCDelegate {
         UserDefaults.standard.sensorUnlockCount = unlockCount
         logger.debug("Unlock Count: \(unlockCount)")
         
-        let unlockPayLoad = Data(Libre2Utility.streamingUnlockPayload(sensorUID: sensorUID, info: patchInfo, enableTime: 42, unlockCount: unlockCount))
+        let unlockPayLoad = Data(Libre2.streamingUnlockPayload(sensorUID: sensorUID, info: patchInfo, enableTime: 42, unlockCount: unlockCount))
         logger.debug("Unlock PayLoad: \(unlockPayLoad.hex)")
         
         _ = writeValueToPeripheral(peripheral, value: unlockPayLoad, type: .withResponse)

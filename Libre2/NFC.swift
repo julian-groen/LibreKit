@@ -12,13 +12,13 @@ import CoreNFC
 import CryptoSwift
 
 // source : https://github.com/gui-dos/DiaBLE/tree/master/DiaBLE
+// source : https://github.com/gui-dos/DiaBLE/tree/master/DiaBLE class Sensor
 
 fileprivate struct NFCCommand {
     let code: UInt8
     let parameters: Data
 }
 
-// source : https://github.com/gui-dos/DiaBLE/tree/master/DiaBLE class Sensor
 fileprivate enum Subcommand: UInt8, CustomStringConvertible {
     case activate = 0x1b
     case enableStreaming = 0x1e
@@ -75,91 +75,6 @@ class LibreNFC: NSObject, NFCTagReaderSessionDelegate {
     }
 
     func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
-        /*
-        DispatchQueue.main.async {
-            guard let firstTag = tags.first else { return }
-            guard case .iso15693(let tag) = firstTag else { return }
-
-            session.alertMessage = "scanComplete"
-
-            let blocks = 43
-            let requestBlocks = 3
-
-            let requests = Int(ceil(Double(blocks) / Double(requestBlocks)))
-            let remainder = blocks % requestBlocks
-            var dataArray = [Data](repeating: Data(), count: blocks)
-
-            session.connect(to: firstTag) { error in
-                if let error = error {
-                    return
-                }
-
-                tag.getSystemInfo(requestFlags: [.address, .highDataRate]) { result in
-                    switch result {
-                    case .failure(let error):
-                        return
-                    case .success(let systemInfo):
-                        tag.customCommand(requestFlags: .highDataRate, customCommandCode: 0xA1, customRequestParameters: Data()) { response, error in
-                            for i in 0 ..< requests {
-                                tag.readMultipleBlocks(requestFlags: [.highDataRate, .address], blockRange: NSRange(UInt8(i * requestBlocks) ... UInt8(i * requestBlocks + (i == requests - 1 ? (remainder == 0 ? requestBlocks : remainder) : requestBlocks) - (requestBlocks > 1 ? 1 : 0)))) { blockArray, error in
-                                    if let error = error {
-                                        if i != requests - 1 { return }
-                                    } else {
-                                        for j in 0 ..< blockArray.count {
-                                            dataArray[i * requestBlocks + j] = blockArray[j]
-                                        }
-                                    }
-
-                                    if i == requests - 1 {
-                                        var fram = Data()
-
-                                        for (n, data) in dataArray.enumerated() {
-                                            if data.count > 0 {
-                                                fram.append(data)
-                                            }
-                                        }
-
-                                        // get sensorUID and patchInfo and send to delegate
-                                        let sensorUID = Data(tag.identifier.reversed())
-                                        let patchInfo = response
-
-                                        // patchInfo should have length 6, which sometimes is not the case, as there are occuring crashes in nfcCommand and Libre2BLEUtilities.streamingUnlockPayload
-                                        guard patchInfo.count >= 6 else {
-                                            return
-                                        }
-
-                                        self.libreNFCDelegate?.received(sensorUID: sensorUID, patchInfo: patchInfo)
-                                        self.libreNFCDelegate?.received(fram: fram)
-
-                                        self.readRaw(0xF860, 43 * 8, tag: tag) { _, _, _ in
-                                            self.readRaw(0x1A00, 64, tag: tag) { _, _, _ in
-                                                self.readRaw(0xFFAC, 36, tag: tag) { _, _, _ in
-                                                    let subCmd: Subcommand = .enableStreaming
-                                                    let cmd = self.nfcCommand(subCmd, unlockCode: self.unlockCode, patchInfo: patchInfo, sensorUID: sensorUID)
-
-                                                    tag.customCommand(requestFlags: .highDataRate, customCommandCode: Int(cmd.code), customRequestParameters: cmd.parameters) { response, error in
-                                                        if subCmd == .enableStreaming && response.count == 6 {
-                                                            let serialNumber: String = SensorSerialNumber(withUID: sensorUID, with: SensorType.type(patchInfo: patchInfo.toHexString()))?.serialNumber ?? "unknown"
-                                                            self.libreNFCDelegate?.streamingEnabled(successful: true)
-                                                        } else {
-                                                            // enableStreaming failed ?
-                                                            self.libreNFCDelegate?.streamingEnabled(successful: false)
-                                                        }
-
-                                                        session.invalidate()
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }*/
-
         guard let firstTag = tags.first else { return }
         guard case .iso15693(let tag) = firstTag else { return }
 
@@ -351,7 +266,7 @@ class LibreNFC: NSObject, NFCTagReaderSessionDelegate {
                                     handler(address, data, error)
                                 }
                             }
-                        } // TEST writeMultipleBlocks
+                        }
                     }
                 }
             }
@@ -373,7 +288,7 @@ class LibreNFC: NSObject, NFCTagReaderSessionDelegate {
             y = 0x1b6a
         }
 
-        let d = LibreUtility.usefulFunction(sensorUID: sensorUID, x: UInt16(code.rawValue), y: y)
+        let d = PreLibre.usefulFunction(sensorUID: sensorUID, x: UInt16(code.rawValue), y: y)
 
         var parameters = Data([code.rawValue])
 
