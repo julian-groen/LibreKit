@@ -1,31 +1,26 @@
 name: format
 
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - ".github/workflows/swift.yaml"
-      - "**.swift"
-      - "**/Package.resolved"
-
   pull_request:
     paths:
       - ".github/workflows/swift.yaml"
       - "**.swift"
       - "**/Package.resolved"
+  watch:
+    types:
+      - started
 
-  jobs:
-    swiftformat:
-      name: Check swiftformat
-      runs-on: ubuntu-latest
-      steps:
-        - name: Checkout repo
-      uses: actions/checkout@v2
-      with:
-        submodules: recursive
-          - name: Update PATH
-          run: echo ::add-path::$HOME/bin
+jobs:
+swiftformat:
+name: Check swiftformat
+runs-on: ubuntu-latest
+steps:
+      - name: Checkout repo
+uses: actions/checkout@v2
+with:
+submodules: recursive
+      - name: Update PATH
+run: echo ::add-path::$HOME/bin
       - name: Cache packages/Tools/.build
 uses: actions/cache@v1
 with:
