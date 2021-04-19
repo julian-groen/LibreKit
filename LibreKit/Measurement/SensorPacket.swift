@@ -35,3 +35,9 @@ extension SensorPacket: CustomDebugStringConvertible {
     }
 }
 
+extension SensorPacket {
+    
+    public static func parse(from: Data) -> SensorPacket? {
+        return nil
+    }
+}

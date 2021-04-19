@@ -168,6 +168,16 @@ fileprivate enum ResponseType: UInt8 {
     case frequencyChanged   = 0xD1
 }
 
+// MARK: - Characteristics
+extension MiaoMiaoTransmitter {
+    
+    public var serviceCharacteristic: CBUUID { CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E") }
+    
+    public var writeCharacteristic: CBUUID { CBUUID(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E") }
+    
+    public var notifyCharacteristic: CBUUID { CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E") }
+}
+
 public class MiaoMiaoTransmitter: Transmitter {
     
     private let log = OSLog(category: "MiaoMiaoTransmitter")
@@ -211,28 +221,29 @@ public class MiaoMiaoTransmitter: Transmitter {
     private func handleUpdatedNotificationValue(responseType: ResponseType) {
         switch responseType {
         case .sensorPacket:
-            if rxBuffer.count >= 363 {
-                print(rxBuffer)
-                delegate?.transmitter(self, changedBatteryLevel: Int(rxBuffer[13]))
+            guard rxBuffer.count >= 363 else { return }
+            let data = rxBuffer.subdata(in: 18 ..< rxBuffer.count)
+            if let packet = SensorPacket.parse(from: data) {
+                let level: Int = Int(rxBuffer[13])
+                delegate?.transmitter(self, didRecievePacket: packet)
+                delegate?.transmitter(self, changedBatteryLevel: level)
                 self.resetDataBuffer()
+            } else {
+                let temp = resendPacketCounter
+                self.resetDataBuffer()
+                resendPacketCounter = temp + 1
+                if resendPacketCounter < maxPacketResendRequests {
+                    _ = writeValueToPeripheral(value: Data.init([0xD3, 0x01]))
+                } else {
+                    resendPacketCounter = 0
+                }
             }
         case .newSensorFound:
             _ = writeValueToPeripheral(value: Data.init([0xD3, 0x01]))
             self.resetDataBuffer()
-        default:
-            self.resetDataBuffer()
+        default: self.resetDataBuffer()
         }
     }
-}
-
-// MARK: - Characteristics
-extension MiaoMiaoTransmitter {
-    
-    public var serviceCharacteristic: CBUUID { CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E") }
-    
-    public var writeCharacteristic: CBUUID { CBUUID(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E") }
-    
-    public var notifyCharacteristic: CBUUID { CBUUID(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E") }
 }
 
 // MARK: - CBPeripheralDelegate
