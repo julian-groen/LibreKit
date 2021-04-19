@@ -8,6 +8,7 @@
 
 import CoreBluetooth
 
+
 public let allTransmitters: [Transmitter.Type] = [
     MiaoMiaoTransmitter.self,
     MockTransmitter.self
@@ -86,7 +87,7 @@ public class AbstractTransmitter {
     }
 }
 
-class MockTransmitter: Transmitter {
+public class MockTransmitter: Transmitter {
     
     var name: String = "MockTransmitter"
     

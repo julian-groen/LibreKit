@@ -7,34 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A095A0625AA8D2600B46419 /* SensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A095A0525AA8D2600B46419 /* SensorData.swift */; };
-		0A095A0D25AA8E3D00B46419 /* SensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A095A0525AA8D2600B46419 /* SensorData.swift */; };
+		0A0D6D632602B41E00055C98 /* GlucoseTargetRangeSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0D6D622602B41E00055C98 /* GlucoseTargetRangeSetting.swift */; };
+		0A0D6D692602C71A00055C98 /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0D6D682602C71A00055C98 /* HKUnit.swift */; };
 		0A146C7525850FD200CF5F0A /* Framework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A146C7325850FAC00CF5F0A /* Framework.swift */; };
 		0A146C7725850FE400CF5F0A /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A146C7625850FE400CF5F0A /* LocalizedString.swift */; };
 		0A146C782585104800CF5F0A /* Framework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A146C7325850FAC00CF5F0A /* Framework.swift */; };
 		0A146C792585104800CF5F0A /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A146C7625850FE400CF5F0A /* LocalizedString.swift */; };
-		0A146C802586E9EE00CF5F0A /* TransmitterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A146C7F2586E9EE00CF5F0A /* TransmitterManager.swift */; };
-		0A146CC82586EA8600CF5F0A /* Calibration.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0A146CC72586EA8600CF5F0A /* Calibration.mlmodel */; };
 		0A192ADB2589752A00598025 /* LibreKitPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A192AD92589752A00598025 /* LibreKitPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A192AEC2589758100598025 /* LoopKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DDD2581A4A700DC6DE5 /* LoopKit.framework */; };
-		0A192AEE2589758400598025 /* LoopKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DE12581A4AA00DC6DE5 /* LoopKitUI.framework */; };
 		0A192AF9258975E000598025 /* LibreKitPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A192AF8258975E000598025 /* LibreKitPlugin.swift */; };
+		0A2F443726041C3C007A7857 /* LibreCGMManagerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F443626041C3C007A7857 /* LibreCGMManagerState.swift */; };
+		0A2F44492604A600007A7857 /* SensorPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F44482604A600007A7857 /* SensorPacket.swift */; };
+		0A2F44512604A9DC007A7857 /* TransmitterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F44502604A9DC007A7857 /* TransmitterState.swift */; };
+		0A2F44552604A9EC007A7857 /* TransmitterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F44542604A9EC007A7857 /* TransmitterManager.swift */; };
+		0A2F73B8261E7DA400B85EFC /* TransmitterConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F73B7261E7DA400B85EFC /* TransmitterConnectView.swift */; };
+		0A2F73C0261E81CD00B85EFC /* TransmitterConnectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F73BF261E81CD00B85EFC /* TransmitterConnectModel.swift */; };
+		0A2F73C426245A4900B85EFC /* ManagerSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F73C326245A4900B85EFC /* ManagerSettingsModel.swift */; };
+		0A2F73C826245DE300B85EFC /* ManagerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F73C726245DE300B85EFC /* ManagerSettingsView.swift */; };
+		0A2F73D42624C73F00B85EFC /* GlucoseTargetRangeEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F73D32624C73F00B85EFC /* GlucoseTargetRangeEditor.swift */; };
+		0A2F73E92627650700B85EFC /* Guardrail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F73E32627640400B85EFC /* Guardrail.swift */; };
 		0A407DE625898C2B002B2C9B /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A407DE525898C2B002B2C9B /* UIImage.swift */; };
-		0A407DEE258A7FE6002B2C9B /* TransmitterSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A407DED258A7FE6002B2C9B /* TransmitterSetupView.swift */; };
-		0A407E01258AA240002B2C9B /* ManagerSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A407E00258AA240002B2C9B /* ManagerSettingsViewModel.swift */; };
-		0A407E06258AA25D002B2C9B /* ManagerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A407E05258AA25D002B2C9B /* ManagerSettingsView.swift */; };
 		0A544DC12581A15100DC6DE5 /* LibreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A544DC02581A15100DC6DE5 /* LibreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A544DCC2581A1B700DC6DE5 /* LibreKitUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A544DCA2581A1B700DC6DE5 /* LibreKitUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A544DD72581A47100DC6DE5 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DD62581A47100DC6DE5 /* HealthKit.framework */; };
 		0A544DD82581A48200DC6DE5 /* LibreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DB22581A0B300DC6DE5 /* LibreKit.framework */; };
-		0A544DDE2581A4A700DC6DE5 /* LoopKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DDD2581A4A700DC6DE5 /* LoopKit.framework */; };
-		0A544DE22581A4AA00DC6DE5 /* LoopKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DE12581A4AA00DC6DE5 /* LoopKitUI.framework */; };
-		0A544DE42581A4B000DC6DE5 /* LoopKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DDD2581A4A700DC6DE5 /* LoopKit.framework */; };
-		0A544DE62581A4B200DC6DE5 /* LoopKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DE12581A4AA00DC6DE5 /* LoopKitUI.framework */; };
 		0A544DE92581A4FD00DC6DE5 /* LibreCGMManager+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A544DE82581A4FD00DC6DE5 /* LibreCGMManager+UI.swift */; };
-		0A544DEB2581A53500DC6DE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A544DEA2581A53500DC6DE5 /* Assets.xcassets */; };
+		0A544DEB2581A53500DC6DE5 /* LibreKitUI.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A544DEA2581A53500DC6DE5 /* LibreKitUI.xcassets */; };
 		0A544DF02581A62300DC6DE5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A544DF22581A62300DC6DE5 /* Localizable.strings */; };
 		0A544E852581A7F400DC6DE5 /* LibreCGMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A544E842581A7F400DC6DE5 /* LibreCGMManager.swift */; };
+		0A83367325FEFD6500CA3DCC /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A83367225FEFD6500CA3DCC /* HealthKit.framework */; };
+		0A8F9D0D262C7D970090A476 /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0D6D682602C71A00055C98 /* HKUnit.swift */; };
+		0A8F9D19262CC7250090A476 /* CBPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F9D18262CC7250090A476 /* CBPeripheral.swift */; };
 		0AA5CBBB259D6BC9004F93F2 /* LibreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DB22581A0B300DC6DE5 /* LibreKit.framework */; };
 		0AA5CBBE259D6BCA004F93F2 /* LibreKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DC82581A1B700DC6DE5 /* LibreKitUI.framework */; };
 		0AA5D637259D6F59004F93F2 /* carthage.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA5D635259D6F59004F93F2 /* carthage.sh */; };
@@ -44,19 +45,15 @@
 		0AA5D68B259D7CFD004F93F2 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA5D688259D7CFD004F93F2 /* OSLog.swift */; };
 		0AA5D6D9259D8250004F93F2 /* Collection+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA5D6D8259D8250004F93F2 /* Collection+Array.swift */; };
 		0AA5D6DA259D8250004F93F2 /* Collection+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA5D6D8259D8250004F93F2 /* Collection+Array.swift */; };
-		0AA88D6A25A51FE5001FD3E5 /* SensorReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA88D6925A51FE5001FD3E5 /* SensorReading.swift */; };
-		0AA88D7125A5253B001FD3E5 /* SensorReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA88D6925A51FE5001FD3E5 /* SensorReading.swift */; };
+		0AA6B91E260151BD0073695B /* LoopKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA6B91D260151BD0073695B /* LoopKit.framework */; };
+		0AA6B91F260151BD0073695B /* LoopKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA6B91D260151BD0073695B /* LoopKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0AA6B921260151C20073695B /* LoopKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA6B920260151C20073695B /* LoopKitUI.framework */; };
+		0AA6B922260151C20073695B /* LoopKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA6B920260151C20073695B /* LoopKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0AA75238261CDA8B00720118 /* CBCentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA75237261CDA8B00720118 /* CBCentralManager.swift */; };
 		0ACB8B34259FCB9F004547B4 /* UICoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB8B33259FCB9E004547B4 /* UICoordinator.swift */; };
-		0AF6802A258D383A00097CDC /* TransmitterSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF68029258D383A00097CDC /* TransmitterSetupViewModel.swift */; };
-		0AF6808B258FAF4800097CDC /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF6808A258FAF4800097CDC /* Transmitter.swift */; };
+		0AE99325260F59EA00D06C79 /* TransmitterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE99324260F59EA00D06C79 /* TransmitterProvider.swift */; };
+		0AE9932B260F8C1B00D06C79 /* Transmitter+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9932A260F8C1B00D06C79 /* Transmitter+Mock.swift */; };
 		0AF68091258FB1E100097CDC /* Transmitter+MiaoMiao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF68090258FB1E100097CDC /* Transmitter+MiaoMiao.swift */; };
-		0AF943582599755500803DE9 /* TransmitterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A146C7F2586E9EE00CF5F0A /* TransmitterManager.swift */; };
-		0AF9435C259A344D00803DE9 /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF6808A258FAF4800097CDC /* Transmitter.swift */; };
-		0AF94360259A346300803DE9 /* Transmitter+MiaoMiao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF68090258FB1E100097CDC /* Transmitter+MiaoMiao.swift */; };
-		0AF943B6259A7F1700803DE9 /* CBPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF943B5259A7F1700803DE9 /* CBPeripheral.swift */; };
-		0AF943BD259A7F6E00803DE9 /* CBPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF943B5259A7F1700803DE9 /* CBPeripheral.swift */; };
-		0AF943C2259AB90000803DE9 /* UserDefaults+Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF943C1259AB90000803DE9 /* UserDefaults+Transmitter.swift */; };
-		0AF943C6259AB94F00803DE9 /* UserDefaults+Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF943C1259AB90000803DE9 /* UserDefaults+Transmitter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,45 +80,65 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0AA6B915260151950073695B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0AA6B91F260151BD0073695B /* LoopKit.framework in Embed Frameworks */,
+				0AA6B922260151C20073695B /* LoopKitUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		0A095A0525AA8D2600B46419 /* SensorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorData.swift; sourceTree = "<group>"; };
+		0A0D6D622602B41E00055C98 /* GlucoseTargetRangeSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseTargetRangeSetting.swift; sourceTree = "<group>"; };
+		0A0D6D682602C71A00055C98 /* HKUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKUnit.swift; sourceTree = "<group>"; };
 		0A146C7325850FAC00CF5F0A /* Framework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Framework.swift; sourceTree = "<group>"; };
 		0A146C7625850FE400CF5F0A /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
-		0A146C7F2586E9EE00CF5F0A /* TransmitterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterManager.swift; sourceTree = "<group>"; };
-		0A146CC72586EA8600CF5F0A /* Calibration.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Calibration.mlmodel; sourceTree = "<group>"; };
 		0A1916832589744100598025 /* LibreKitPlugin.loopplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibreKitPlugin.loopplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A192AD92589752A00598025 /* LibreKitPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibreKitPlugin.h; sourceTree = "<group>"; };
 		0A192ADA2589752A00598025 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A192AF8258975E000598025 /* LibreKitPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreKitPlugin.swift; sourceTree = "<group>"; };
+		0A2F443626041C3C007A7857 /* LibreCGMManagerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreCGMManagerState.swift; sourceTree = "<group>"; };
+		0A2F44482604A600007A7857 /* SensorPacket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorPacket.swift; sourceTree = "<group>"; };
+		0A2F44502604A9DC007A7857 /* TransmitterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterState.swift; sourceTree = "<group>"; };
+		0A2F44542604A9EC007A7857 /* TransmitterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterManager.swift; sourceTree = "<group>"; };
+		0A2F73B7261E7DA400B85EFC /* TransmitterConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterConnectView.swift; sourceTree = "<group>"; };
+		0A2F73BF261E81CD00B85EFC /* TransmitterConnectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterConnectModel.swift; sourceTree = "<group>"; };
+		0A2F73C326245A4900B85EFC /* ManagerSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSettingsModel.swift; sourceTree = "<group>"; };
+		0A2F73C726245DE300B85EFC /* ManagerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSettingsView.swift; sourceTree = "<group>"; };
+		0A2F73D32624C73F00B85EFC /* GlucoseTargetRangeEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseTargetRangeEditor.swift; sourceTree = "<group>"; };
+		0A2F73E32627640400B85EFC /* Guardrail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guardrail.swift; sourceTree = "<group>"; };
 		0A407DE525898C2B002B2C9B /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		0A407DED258A7FE6002B2C9B /* TransmitterSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterSetupView.swift; sourceTree = "<group>"; };
-		0A407E00258AA240002B2C9B /* ManagerSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSettingsViewModel.swift; sourceTree = "<group>"; };
-		0A407E05258AA25D002B2C9B /* ManagerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerSettingsView.swift; sourceTree = "<group>"; };
 		0A544DB22581A0B300DC6DE5 /* LibreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A544DB62581A0B300DC6DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A544DC02581A15100DC6DE5 /* LibreKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibreKit.h; sourceTree = "<group>"; };
 		0A544DC82581A1B700DC6DE5 /* LibreKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibreKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A544DCA2581A1B700DC6DE5 /* LibreKitUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibreKitUI.h; sourceTree = "<group>"; };
 		0A544DCB2581A1B700DC6DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A544DD62581A47100DC6DE5 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/iOSSupport/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
-		0A544DDD2581A4A700DC6DE5 /* LoopKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopKit.framework; path = Carthage/Build/iOS/LoopKit.framework; sourceTree = "<group>"; };
-		0A544DE12581A4AA00DC6DE5 /* LoopKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoopKitUI.framework; path = Carthage/Build/iOS/LoopKitUI.framework; sourceTree = "<group>"; };
 		0A544DE82581A4FD00DC6DE5 /* LibreCGMManager+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LibreCGMManager+UI.swift"; sourceTree = "<group>"; };
-		0A544DEA2581A53500DC6DE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0A544DEA2581A53500DC6DE5 /* LibreKitUI.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LibreKitUI.xcassets; sourceTree = "<group>"; };
 		0A544DF12581A62300DC6DE5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0A544DF52581A68D00DC6DE5 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0A544E842581A7F400DC6DE5 /* LibreCGMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreCGMManager.swift; sourceTree = "<group>"; };
+		0A83367225FEFD6500CA3DCC /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/iOSSupport/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		0A8F9D18262CC7250090A476 /* CBPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBPeripheral.swift; sourceTree = "<group>"; };
 		0AA5D635259D6F59004F93F2 /* carthage.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = carthage.sh; sourceTree = "<group>"; };
 		0AA5D636259D6F59004F93F2 /* copy-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "copy-frameworks.sh"; sourceTree = "<group>"; };
 		0AA5D688259D7CFD004F93F2 /* OSLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		0AA5D6D8259D8250004F93F2 /* Collection+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Array.swift"; sourceTree = "<group>"; };
-		0AA88D6925A51FE5001FD3E5 /* SensorReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorReading.swift; sourceTree = "<group>"; };
+		0AA6B91D260151BD0073695B /* LoopKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LoopKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AA6B920260151C20073695B /* LoopKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LoopKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AA75237261CDA8B00720118 /* CBCentralManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBCentralManager.swift; sourceTree = "<group>"; };
 		0ACB8B33259FCB9E004547B4 /* UICoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICoordinator.swift; sourceTree = "<group>"; };
-		0AF68029258D383A00097CDC /* TransmitterSetupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterSetupViewModel.swift; sourceTree = "<group>"; };
-		0AF6808A258FAF4800097CDC /* Transmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transmitter.swift; sourceTree = "<group>"; };
+		0AE99324260F59EA00D06C79 /* TransmitterProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterProvider.swift; sourceTree = "<group>"; };
+		0AE9932A260F8C1B00D06C79 /* Transmitter+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transmitter+Mock.swift"; sourceTree = "<group>"; };
 		0AF68090258FB1E100097CDC /* Transmitter+MiaoMiao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transmitter+MiaoMiao.swift"; sourceTree = "<group>"; };
-		0AF943B5259A7F1700803DE9 /* CBPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBPeripheral.swift; sourceTree = "<group>"; };
-		0AF943C1259AB90000803DE9 /* UserDefaults+Transmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Transmitter.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,8 +148,6 @@
 			files = (
 				0AA5CBBE259D6BCA004F93F2 /* LibreKitUI.framework in Frameworks */,
 				0AA5CBBB259D6BC9004F93F2 /* LibreKit.framework in Frameworks */,
-				0A192AEC2589758100598025 /* LoopKit.framework in Frameworks */,
-				0A192AEE2589758400598025 /* LoopKitUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,9 +155,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A544DD72581A47100DC6DE5 /* HealthKit.framework in Frameworks */,
-				0A544DDE2581A4A700DC6DE5 /* LoopKit.framework in Frameworks */,
-				0A544DE22581A4AA00DC6DE5 /* LoopKitUI.framework in Frameworks */,
+				0A83367325FEFD6500CA3DCC /* HealthKit.framework in Frameworks */,
+				0AA6B91E260151BD0073695B /* LoopKit.framework in Frameworks */,
+				0AA6B921260151C20073695B /* LoopKitUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,24 +166,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A544DD82581A48200DC6DE5 /* LibreKit.framework in Frameworks */,
-				0A544DE42581A4B000DC6DE5 /* LoopKit.framework in Frameworks */,
-				0A544DE62581A4B200DC6DE5 /* LoopKitUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A146C7D2586687B00CF5F0A /* Transmitter */ = {
-			isa = PBXGroup;
-			children = (
-				0AF6808A258FAF4800097CDC /* Transmitter.swift */,
-				0A146C7F2586E9EE00CF5F0A /* TransmitterManager.swift */,
-				0AF6808F258FB1B600097CDC /* MiaoMiao */,
-			);
-			path = Transmitter;
-			sourceTree = "<group>";
-		};
 		0A192AD82589752A00598025 /* LibreKitPlugin */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,11 +182,43 @@
 			path = LibreKitPlugin;
 			sourceTree = "<group>";
 		};
+		0A2F443326041B89007A7857 /* CGMManager */ = {
+			isa = PBXGroup;
+			children = (
+				0A544E842581A7F400DC6DE5 /* LibreCGMManager.swift */,
+				0A2F443626041C3C007A7857 /* LibreCGMManagerState.swift */,
+			);
+			path = CGMManager;
+			sourceTree = "<group>";
+		};
+		0A2F443426041BAF007A7857 /* Transmitters */ = {
+			isa = PBXGroup;
+			children = (
+				0A2F44542604A9EC007A7857 /* TransmitterManager.swift */,
+				0A2F44502604A9DC007A7857 /* TransmitterState.swift */,
+				0AE99324260F59EA00D06C79 /* TransmitterProvider.swift */,
+				0AE9932A260F8C1B00D06C79 /* Transmitter+Mock.swift */,
+				0AF68090258FB1E100097CDC /* Transmitter+MiaoMiao.swift */,
+			);
+			path = Transmitters;
+			sourceTree = "<group>";
+		};
+		0A2F443526041BBA007A7857 /* Measurement */ = {
+			isa = PBXGroup;
+			children = (
+				0A2F44482604A600007A7857 /* SensorPacket.swift */,
+			);
+			path = Measurement;
+			sourceTree = "<group>";
+		};
 		0A407D9325898A3D002B2C9B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0A407DED258A7FE6002B2C9B /* TransmitterSetupView.swift */,
-				0A407E05258AA25D002B2C9B /* ManagerSettingsView.swift */,
+				0ACB8B33259FCB9E004547B4 /* UICoordinator.swift */,
+				0A0D6D622602B41E00055C98 /* GlucoseTargetRangeSetting.swift */,
+				0A2F73D32624C73F00B85EFC /* GlucoseTargetRangeEditor.swift */,
+				0A2F73B7261E7DA400B85EFC /* TransmitterConnectView.swift */,
+				0A2F73C726245DE300B85EFC /* ManagerSettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,18 +226,10 @@
 		0A407D9425898A42002B2C9B /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				0AF68029258D383A00097CDC /* TransmitterSetupViewModel.swift */,
-				0A407E00258AA240002B2C9B /* ManagerSettingsViewModel.swift */,
+				0A2F73BF261E81CD00B85EFC /* TransmitterConnectModel.swift */,
+				0A2F73C326245A4900B85EFC /* ManagerSettingsModel.swift */,
 			);
 			path = "View Models";
-			sourceTree = "<group>";
-		};
-		0A407DE125898A74002B2C9B /* Sensor */ = {
-			isa = PBXGroup;
-			children = (
-				0A095A0525AA8D2600B46419 /* SensorData.swift */,
-			);
-			path = Sensor;
 			sourceTree = "<group>";
 		};
 		0A544DA82581A0B300DC6DE5 = {
@@ -231,12 +258,10 @@
 		0A544DB42581A0B300DC6DE5 /* LibreKit */ = {
 			isa = PBXGroup;
 			children = (
-				0A146C7D2586687B00CF5F0A /* Transmitter */,
-				0A407DE125898A74002B2C9B /* Sensor */,
+				0A2F443426041BAF007A7857 /* Transmitters */,
+				0A2F443526041BBA007A7857 /* Measurement */,
+				0A2F443326041B89007A7857 /* CGMManager */,
 				0A544DC02581A15100DC6DE5 /* LibreKit.h */,
-				0A544E842581A7F400DC6DE5 /* LibreCGMManager.swift */,
-				0AA88D6925A51FE5001FD3E5 /* SensorReading.swift */,
-				0A146CC72586EA8600CF5F0A /* Calibration.mlmodel */,
 				0A544DB62581A0B300DC6DE5 /* Info.plist */,
 			);
 			path = LibreKit;
@@ -245,12 +270,11 @@
 		0A544DC92581A1B700DC6DE5 /* LibreKitUI */ = {
 			isa = PBXGroup;
 			children = (
-				0A544DEA2581A53500DC6DE5 /* Assets.xcassets */,
+				0AA75288261CE01100720118 /* CGMManager */,
 				0A407D9425898A42002B2C9B /* View Models */,
 				0A407D9325898A3D002B2C9B /* Views */,
 				0A544DCA2581A1B700DC6DE5 /* LibreKitUI.h */,
-				0A544DE82581A4FD00DC6DE5 /* LibreCGMManager+UI.swift */,
-				0ACB8B33259FCB9E004547B4 /* UICoordinator.swift */,
+				0A544DEA2581A53500DC6DE5 /* LibreKitUI.xcassets */,
 				0A544DF22581A62300DC6DE5 /* Localizable.strings */,
 				0A544DCB2581A1B700DC6DE5 /* Info.plist */,
 			);
@@ -261,9 +285,11 @@
 			isa = PBXGroup;
 			children = (
 				0AA5D688259D7CFD004F93F2 /* OSLog.swift */,
+				0A0D6D682602C71A00055C98 /* HKUnit.swift */,
+				0A2F73E32627640400B85EFC /* Guardrail.swift */,
 				0A146C7325850FAC00CF5F0A /* Framework.swift */,
-				0AF943B5259A7F1700803DE9 /* CBPeripheral.swift */,
-				0AF943C1259AB90000803DE9 /* UserDefaults+Transmitter.swift */,
+				0A8F9D18262CC7250090A476 /* CBPeripheral.swift */,
+				0AA75237261CDA8B00720118 /* CBCentralManager.swift */,
 				0AA5D6D8259D8250004F93F2 /* Collection+Array.swift */,
 				0A146C7625850FE400CF5F0A /* LocalizedString.swift */,
 				0A407DE525898C2B002B2C9B /* UIImage.swift */,
@@ -274,9 +300,9 @@
 		0A544DD52581A47000DC6DE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0A544DE12581A4AA00DC6DE5 /* LoopKitUI.framework */,
-				0A544DDD2581A4A700DC6DE5 /* LoopKit.framework */,
-				0A544DD62581A47100DC6DE5 /* HealthKit.framework */,
+				0AA6B920260151C20073695B /* LoopKitUI.framework */,
+				0AA6B91D260151BD0073695B /* LoopKit.framework */,
+				0A83367225FEFD6500CA3DCC /* HealthKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -290,12 +316,12 @@
 			path = Scripts;
 			sourceTree = "<group>";
 		};
-		0AF6808F258FB1B600097CDC /* MiaoMiao */ = {
+		0AA75288261CE01100720118 /* CGMManager */ = {
 			isa = PBXGroup;
 			children = (
-				0AF68090258FB1E100097CDC /* Transmitter+MiaoMiao.swift */,
+				0A544DE82581A4FD00DC6DE5 /* LibreCGMManager+UI.swift */,
 			);
-			path = MiaoMiao;
+			path = CGMManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +383,7 @@
 				0A544DAE2581A0B300DC6DE5 /* Sources */,
 				0A544DAF2581A0B300DC6DE5 /* Frameworks */,
 				0A544DB02581A0B300DC6DE5 /* Resources */,
+				0AA6B915260151950073695B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -466,7 +493,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A544DEB2581A53500DC6DE5 /* Assets.xcassets in Resources */,
+				0A544DEB2581A53500DC6DE5 /* LibreKitUI.xcassets in Resources */,
 				0A544DF02581A62300DC6DE5 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,19 +539,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A8F9D0D262C7D970090A476 /* HKUnit.swift in Sources */,
+				0AA75238261CDA8B00720118 /* CBCentralManager.swift in Sources */,
+				0A8F9D19262CC7250090A476 /* CBPeripheral.swift in Sources */,
 				0A146C782585104800CF5F0A /* Framework.swift in Sources */,
-				0AF943C2259AB90000803DE9 /* UserDefaults+Transmitter.swift in Sources */,
 				0AF68091258FB1E100097CDC /* Transmitter+MiaoMiao.swift in Sources */,
-				0AF943B6259A7F1700803DE9 /* CBPeripheral.swift in Sources */,
 				0AA5D689259D7CFD004F93F2 /* OSLog.swift in Sources */,
 				0A146C792585104800CF5F0A /* LocalizedString.swift in Sources */,
 				0A544E852581A7F400DC6DE5 /* LibreCGMManager.swift in Sources */,
-				0A095A0625AA8D2600B46419 /* SensorData.swift in Sources */,
 				0AA5D6D9259D8250004F93F2 /* Collection+Array.swift in Sources */,
-				0A146CC82586EA8600CF5F0A /* Calibration.mlmodel in Sources */,
-				0AF6808B258FAF4800097CDC /* Transmitter.swift in Sources */,
-				0AA88D6A25A51FE5001FD3E5 /* SensorReading.swift in Sources */,
-				0A146C802586E9EE00CF5F0A /* TransmitterManager.swift in Sources */,
+				0A2F44492604A600007A7857 /* SensorPacket.swift in Sources */,
+				0A2F44552604A9EC007A7857 /* TransmitterManager.swift in Sources */,
+				0A2F443726041C3C007A7857 /* LibreCGMManagerState.swift in Sources */,
+				0AE99325260F59EA00D06C79 /* TransmitterProvider.swift in Sources */,
+				0AE9932B260F8C1B00D06C79 /* Transmitter+Mock.swift in Sources */,
+				0A2F44512604A9DC007A7857 /* TransmitterState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,24 +561,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A095A0D25AA8E3D00B46419 /* SensorData.swift in Sources */,
-				0AA88D7125A5253B001FD3E5 /* SensorReading.swift in Sources */,
-				0AF943C6259AB94F00803DE9 /* UserDefaults+Transmitter.swift in Sources */,
-				0AF943BD259A7F6E00803DE9 /* CBPeripheral.swift in Sources */,
-				0AF94360259A346300803DE9 /* Transmitter+MiaoMiao.swift in Sources */,
-				0AF9435C259A344D00803DE9 /* Transmitter.swift in Sources */,
-				0AF943582599755500803DE9 /* TransmitterManager.swift in Sources */,
+				0A2F73E92627650700B85EFC /* Guardrail.swift in Sources */,
 				0A146C7525850FD200CF5F0A /* Framework.swift in Sources */,
 				0AA5D6DA259D8250004F93F2 /* Collection+Array.swift in Sources */,
 				0A407DE625898C2B002B2C9B /* UIImage.swift in Sources */,
+				0A2F73B8261E7DA400B85EFC /* TransmitterConnectView.swift in Sources */,
 				0A544DE92581A4FD00DC6DE5 /* LibreCGMManager+UI.swift in Sources */,
-				0AF6802A258D383A00097CDC /* TransmitterSetupViewModel.swift in Sources */,
-				0A407DEE258A7FE6002B2C9B /* TransmitterSetupView.swift in Sources */,
+				0A2F73D42624C73F00B85EFC /* GlucoseTargetRangeEditor.swift in Sources */,
+				0A0D6D692602C71A00055C98 /* HKUnit.swift in Sources */,
+				0A2F73C0261E81CD00B85EFC /* TransmitterConnectModel.swift in Sources */,
 				0A146C7725850FE400CF5F0A /* LocalizedString.swift in Sources */,
-				0A407E01258AA240002B2C9B /* ManagerSettingsViewModel.swift in Sources */,
-				0A407E06258AA25D002B2C9B /* ManagerSettingsView.swift in Sources */,
+				0A0D6D632602B41E00055C98 /* GlucoseTargetRangeSetting.swift in Sources */,
 				0ACB8B34259FCB9F004547B4 /* UICoordinator.swift in Sources */,
 				0AA5D68A259D7CFD004F93F2 /* OSLog.swift in Sources */,
+				0A2F73C426245A4900B85EFC /* ManagerSettingsModel.swift in Sources */,
+				0A2F73C826245DE300B85EFC /* ManagerSettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

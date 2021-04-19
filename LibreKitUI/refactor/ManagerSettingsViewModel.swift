@@ -29,9 +29,9 @@ class ManagerSettingsViewModel: NSObject, ObservableObject {
         }
     }
 
-    #if DEBUG
-    override convenience init() {
-        self.init(cgmManager: LibreCGMManager())
-    }
-    #endif
+//    #if DEBUG
+//    override convenience init() {
+//        self.init(cgmManager: LibreCGMManager())
+//    }
+//    #endif
 }

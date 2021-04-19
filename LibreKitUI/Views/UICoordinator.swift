@@ -50,26 +50,26 @@ class UICoordinator: UINavigationController, CGMManagerSetupViewController, Comp
     private func viewController(willShow view: ControllerType) -> UIViewController {
         switch view {
         case .setup:
-            let model = TransmitterSetupViewModel()
-            model.didContinue = { [weak self] in
-                self?.setupCompletion()
-            }
-            model.didCancel = { [weak self] in
+            let model = TransmitterConnectModel()
+            model.hasCancelled = { [weak self] in
                 self?.notifyCompletion()
             }
-            let view = TransmitterSetupView(viewModel: model)
+            model.hasContinued = { [weak self] manager in
+                self?.setupCompletion(manager)
+            }
+            let view = TransmitterConnectView(viewModel: model)
            
             return viewController(rootView: view)
         case .settings:
             guard let cgmManager = cgmManager else {
                 fatalError()
             }
-            let model = ManagerSettingsViewModel(cgmManager: cgmManager)
-            model.completion = {[weak self] in
+            let model = ManagerSettingsModel(cgmManager: cgmManager)
+            model.hasCompleted = { [weak self] in
                 self?.notifyCompletion()
             }
             let view = ManagerSettingsView(viewModel: model)
-            
+
             return viewController(rootView: view)
         }
     }
@@ -78,12 +78,12 @@ class UICoordinator: UINavigationController, CGMManagerSetupViewController, Comp
         return DismissibleHostingController(rootView: rootView, glucoseTintColor: glucoseTintColor, guidanceColors: guidanceColors)
     }
     
-    private func notifyCompletion() {
+    private func setupCompletion(_ cgmManager: LibreCGMManager) {
+        setupDelegate?.cgmManagerSetupViewController(self, didSetUpCGMManager: cgmManager)
         completionDelegate?.completionNotifyingDidComplete(self)
     }
     
-    private func setupCompletion() {
-        setupDelegate?.cgmManagerSetupViewController(self, didSetUpCGMManager: LibreCGMManager())
+    private func notifyCompletion() {
         completionDelegate?.completionNotifyingDidComplete(self)
     }
 }

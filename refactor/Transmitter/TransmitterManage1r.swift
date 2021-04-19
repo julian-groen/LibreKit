@@ -12,17 +12,17 @@ import os.log
 
 public let manager_log = OSLog(category: "TransmitterManager")
 
-public enum TransmitterState: String {
-    
-    case unassigned     = "Unassigned"
-    case scanning       = "Scanning"
-    case disconnected   = "Disconnected"
-    case connecting     = "Connecting"
-    case connected      = "Connected"
-    case unknown        = "Unknown"
-}
+//public enum TransmitterState: String {
+//    
+//    case unassigned     = "Unassigned"
+//    case scanning       = "Scanning"
+//    case disconnected   = "Disconnected"
+//    case connecting     = "Connecting"
+//    case connected      = "Connected"
+//    case unknown        = "Unknown"
+//}
 
-public protocol TransmitterManagerDelegate: class {
+public protocol Transmitter1ManagerDelegate: class {
     
     /**
      Tells the delegate the transmitter has recieved new data from the sensor.
@@ -41,7 +41,7 @@ public protocol TransmitterManagerDelegate: class {
     func transmitterManager(_ peripheral: CBPeripheral, advertisementData: [String: Any])
 }
 
-public class TransmitterManager: NSObject {
+public class Transmitter1Manager: NSObject {
     
     private var manager: CBCentralManager! = nil
     
@@ -144,7 +144,7 @@ public class TransmitterManager: NSObject {
 
 // MARK: - CBCentralManagerDelegate
 
-extension TransmitterManager: CBCentralManagerDelegate {
+extension Transmitter1Manager: CBCentralManagerDelegate {
     
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         dispatchPrecondition(condition: .onQueue(managerQueue))
@@ -224,7 +224,7 @@ extension TransmitterManager: CBCentralManagerDelegate {
 
 // MARK: - CBPeripheralDelegate
 
-extension TransmitterManager: CBPeripheralDelegate {
+extension Transmitter1Manager: CBPeripheralDelegate {
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         dispatchPrecondition(condition: .onQueue(managerQueue))

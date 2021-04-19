@@ -39,7 +39,7 @@ struct TransmitterSetupView<Model>: View where Model: TransmitterSetupViewModel 
                     ActivityIndicator(isAnimating: .constant(true), style: .medium)
                 }) {
                     ForEach(viewModel.transmitters, id: \.identifier) { transmitter in
-                        TransmitterSelectorView(transmitter: transmitter, selectedID: $selectedIdentifier)
+                        TransmitterSelectorView1(transmitter: transmitter, selectedID: $selectedIdentifier)
                     }
                 }
             }
@@ -54,7 +54,7 @@ struct TransmitterSetupView<Model>: View where Model: TransmitterSetupViewModel 
     private var actionArea: some View {
         VStack(spacing: 0) {
             Button<Text>(action: {
-                UserDefaults.standard.transmitterIdentifier = selectedIdentifier
+                // UserDefaults.standard.transmitterIdentifier = selectedIdentifier
                 viewModel.didContinue?()
             }, label: {
                 Text("Continue")
@@ -71,7 +71,7 @@ struct TransmitterSetupView<Model>: View where Model: TransmitterSetupViewModel 
     }
 }
 
-struct TransmitterSelectorView: View {
+struct TransmitterSelectorView1: View {
     
     var transmitter: CBPeripheral
     @Binding var selectedID: UUID?

@@ -18,28 +18,28 @@ class TransmitterSetupViewModel: NSObject, ObservableObject {
     public var didCancel: (() -> Void)?
     public var didContinue: (() -> Void)?
     
-    private var transmitterManager = TransmitterManager()
+   // private var transmitterManager = TransmitterManager()
 
     override init() {
         super.init()
-        transmitterManager.discover = true
-        transmitterManager.delegate = self
+//        transmitterManager.discover = true
+//        transmitterManager.delegate = self
     }
     
     deinit {
-        transmitterManager.delegate = nil
+        // transmitterManager.delegate = nil
     }
 }
 
 // MARK: - TransmitterManagerDelegate
 
-extension TransmitterSetupViewModel: TransmitterManagerDelegate {
-    
-    public func transmitterManager(_ peripheral: CBPeripheral, advertisementData: [String : Any]) {
-        DispatchQueue.main.async {
-            self.transmitters.append(peripheral)
-            self.transmitters.removeDuplicates()
-        }
-    }
-}
+//extension TransmitterSetupViewModel: TransmitterManagerDelegate {
+//    
+//    public func transmitterManager(_ peripheral: CBPeripheral, advertisementData: [String : Any]) {
+//        DispatchQueue.main.async {
+//            self.transmitters.append(peripheral)
+//            self.transmitters.removeDuplicates()
+//        }
+//    }
+//}
 

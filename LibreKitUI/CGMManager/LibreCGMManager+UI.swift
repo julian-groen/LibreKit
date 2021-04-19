@@ -19,14 +19,15 @@ extension LibreCGMManager: CGMManagerUI {
     }
     
     public var cgmStatusHighlight: DeviceStatusHighlight? {
-        return SensorReading()
+        return nil // SensorReading()
     }
     
     public var cgmLifecycleProgress: DeviceLifecycleProgress? {
-        return SensorReading()
+        return nil // SensorReading()
     }
     
     public static func setupViewController(glucoseTintColor: Color, guidanceColors: GuidanceColors) -> (UIViewController & CGMManagerSetupViewController & CompletionNotifying)? {
+        // #if !targetEnvironment(simulator)
         return UICoordinator(glucoseTintColor: glucoseTintColor, guidanceColors: guidanceColors)
     }
     

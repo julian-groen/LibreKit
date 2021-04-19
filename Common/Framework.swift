@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 internal class FrameworkBundle {
     static let main = Bundle(for: FrameworkBundle.self)
 }

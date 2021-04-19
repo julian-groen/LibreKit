@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 
+
 func LocalizedString(_ key: String, tableName: String? = nil, value: String? = nil, comment: String) -> String {
     if let value = value {
         return NSLocalizedString(key, tableName: tableName, bundle: FrameworkBundle.main, value: value, comment: comment)

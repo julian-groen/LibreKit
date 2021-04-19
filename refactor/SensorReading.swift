@@ -28,7 +28,7 @@ public class SensorReading: GlucoseDisplayable, DeviceStatusHighlight, DeviceLif
     
     public var percentComplete: Double = 0.9
     
-    public var progressState: DeviceLifecycleProgressState = .critical
+    public var progressState: DeviceLifecycleProgressState = .normalCGM
     
     init() {
         

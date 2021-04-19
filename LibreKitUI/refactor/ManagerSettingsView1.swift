@@ -2,8 +2,8 @@
 //  ManagerSettingsView.swift
 //  LibreKitUI
 //
-//  Created by Julian Groen on 12/04/2021.
-//  Copyright © 2021 Julian Groen. All rights reserved.
+//  Created by Julian Groen on 16/12/2020.
+//  Copyright © 2020 Julian Groen. All rights reserved.
 //
 
 import SwiftUI
@@ -11,22 +11,21 @@ import LoopKit
 import LoopKitUI
 import HealthKit
 
-
-struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
+struct ManagerSettingsView1<Model>: View where Model: ManagerSettingsViewModel {
     
-    @ObservedObject var viewModel: Model
-    
+    @State var showingDeleteConfirmation = false
+       
     @Environment(\.glucoseTintColor) var glucoseTintColor
     @Environment(\.guidanceColors) var guidanceColors
     
-    @State var showingDeleteConfirmation = false
-      
+    @ObservedObject var viewModel: Model
+ 
     var body: some View {
         List {
             overviewSection
             activitySection
             notificationSection
-            bloodglucoseSection
+            glucoserangeSection
             deletionSection
         }
         .insetGroupedListStyle()
@@ -34,6 +33,7 @@ struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
         .navigationBarItems(trailing: dismissButton)
     }
     
+    // TODO: viewmodel variable
     var overviewSection: some View {
         Section(header: Spacer()) {
             LazyVStack {
@@ -44,12 +44,12 @@ struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
                         .frame(height: 85)
                 }.frame(maxWidth: .infinity)
                 
-                // TODO:
                 VStack(spacing: 10) {
                     HStack(alignment: .lastTextBaseline, spacing: 3) {
-                        Text("Sensor expires in").foregroundColor(.secondary)
+                        Text("Sensor expires in")
+                            .foregroundColor(.secondary)
                         Spacer()
-                        unitView(value: 13, unit: "days")
+                        VariableView(value: 13, unit: "days")
                     }
                     ProgressView(progress: CGFloat(0.1)).accentColor(.blue)
                 }
@@ -60,17 +60,17 @@ struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
                             .foregroundColor(.blue)
                             .font(.system(size: 28))
                             .padding(.leading, -3)
-                        unitView(value: viewModel.lastBatteryLevel, unit: "%")
+                        VariableView(value: 94, unit: "%")
                         Spacer()
                         Image(systemName: "waveform.path.ecg")
                             .foregroundColor(.blue)
                             .font(.system(size: 28))
-                        Text(viewModel.connectionState.description)
+                        Text("Unknown")
                             .font(.system(size: 20))
                             .fontWeight(.bold)
                     }
                 }
-            }.padding(.vertical, 8)
+            }.padding([.top, .bottom], 8)
         }
     }
     
@@ -82,38 +82,53 @@ struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
         }
     }
     
+    let millimolesPerLiter: HKUnit = {
+        return HKUnit.moleUnit(with: .milli, molarMass: HKUnitMolarMassBloodGlucose).unitDivided(by: .liter())
+    }()
+    
     var notificationSection: some View {
-        SectionWithDescription(
-            header: SectionHeader(label: "Configuration"),
-            title: LocalizedString("Notifications", comment: ""),
-            descriptiveText: viewModel.notificationDescription,
+        SectionWithDescriptio(
+            header:  SectionHeader(label: "Configuration"),
+            title: "Notifications",
+            description: "When enabled notifications will be send on certain events. These events consist of blood sugar alerts, low battery warnings and sensor lifetime updates.",
             content: {
-                Button(action: {
-                    viewModel.toggleNotifications()
-                }, label: {
-                    if viewModel.alarmNotifications {
-                        Text("Disable Notifications", comment: "").foregroundColor(guidanceColors.critical)
-                    } else {
-                        Text("Enable Notifications", comment: "").foregroundColor(.blue)
-                    }
-                })
+                Text("Disable Notifications", comment: "")
+                            .foregroundColor(guidanceColors.critical)
+                
+                
             }
         )
     }
     
-    var bloodglucoseSection: some View {
-        SectionWithTapToEdit(
-            isEnabled: true,
+    var glucoserangeSection: some View {
+        SectionWithDescriptio(
             header: EmptyView(),
-            title: LocalizedString("Blood Glucose", comment: "The title text for target range settings"),
-            descriptiveText: viewModel.bloodglucoseDescription,
-            destination: { dismiss in
-                AnyView(
-                    GlucoseTargetRangeEditor(viewModel: self.viewModel, didSave: dismiss)
-                ).environment(\.dismiss, dismiss)
-            },
+            title: "Blood Sugar",
+            description: "Specify the blood sugar level range that you want to aim for, based on this range notifications will be send when the glucose level reaches outside of the specified range.",
             content: {
-                GlucoseTargetRangeItem(value: viewModel.glucoseTargetRange, preferredUnit: viewModel.preferredUnit)
+//                ExpandableSetting(
+//                    isEditing: .constant(false),
+//                    leadingValueContent: {
+//                        HStack {
+//                            Text("Target")
+//                        }
+//                    },
+//                    trailingValueContent: {
+////                        GuardrailConstrainedQuantityRangeView(
+////                            range: nil,
+////                            unit: millimolesPerLiter,
+////                            guardrail: .suspendThreshold,
+////                            isEditing: false
+////                        )
+//                    },
+//                    expandedContent: {
+//                        HStack {
+//                            Text("Test")
+//                        }
+//                    }
+//                )
+                Text("Test")
+                // GlucoseTargetRangeEditor(isEditing: .constant(true), unit: .millimolesPerLiter)
             }
         )
     }
@@ -143,65 +158,39 @@ struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
     }
     
     var dismissButton: some View {
-        Button(action: { viewModel.hasCompleted?() }) { Text("Done").bold() }
+        Button(action: { viewModel.completion?() }) { Text("Done").bold() }
     }
-    
-    func unitView(value: Int, unit: String) -> some View {
-        return HStack(alignment: .lastTextBaseline) {
+
+//                GuardrailConstrainedQuantityView(
+//                    value: nil,
+//                    unit: .millimolesPerLiter,
+//                    guardrail: .suspendThreshold,
+//                    isEditing: false,
+//                    // Workaround for strange animation behavior on appearance
+//                    forceDisableAnimations: true
+//                )
+
+}
+
+fileprivate struct VariableView: View {
+    var value: Int
+    var unit: String
+
+    var body: some View {
+        HStack(alignment: .lastTextBaseline) {
             Text(String(value))
                 .font(.system(size: 28))
                 .fontWeight(.heavy)
-            Text(unit).foregroundColor(.secondary)
+            Text(unit)
+                .foregroundColor(.secondary)
         }
     }
 }
 
-struct SectionWithTapToEdit<Header, Content, NavigationDestination>: View where Header: View, Content: View, NavigationDestination: View  {
-    let isEnabled: Bool
+fileprivate struct SectionWithDescriptio<Header, Content>: View where Header: View, Content: View  {
     let header: Header
     let title: String
-    let descriptiveText: String
-    let destination: (_ goBack: @escaping () -> Void) -> NavigationDestination
-    let content: () -> Content
-
-    @State var isActive: Bool = false
-    
-    private func onFinish() {
-        // Dispatching here fixes an issue on iOS 14.2 where schedule editors do not dismiss. It does not fix iOS 14.0 and 14.1
-        DispatchQueue.main.async {
-            self.isActive = false
-        }
-    }
-
-    public var body: some View {
-        Section(header: header) {
-            VStack(alignment: .leading) {
-                Spacer()
-                Text(title).bold()
-                Spacer()
-                ZStack(alignment: .leading) {
-                    DescriptiveText(label: descriptiveText).padding(.trailing, 10)
-                    if isEnabled {
-                        NavigationLink(destination: destination(onFinish), isActive: $isActive) { EmptyView() }
-                    }
-                }
-                Spacer()
-            }
-            content()
-        }
-        .contentShape(Rectangle()) // make the whole card tappable
-        .highPriorityGesture(
-            TapGesture().onEnded { _ in
-                self.isActive = true
-            }
-        )
-    }
-}
-
-struct SectionWithDescription<Header, Content>: View where Header: View, Content: View {
-    let header: Header
-    let title: String
-    let descriptiveText: String
+    let description: String
     let content: () -> Content
 
     var body: some View {
@@ -211,7 +200,7 @@ struct SectionWithDescription<Header, Content>: View where Header: View, Content
                 Text(title).bold()
                 Spacer()
                 ZStack(alignment: .leading) {
-                    DescriptiveText(label: descriptiveText)
+                    DescriptiveText(label: description)
                 }
                 Spacer()
             }
@@ -220,3 +209,15 @@ struct SectionWithDescription<Header, Content>: View where Header: View, Content
         .contentShape(Rectangle())
     }
 }
+
+//#if DEBUG
+//struct ManagerSettingsView_Previews: PreviewProvider {
+//    
+//    static var previews: some View {
+//        NavigationView {
+//            ManagerSettingsView(viewModel: ManagerSettingsViewModel())
+//        }
+//        // .preferredColorScheme(.dark)
+//    }
+//}
+//#endif
