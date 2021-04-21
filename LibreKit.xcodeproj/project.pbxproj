@@ -36,6 +36,8 @@
 		0A83367325FEFD6500CA3DCC /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A83367225FEFD6500CA3DCC /* HealthKit.framework */; };
 		0A8F9D0D262C7D970090A476 /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0D6D682602C71A00055C98 /* HKUnit.swift */; };
 		0A8F9D19262CC7250090A476 /* CBPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F9D18262CC7250090A476 /* CBPeripheral.swift */; };
+		0A906E45262F323A002998AF /* SensorEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A906E44262F323A002998AF /* SensorEnums.swift */; };
+		0A906E4D262F7D1B002998AF /* SensorDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A906E4C262F7D1B002998AF /* SensorDecoder.swift */; };
 		0AA5CBBB259D6BC9004F93F2 /* LibreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DB22581A0B300DC6DE5 /* LibreKit.framework */; };
 		0AA5CBBE259D6BCA004F93F2 /* LibreKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DC82581A1B700DC6DE5 /* LibreKitUI.framework */; };
 		0AA5D637259D6F59004F93F2 /* carthage.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA5D635259D6F59004F93F2 /* carthage.sh */; };
@@ -126,6 +128,8 @@
 		0A544E842581A7F400DC6DE5 /* LibreCGMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreCGMManager.swift; sourceTree = "<group>"; };
 		0A83367225FEFD6500CA3DCC /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/iOSSupport/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		0A8F9D18262CC7250090A476 /* CBPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBPeripheral.swift; sourceTree = "<group>"; };
+		0A906E44262F323A002998AF /* SensorEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorEnums.swift; sourceTree = "<group>"; };
+		0A906E4C262F7D1B002998AF /* SensorDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDecoder.swift; sourceTree = "<group>"; };
 		0AA5D635259D6F59004F93F2 /* carthage.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = carthage.sh; sourceTree = "<group>"; };
 		0AA5D636259D6F59004F93F2 /* copy-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "copy-frameworks.sh"; sourceTree = "<group>"; };
 		0AA5D688259D7CFD004F93F2 /* OSLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				0A2F44482604A600007A7857 /* SensorPacket.swift */,
+				0A906E4C262F7D1B002998AF /* SensorDecoder.swift */,
+				0A906E44262F323A002998AF /* SensorEnums.swift */,
 			);
 			path = Measurement;
 			sourceTree = "<group>";
@@ -538,6 +544,7 @@
 				0A8F9D0D262C7D970090A476 /* HKUnit.swift in Sources */,
 				0AA75238261CDA8B00720118 /* CBCentralManager.swift in Sources */,
 				0A8F9D19262CC7250090A476 /* CBPeripheral.swift in Sources */,
+				0A906E4D262F7D1B002998AF /* SensorDecoder.swift in Sources */,
 				0A146C782585104800CF5F0A /* Framework.swift in Sources */,
 				0AF68091258FB1E100097CDC /* Transmitter+MiaoMiao.swift in Sources */,
 				0AA5D689259D7CFD004F93F2 /* OSLog.swift in Sources */,
@@ -547,6 +554,7 @@
 				0A2F44552604A9EC007A7857 /* TransmitterManager.swift in Sources */,
 				0A2F443726041C3C007A7857 /* LibreCGMManagerState.swift in Sources */,
 				0AE99325260F59EA00D06C79 /* TransmitterProvider.swift in Sources */,
+				0A906E45262F323A002998AF /* SensorEnums.swift in Sources */,
 				0AE9932B260F8C1B00D06C79 /* Transmitter+Mock.swift in Sources */,
 				0A2F44512604A9DC007A7857 /* TransmitterState.swift in Sources */,
 			);

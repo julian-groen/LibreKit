@@ -223,7 +223,8 @@ public class MiaoMiaoTransmitter: Transmitter {
         case .sensorPacket:
             guard rxBuffer.count >= 363 else { return }
             let data = rxBuffer.subdata(in: 18 ..< rxBuffer.count)
-            if let packet = SensorPacket.parse(from: data) {
+            let identifier = rxBuffer.subdata(in: 5 ..< 13)
+            if let packet = SensorPacket.parse(from: data, id: identifier) {
                 let level: Int = Int(rxBuffer[13])
                 delegate?.transmitter(self, didRecievePacket: packet)
                 delegate?.transmitter(self, changedBatteryLevel: level)

@@ -89,7 +89,7 @@ public class LibreCGMManager: CGMManager {
     
     public var device: HKDevice? {
         return HKDevice(
-            name: managerIdentifier,
+            name: localizedTitle,
             manufacturer: "Abbott",
             model: nil, // retrieve from lastSensorPacket
             hardwareVersion: nil,
@@ -150,7 +150,7 @@ public class LibreCGMManager: CGMManager {
 extension LibreCGMManager: TransmitterManagerDelegate {
     
     public func transmitterManager(_ manager: TransmitterManager, recievedPacket packet: SensorPacket) {
-        print(packet)
+        self.lastSensorPacket = packet
     }
     
     public func transmitterManager(_ manager: TransmitterManager, stateChange state: TransmitterState) {
@@ -193,60 +193,15 @@ extension LibreCGMManager {
             }
         }
     }
+    
+    public var lastSensorPacket: SensorPacket? {
+        get {
+            return state.lastSensorPacket
+        }
+        set {
+            set { (state) in
+                state.lastSensorPacket = newValue
+            }
+        }
+    }
 }
-
-
-
-
-//public lazy var transmitterManager: TransmitterManager = TransmitterManager()
-//
-//private lazy var calibration = try! Calibration(configuration: MLModelConfiguration())
-//
-//public init() {
-//    transmitterManager.delegate = self
-//}
-//
-//public required convenience init?(rawState: RawStateValue) {
-//    self.init()
-//}
-//
-//deinit {
-//    transmitterManager.disconnect()
-//    transmitterManager.delegate = nil
-//
-//extension LibreCGMManager {
-//
-//public var name: String? {
-//    return transmitterManager.transmitter?.name
-//}
-//
-//public var identifier: String? {
-//    return transmitterManager.transmitter?.identifier.uuidString
-//}
-//
-//public var manufacturer: String? {
-//    return transmitterManager.transmitter?.manufacturer
-//}
-//
-//public var connection: String? {
-//    return transmitterManager.state.rawValue
-//}
-//
-//public var battery: Int? {
-//    return transmitterManager.transmitter?.battery
-//}
-//
-//public var device: HKDevice? {
-//    return HKDevice(
-//        name: managerIdentifier,
-//        manufacturer: manufacturer,
-//
-//        model: name,
-//        hardwareVersion: nil,
-//        firmwareVersion: nil,
-//        softwareVersion: nil,
-//        localIdentifier: identifier,
-//        udiDeviceIdentifier: nil
-//    )
-//}
-
