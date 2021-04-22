@@ -11,6 +11,7 @@ import LoopKit
 import LoopKitUI
 import LibreKit
 
+
 class UICoordinator: UINavigationController, CGMManagerSetupViewController, CompletionNotifying, UINavigationControllerDelegate {
     
     var cgmManager: LibreCGMManager?

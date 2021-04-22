@@ -10,6 +10,7 @@ import LoopKit
 import LoopKitUI
 import CoreBluetooth
 import HealthKit
+import CoreML
 
 
 public class LibreCGMManager: CGMManager {
@@ -20,6 +21,8 @@ public class LibreCGMManager: CGMManager {
     
     public var providesBLEHeartbeat: Bool = true
     
+    public var preferredUnit: HKUnit = .milligramsPerDeciliter
+    
     public var shouldSyncToRemoteService: Bool = true
     
     public var managedDataInterval: TimeInterval? = nil
@@ -27,6 +30,17 @@ public class LibreCGMManager: CGMManager {
     public let delegate = WeakSynchronizedDelegate<CGMManagerDelegate>()
     
     public let transmitterManager: TransmitterManager
+    
+    public private(set) var latestReading: SensorReading?
+    
+    public var glucoseDisplay: GlucoseDisplayable? {
+        return self.latestReading
+    }
+    
+    public var cgmStatus: CGMManagerStatus {
+        let valid = (lastSensorPacket?.sensorState.isValidState)
+        return CGMManagerStatus(hasValidSensorSession: valid ?? true)
+    }
     
     public var cgmManagerDelegate: CGMManagerDelegate? {
         get {
@@ -69,7 +83,11 @@ public class LibreCGMManager: CGMManager {
         self.init(state: state)
     }
     
-    private func set(_ changes: (_ state: inout LibreCGMManagerState) -> Void) {
+    public func set(_ unit: HKUnit) -> LibreCGMManager {
+        self.preferredUnit = unit; return self
+    }
+    
+    public func set(_ changes: (_ state: inout LibreCGMManagerState) -> Void) {
         let oldValue: LibreCGMManagerState = state
         let newValue = lockedState.mutate { (state) in
             changes(&state)
@@ -80,22 +98,31 @@ public class LibreCGMManager: CGMManager {
         delegate.notify { (delegate) in
             delegate?.cgmManagerDidUpdateState(self)
         }
-        
-        // validate data and send notification if necessary
     }
     
+    public func fetchNewDataIfNeeded(_ completion: @escaping (CGMReadingResult) -> Void) {
+        completion(.noData)
+    }
     
+    // TODO: TARGET TO CHANGE -> NEW ALGORITHM
+    private var calibration: Calibration {
+        return try! Calibration(configuration: MLModelConfiguration())
+    }
     
+    private func transformPacket(_ data: SensorPacket) -> [SensorReading]? {
+        return nil
+    }
     
     public var device: HKDevice? {
         return HKDevice(
-            name: localizedTitle,
+            name: type(of: self).localizedTitle,
             manufacturer: "Abbott",
-            model: nil, // retrieve from lastSensorPacket
+            model: lastSensorPacket?.sensorType.description,
             hardwareVersion: nil,
             firmwareVersion: nil,
             softwareVersion: nil,
-            localIdentifier: nil,
+            localIdentifier:
+                transmitterState?.autoConnectID?.uuidString,
             udiDeviceIdentifier: nil
         )
     }
@@ -108,34 +135,8 @@ public class LibreCGMManager: CGMManager {
         ].joined(separator: "\n")
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public var glucoseDisplay: GlucoseDisplayable?
-    
-    public var cgmStatus: CGMManagerStatus = CGMManagerStatus(hasValidSensorSession: true)
-    
-    public func fetchNewDataIfNeeded(_ completion: @escaping (CGMReadingResult) -> Void) {
-        
-    }
-    
-    public func acknowledgeAlert(alertIdentifier: Alert.AlertIdentifier) {
-        
-    }
+    // TODO: ADDING NOTIFICATIONS
+    public func acknowledgeAlert(alertIdentifier: Alert.AlertIdentifier) { }
     
     public func getSoundBaseURL() -> URL? {
         return nil
@@ -151,6 +152,41 @@ extension LibreCGMManager: TransmitterManagerDelegate {
     
     public func transmitterManager(_ manager: TransmitterManager, recievedPacket packet: SensorPacket) {
         self.lastSensorPacket = packet
+
+        guard packet.isValidSensor else {
+            delegate.notify { (delegate) in
+                delegate?.cgmManager(self, hasNew: .error(SensorError.invalid))
+            }
+            return
+        }
+        
+        guard packet.sensorState == .ready else {
+            delegate.notify { (delegate) in
+                delegate?.cgmManager(self, hasNew: .error(SensorError.expired))
+            }
+            return
+        }
+        
+        guard let readings = transformPacket(packet), readings.count > 0 else {
+            delegate.notify { (delegate) in
+                delegate?.cgmManager(self, hasNew: .noData)
+            }
+            return
+        }
+        
+        let startDate = latestReading?.startDate.addingTimeInterval(1)
+        let newGlucoseSamples = readings.filterDateRange(startDate, nil).filter({ $0.isStateValid }).map {
+            glucose -> NewGlucoseSample in return NewGlucoseSample(
+                date: glucose.startDate, quantity: glucose.quantity, isDisplayOnly: false,
+                wasUserEntered: false, syncIdentifier: "\(Int(glucose.timestamp))", device: device
+            )
+        }
+        
+        delegate.notify { (delegate) in
+            delegate?.cgmManager(self, hasNew: newGlucoseSamples.isEmpty ? .noData : .newData(newGlucoseSamples))
+        }
+        
+        latestReading = readings.filter({ $0.isStateValid }).max(by: { $0.startDate < $1.startDate })
     }
     
     public func transmitterManager(_ manager: TransmitterManager, stateChange state: TransmitterState) {

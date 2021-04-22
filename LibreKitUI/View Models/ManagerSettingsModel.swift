@@ -28,7 +28,7 @@ class ManagerSettingsModel: NSObject, ObservableObject {
     }
     
     var preferredUnit: HKUnit {
-        return .millimolesPerLiter
+        return cgmManager.preferredUnit
     }
     
     init(cgmManager: LibreCGMManager) {
@@ -49,9 +49,7 @@ class ManagerSettingsModel: NSObject, ObservableObject {
     
     func notifyDeletion() {
         cgmManager.notifyDelegateOfDeletion {
-            DispatchQueue.main.async {
-                self.hasCompleted?()
-            }
+            DispatchQueue.main.async { self.hasCompleted?() }
         }
     }
 }

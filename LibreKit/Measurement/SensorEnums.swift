@@ -97,4 +97,23 @@ public enum SensorState: Int {
             return "Unknown sensor state"
         }
     }
+    
+    var isValidState: Bool {
+        return !(self.rawValue > 2)
+    }
+}
+
+public enum SensorError: Error {
+    
+    case expired
+    case invalid
+    
+    var description: String {
+        switch self {
+        case .expired:
+            return "Sensor has expired"
+        case .invalid:
+            return "Invalid SensorPacket"
+        }
+    }
 }

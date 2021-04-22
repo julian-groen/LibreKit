@@ -34,10 +34,6 @@ public struct TransmitterState: RawRepresentable, Equatable {
 
         self.init(autoConnectID: autoConnectID)
         
-        if let rawObjectValue = rawValue["connectionState"] as? ConnectionState {
-            self.connectionState = rawObjectValue
-        }
-        
         if let rawObjectValue = rawValue["lastBatteryLevel"] as? Int {
             self.lastBatteryLevel = rawObjectValue
         }
@@ -45,8 +41,7 @@ public struct TransmitterState: RawRepresentable, Equatable {
     
     public var rawValue: RawValue {
         var value: [String : Any] = [
-            "lastBatteryLevel": lastBatteryLevel,
-            "connectionState": connectionState.rawValue
+            "lastBatteryLevel": lastBatteryLevel
         ]
         
         if let autoConnectID = autoConnectID?.uuidString {
@@ -63,7 +58,7 @@ extension TransmitterState: CustomDebugStringConvertible {
             "### TransmitterState",
             "* autoConnectID: \(String(describing: autoConnectID))",
             "* lastBatteryLevel: \(String(describing: lastBatteryLevel))",
-            "* connectionState: \(String(describing: connectionState))",
+            "* connectionState: \(String(describing: connectionState))"
         ].joined(separator: "\n")
     }
 }

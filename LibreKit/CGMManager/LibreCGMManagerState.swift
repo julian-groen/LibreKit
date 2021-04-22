@@ -39,7 +39,7 @@ public struct LibreCGMManagerState: RawRepresentable, Equatable {
         if let rawObjectValue = rawValue["transmitterState"] as? TransmitterState.RawValue {
             transmitterState = TransmitterState(rawValue: rawObjectValue)
         }
-
+        
         self.init(lastSensorPacket: lastSensorPacket, transmitterState: transmitterState)
         self.alarmNotifications = (rawValue["alarmNotifications"] as? Bool) ?? true
     
