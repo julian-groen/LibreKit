@@ -13,13 +13,17 @@ import HealthKit
 
 public struct SensorReading {
     
-    public var glucose: Double
+    public var glucoseValue: Double
     
-    public var trend: GlucoseTrend
+    public var glucoseTrend: GlucoseTrend
+    
+    public var sensorState: SensorState
     
     public var timestamp: TimeInterval
     
-    public var minutes: Int
+    public var minutesSinceStart: Int
+    
+    public var minutesTillExpire: Int
 }
     
 extension SensorReading: GlucoseValue {
@@ -29,18 +33,20 @@ extension SensorReading: GlucoseValue {
     }
     
     public var quantity: HKQuantity {
-        return HKQuantity(unit: .milligramsPerDeciliter, doubleValue: glucose)
+        return HKQuantity(
+            unit: .milligramsPerDeciliter, doubleValue: glucoseValue
+        )
     }
 }
 
 extension SensorReading: GlucoseDisplayable {
     
     public var isStateValid: Bool {
-        return glucose >= 39
+        return glucoseValue >= 39
     }
     
     public var trendType: GlucoseTrend? {
-        return .flat
+        return glucoseTrend
     }
     
     public var isLocal: Bool {
@@ -48,14 +54,14 @@ extension SensorReading: GlucoseDisplayable {
     }
     
     public var glucoseRangeCategory: GlucoseRangeCategory? {
-        return nil
+        return .normal
     }
 }
 
 extension SensorReading: DeviceStatusHighlight {
     
     public var localizedMessage: String {
-        return "Battery Low"
+        return "Sensor Expired"
     }
     
     public var imageName: String {
@@ -63,17 +69,24 @@ extension SensorReading: DeviceStatusHighlight {
     }
     
     public var state: DeviceStatusHighlightState {
-        return .normalCGM
+        return .critical
     }
 }
 
 extension SensorReading: DeviceLifecycleProgress {
     
     public var percentComplete: Double {
-        return 0.5
+        return 1.0 - Double(minutesSinceStart) / Double(minutesTillExpire)
     }
     
     public var progressState: DeviceLifecycleProgressState {
-        return .normalCGM
+        switch (percentComplete) {
+        case let x where x <= 0.9:
+            return .critical
+        case let x where x <= 0.7:
+            return .warning
+        default:
+            return .normalCGM
+        }
     }
 }

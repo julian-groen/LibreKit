@@ -241,7 +241,7 @@ extension TransmitterManager: CBCentralManagerDelegate {
 extension TransmitterManager: TransmitterDelegate {
     
     public func transmitter(_ transmitter: Transmitter, changedBatteryLevel batteryLevel: Int) {
-        if batteryLevel < 100 { lastBatteryLevel = batteryLevel }
+        if batteryLevel < 100 { self.lastBatteryLevel = batteryLevel }
     }
     
     public func transmitter(_ transmitter: Transmitter, didRecievePacket packet: SensorPacket) {

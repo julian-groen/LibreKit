@@ -109,8 +109,17 @@ public class LibreCGMManager: CGMManager {
         return try! Calibration(configuration: MLModelConfiguration())
     }
     
-    private func transformPacket(_ data: SensorPacket) -> [SensorReading]? {
-        return nil
+    private func transformPacket(_ packet: SensorPacket) -> [SensorReading]? {
+        return [
+            SensorReading(
+                glucoseValue: 40,
+                glucoseTrend: .upUp,
+                sensorState: packet.sensorState,
+                timestamp: packet.readingTimestamp,
+                minutesSinceStart: packet.minutesSinceStart,
+                minutesTillExpire: packet.minutesTillExpire
+            )
+        ]
     }
     
     public var device: HKDevice? {
@@ -190,6 +199,10 @@ extension LibreCGMManager: TransmitterManagerDelegate {
     }
     
     public func transmitterManager(_ manager: TransmitterManager, stateChange state: TransmitterState) {
+        if let lastBatteryLevel = transmitterState?.lastBatteryLevel,
+           (state.lastBatteryLevel < lastBatteryLevel && state.lastBatteryLevel <= 10) {
+            // TODO: NOTIFY BATTERY
+        }
         self.transmitterState = state
     }
 }

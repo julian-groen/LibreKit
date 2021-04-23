@@ -28,10 +28,10 @@ extension LibreCGMManager: CGMManagerUI {
     }
     
     public var cgmStatusHighlight: DeviceStatusHighlight? {
-        return self.latestReading
+        return ((self.cgmStatus.hasValidSensorSession == false) ? self.latestReading : nil)
     }
     
     public var cgmLifecycleProgress: DeviceLifecycleProgress? {
-        return self.latestReading
+        return ((self.latestReading?.percentComplete ?? 1.0) <= 0.5 ? self.latestReading : nil)
     }
 }

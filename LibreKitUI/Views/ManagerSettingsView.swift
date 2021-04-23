@@ -6,6 +6,7 @@
 //  Copyright © 2021 Julian Groen. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
 import LoopKit
 import LoopKitUI
@@ -20,7 +21,7 @@ struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
     @Environment(\.guidanceColors) var guidanceColors
     
     @State var showingDeleteConfirmation = false
-      
+    
     var body: some View {
         List {
             overviewSection
@@ -44,15 +45,7 @@ struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
                         .frame(height: 85)
                 }.frame(maxWidth: .infinity)
                 
-                // TODO:
-                VStack(spacing: 10) {
-                    HStack(alignment: .lastTextBaseline, spacing: 3) {
-                        Text("Sensor expires in").foregroundColor(.secondary)
-                        Spacer()
-                        unitView(value: 13, unit: "days")
-                    }
-                    ProgressView(progress: CGFloat(0.1)).accentColor(.blue)
-                }
+                lifecycleSection
                 
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(alignment: .center) {
@@ -76,12 +69,52 @@ struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
     
     var activitySection: some View {
         Section(header: SectionHeader(label: "Activity")) {
-            LabeledValueView(label: LocalizedString("Glucose", comment: "Title describing glucose"), value: nil)
-            LabeledValueView(label: LocalizedString("Last Reading", comment: "Title describing last reading"), value: nil)
-            LabeledValueView(label: LocalizedString("Trend", comment: "Title describing glucose trend"), value: nil)
+            LabeledGlucoseView(
+                label: LocalizedString("Glucose", comment: "Title describing glucose reading"),
+                glucose: viewModel.latestReading?.quantity,
+                preferredUnit: viewModel.preferredUnit,
+                unitFormatter: viewModel.unitFormatter
+            )
+            LabeledDateView(
+                label: LocalizedString("Date", comment: "Title describing reading date"),
+                date: viewModel.latestReading?.startDate,
+                dateFormatter: viewModel.dateFormatter
+            )
+            LabeledValueView(
+                label: LocalizedString("Trend", comment: "Title describing glucose trend"),
+                value: viewModel.latestReading?.trendType?.localizedDescription
+            )
         }
     }
     
+    var lifecycleSection: some View {
+        VStack(spacing: 10) {
+            HStack(alignment: .lastTextBaseline, spacing: 3) {
+                Text("Sensor expires in").foregroundColor(.secondary)
+                Spacer()
+                switch (viewModel.minutesRemaining) {
+                case let minutes? where minutes >= 1440:
+                    let days: Int = Int(round(Double(minutes) / 1440))
+                    unitView(value: days, unit: days == 1 ?
+                                    LocalizedString("day", comment: "Unit for singular day in sensor life remaining") :
+                                    LocalizedString("days", comment: "Unit for plural days in sensor life remaining"))
+                case let minutes? where minutes >= 60:
+                    let hours: Int = Int(round(Double(minutes) / 60))
+                    unitView(value: hours, unit: hours == 1 ?
+                                    LocalizedString("hour", comment: "Unit for singular hour in sensor life remaining") :
+                                    LocalizedString("hours", comment: "Unit for plural hours in sensor life remaining"))
+                case let minutes? where minutes < 60:
+                    unitView(value: minutes, unit: minutes == 1 ?
+                                    LocalizedString("minute", comment: "Unit for singular minute in sensor life remaining") :
+                                    LocalizedString("minutes", comment: "Unit for plural minutes in sensor life remaining"))
+                default:
+                    unitView(value: nil, unit: LocalizedString("days", comment: "Unit for plural days in sensor life remaining"))
+                }
+            }
+            ProgressView(progress: CGFloat(viewModel.latestReading?.percentComplete ?? 0.0)).accentColor(.blue)
+        }
+    }
+ 
     var notificationSection: some View {
         SectionWithDescription(
             header: SectionHeader(label: "Configuration"),
@@ -146,9 +179,9 @@ struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
         Button(action: { viewModel.hasCompleted?() }) { Text("Done").bold() }
     }
     
-    func unitView(value: Int, unit: String) -> some View {
+    func unitView(value: Int?, unit: String) -> some View {
         return HStack(alignment: .lastTextBaseline) {
-            Text(String(value))
+            Text(value == nil ? "-" : String(value ?? 0))
                 .font(.system(size: 28))
                 .fontWeight(.heavy)
             Text(unit).foregroundColor(.secondary)
@@ -218,5 +251,21 @@ struct SectionWithDescription<Header, Content>: View where Header: View, Content
             content()
         }
         .contentShape(Rectangle())
+    }
+}
+
+struct LabeledGlucoseView: View {
+    var label: String
+    var glucose: HKQuantity?
+    var preferredUnit: HKUnit
+    var unitFormatter: QuantityFormatter
+        
+    private var glucoseString: String? {
+        guard let glucose = self.glucose else { return nil }
+        return unitFormatter.string(from: glucose, for: preferredUnit)
+    }
+    
+    var body: some View {
+        LabeledValueView(label: label, value: glucoseString)
     }
 }

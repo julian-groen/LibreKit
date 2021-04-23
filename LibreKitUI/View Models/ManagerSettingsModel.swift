@@ -31,6 +31,31 @@ class ManagerSettingsModel: NSObject, ObservableObject {
         return cgmManager.preferredUnit
     }
     
+    var latestReading: SensorReading? {
+        return cgmManager.latestReading
+    }
+    
+    var minutesRemaining: Int? {
+        if let latestReading = cgmManager.latestReading {
+            return latestReading.minutesTillExpire - latestReading.minutesSinceStart
+        }
+        return nil
+    }
+    
+    lazy var unitFormatter: QuantityFormatter = {
+        let formatter = QuantityFormatter()
+        formatter.setPreferredNumberFormatter(for: preferredUnit)
+        return formatter
+    }()
+
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .long
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    }()
+    
     init(cgmManager: LibreCGMManager) {
         self.cgmManager = cgmManager
         self.alarmNotifications = cgmManager.alarmNotifications
