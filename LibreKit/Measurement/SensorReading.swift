@@ -24,6 +24,15 @@ public struct SensorReading {
     public var minutesSinceStart: Int
     
     public var minutesTillExpire: Int
+    
+    public init(_ packet: SensorPacket, value: Double, timestamp: TimeInterval) {
+        self.glucoseValue = value
+        self.glucoseTrend = .flat
+        self.sensorState = packet.sensorState
+        self.minutesSinceStart = packet.minutesSinceStart
+        self.minutesTillExpire = packet.minutesTillExpire
+        self.timestamp = timestamp
+    }
 }
     
 extension SensorReading: GlucoseValue {
@@ -81,9 +90,9 @@ extension SensorReading: DeviceLifecycleProgress {
     
     public var progressState: DeviceLifecycleProgressState {
         switch (percentComplete) {
-        case let x where x <= 0.9:
+        case let x where x <= 0.1:
             return .critical
-        case let x where x <= 0.7:
+        case let x where x <= 0.3:
             return .warning
         default:
             return .normalCGM

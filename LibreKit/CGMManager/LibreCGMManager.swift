@@ -110,16 +110,21 @@ public class LibreCGMManager: CGMManager {
     }
     
     private func transformPacket(_ packet: SensorPacket) -> [SensorReading]? {
-        return [
-            SensorReading(
-                glucoseValue: 40,
-                glucoseTrend: .upUp,
-                sensorState: packet.sensorState,
-                timestamp: packet.readingTimestamp,
-                minutesSinceStart: packet.minutesSinceStart,
-                minutesTillExpire: packet.minutesTillExpire
-            )
-        ]
+        var entries = [SensorReading]()
+        var i: Int = 0
+        
+        for measurement in packet.trend(reversed: true) {
+            if i % 5 == 0 {
+                guard let output = try? calibration.prediction(raw: Double(measurement.rawGlucose)) else {
+                    break
+                }
+                var reading = SensorReading(packet, value: output.glucose, timestamp: measurement.timestamp)
+                reading.glucoseTrend = TrendCalculation.calculateTrend(current: reading, last: entries.last)
+                entries.append(reading)
+            }
+            i += 1
+        }
+        return entries
     }
     
     public var device: HKDevice? {
@@ -183,11 +188,11 @@ extension LibreCGMManager: TransmitterManagerDelegate {
             return
         }
         
-        let startDate = latestReading?.startDate.addingTimeInterval(1)
+        let startDate = delegate.call { (delegate) -> Date? in delegate?.startDateToFilterNewData(for: self) }
         let newGlucoseSamples = readings.filterDateRange(startDate, nil).filter({ $0.isStateValid }).map {
-            glucose -> NewGlucoseSample in return NewGlucoseSample(
-                date: glucose.startDate, quantity: glucose.quantity, isDisplayOnly: false,
-                wasUserEntered: false, syncIdentifier: "\(Int(glucose.timestamp))", device: device
+            reading -> NewGlucoseSample in return NewGlucoseSample(
+                date: reading.startDate, quantity: reading.quantity, isDisplayOnly: false,
+                wasUserEntered: false, syncIdentifier: "\(Int(reading.timestamp))", device: device
             )
         }
         

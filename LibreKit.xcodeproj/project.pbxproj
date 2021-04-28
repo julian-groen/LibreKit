@@ -36,6 +36,7 @@
 		0A5DA4CC26306F8400A63D6D /* SensorReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DA4CB26306F8400A63D6D /* SensorReading.swift */; };
 		0A5DA4D026307EC700A63D6D /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DA4CF26307EC700A63D6D /* Measurement.swift */; };
 		0A5DA4DC2630CAA800A63D6D /* Calibration.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DA4DB2630CAA800A63D6D /* Calibration.mlmodel */; };
+		0A649F832633166D0059ED36 /* TrendCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A649F822633166D0059ED36 /* TrendCalculation.swift */; };
 		0A83367325FEFD6500CA3DCC /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A83367225FEFD6500CA3DCC /* HealthKit.framework */; };
 		0A8F9D0D262C7D970090A476 /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0D6D682602C71A00055C98 /* HKUnit.swift */; };
 		0A8F9D19262CC7250090A476 /* CBPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F9D18262CC7250090A476 /* CBPeripheral.swift */; };
@@ -132,6 +133,7 @@
 		0A5DA4CB26306F8400A63D6D /* SensorReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorReading.swift; sourceTree = "<group>"; };
 		0A5DA4CF26307EC700A63D6D /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
 		0A5DA4DB2630CAA800A63D6D /* Calibration.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Calibration.mlmodel; sourceTree = "<group>"; };
+		0A649F822633166D0059ED36 /* TrendCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendCalculation.swift; sourceTree = "<group>"; };
 		0A83367225FEFD6500CA3DCC /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/iOSSupport/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		0A8F9D18262CC7250090A476 /* CBPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBPeripheral.swift; sourceTree = "<group>"; };
 		0A906E44262F323A002998AF /* SensorEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorEnums.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				0A0D6D682602C71A00055C98 /* HKUnit.swift */,
 				0A2F73E32627640400B85EFC /* Guardrail.swift */,
 				0AA75237261CDA8B00720118 /* CBCentralManager.swift */,
+				0A649F822633166D0059ED36 /* TrendCalculation.swift */,
 				0A146C7325850FAC00CF5F0A /* Framework.swift */,
 				0A8F9D18262CC7250090A476 /* CBPeripheral.swift */,
 				0A146C7625850FE400CF5F0A /* LocalizedString.swift */,
@@ -563,6 +566,7 @@
 				0A2F44492604A600007A7857 /* SensorPacket.swift in Sources */,
 				0A2F44552604A9EC007A7857 /* TransmitterManager.swift in Sources */,
 				0A2F443726041C3C007A7857 /* LibreCGMManagerState.swift in Sources */,
+				0A649F832633166D0059ED36 /* TrendCalculation.swift in Sources */,
 				0AE99325260F59EA00D06C79 /* TransmitterProvider.swift in Sources */,
 				0A5DA4CC26306F8400A63D6D /* SensorReading.swift in Sources */,
 				0A5DA4D026307EC700A63D6D /* Measurement.swift in Sources */,

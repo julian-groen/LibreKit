@@ -47,7 +47,10 @@ public struct SensorPacket: RawRepresentable, Equatable {
         guard let rawSensorData = rawValue["rawSensorData"] as? Data else {
             return nil
         }
+        
         self.init(sensorType, bytes: rawSensorData)
+        self.readingTimestamp = (rawValue["readingTimestamp"] as? TimeInterval)
+            ?? Date().timeIntervalSince1970
     }
     
     public func trend(reversed: Bool = false) -> [Measurement] {
@@ -81,6 +84,7 @@ public struct SensorPacket: RawRepresentable, Equatable {
     public var rawValue: RawValue {
         return [
             "sensorType": sensorType.rawValue,
+            "readingTimestamp": readingTimestamp.rawValue,
             "rawSensorData": rawSensorData
         ]
     }
