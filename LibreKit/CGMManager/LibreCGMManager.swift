@@ -15,13 +15,15 @@ import CoreML
 
 public class LibreCGMManager: CGMManager {
     
-    public static var managerIdentifier: String = "LibreKit"
+    public var managerIdentifier: String = "LibreKit"
     
-    public static var localizedTitle: String = "Freestyle Libre"
+    public var localizedTitle: String = "Freestyle Libre"
     
     public var providesBLEHeartbeat: Bool = true
     
     public var preferredUnit: HKUnit = .milligramsPerDeciliter
+    
+    public var isOnboarded: Bool = true // No distinction between created and onboarded
     
     public var shouldSyncToRemoteService: Bool = true
     
@@ -37,7 +39,7 @@ public class LibreCGMManager: CGMManager {
         return self.latestReading
     }
     
-    public var cgmStatus: CGMManagerStatus {
+    public var cgmManagerStatus: CGMManagerStatus {
         let valid = (lastSensorPacket?.sensorState.isValidState)
         return CGMManagerStatus(hasValidSensorSession: valid ?? true)
     }
@@ -129,7 +131,7 @@ public class LibreCGMManager: CGMManager {
     
     public var device: HKDevice? {
         return HKDevice(
-            name: type(of: self).localizedTitle,
+            name: localizedTitle,
             manufacturer: "Abbott",
             model: lastSensorPacket?.sensorType.description,
             hardwareVersion: nil,

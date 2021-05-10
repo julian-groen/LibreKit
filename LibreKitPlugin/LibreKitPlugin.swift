@@ -12,13 +12,9 @@ import LibreKit
 import LibreKitUI
 import os.log
 
-class LibreKitPlugin: NSObject, LoopUIPlugin {
+class LibreKitPlugin: NSObject, CGMManagerUIPlugin {
     
     private let log = OSLog(category: "LibreKitPlugin")
-    
-    public var pumpManagerType: PumpManagerUI.Type? {
-        return nil
-    }
     
     public var cgmManagerType: CGMManagerUI.Type? {
         return LibreCGMManager.self

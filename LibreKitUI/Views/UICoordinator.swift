@@ -12,17 +12,17 @@ import LoopKitUI
 import LibreKit
 
 
-class UICoordinator: UINavigationController, CGMManagerSetupViewController, CompletionNotifying, UINavigationControllerDelegate {
+class UICoordinator: UINavigationController, CGMManagerCreateNotifying, CGMManagerOnboardNotifying, CompletionNotifying, UINavigationControllerDelegate {
     
-    var cgmManager: LibreCGMManager?
-    var completionDelegate: CompletionDelegate?
-    var setupDelegate: CGMManagerSetupViewControllerDelegate?
-    let glucoseTintColor: Color
-    let guidanceColors: GuidanceColors
+    let cgmManager: LibreCGMManager?
+    let colorPalette: LoopUIColorPalette
     
-    init(cgmManager: LibreCGMManager? = nil, glucoseTintColor: Color, guidanceColors: GuidanceColors) {
-        self.guidanceColors = guidanceColors
-        self.glucoseTintColor = glucoseTintColor
+    weak var cgmManagerCreateDelegate: CGMManagerCreateDelegate?
+    weak var cgmManagerOnboardDelegate: CGMManagerOnboardDelegate?
+    weak var completionDelegate: CompletionDelegate?
+    
+    init(cgmManager: LibreCGMManager? = nil, colorPalette: LoopUIColorPalette) {
+        self.colorPalette = colorPalette
         self.cgmManager = cgmManager
         
         super.init(navigationBarClass: UINavigationBar.self, toolbarClass: UIToolbar.self)
@@ -76,11 +76,11 @@ class UICoordinator: UINavigationController, CGMManagerSetupViewController, Comp
     }
     
     private func viewController<Content: View>(rootView: Content) -> DismissibleHostingController {
-        return DismissibleHostingController(rootView: rootView, glucoseTintColor: glucoseTintColor, guidanceColors: guidanceColors)
+        return DismissibleHostingController(rootView: rootView, colorPalette: colorPalette)
     }
     
     private func setupCompletion(_ cgmManager: LibreCGMManager) {
-        setupDelegate?.cgmManagerSetupViewController(self, didSetUpCGMManager: cgmManager)
+        cgmManagerCreateDelegate?.cgmManagerCreateNotifying(didCreateCGMManager: cgmManager)
         completionDelegate?.completionNotifyingDidComplete(self)
     }
     
