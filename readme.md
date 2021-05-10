@@ -1,6 +1,6 @@
 # Known issues
 
-- Weird behaviour glucose target range picker (mmol)
+- none?
 
 
 # TODO

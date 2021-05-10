@@ -15,14 +15,20 @@ import LibreKit
 class UICoordinator: UINavigationController, CGMManagerCreateNotifying, CGMManagerOnboardNotifying, CompletionNotifying, UINavigationControllerDelegate {
     
     let cgmManager: LibreCGMManager?
+    let glucoseUnitObservable: DisplayGlucoseUnitObservable?
     let colorPalette: LoopUIColorPalette
     
     weak var cgmManagerCreateDelegate: CGMManagerCreateDelegate?
     weak var cgmManagerOnboardDelegate: CGMManagerOnboardDelegate?
     weak var completionDelegate: CompletionDelegate?
     
-    init(cgmManager: LibreCGMManager? = nil, colorPalette: LoopUIColorPalette) {
+    init(
+        cgmManager: LibreCGMManager? = nil,
+        glucoseUnitObservable: DisplayGlucoseUnitObservable? = nil,
+        colorPalette: LoopUIColorPalette
+    ) {
         self.colorPalette = colorPalette
+        self.glucoseUnitObservable = glucoseUnitObservable
         self.cgmManager = cgmManager
         
         super.init(navigationBarClass: UINavigationBar.self, toolbarClass: UIToolbar.self)
@@ -62,10 +68,10 @@ class UICoordinator: UINavigationController, CGMManagerCreateNotifying, CGMManag
            
             return viewController(rootView: view)
         case .settings:
-            guard let cgmManager = cgmManager else {
+            guard let cgmManager = cgmManager, let observable = glucoseUnitObservable else {
                 fatalError()
             }
-            let model = ManagerSettingsModel(cgmManager: cgmManager)
+            let model = ManagerSettingsModel(cgmManager: cgmManager, for: observable)
             model.hasCompleted = { [weak self] in
                 self?.notifyCompletion()
             }

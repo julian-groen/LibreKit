@@ -7,13 +7,15 @@
 //
 
 import LibreKit
-import HealthKit
 import LoopKit
+import LoopKitUI
+import HealthKit
 
 
 class ManagerSettingsModel: NSObject, ObservableObject {
     
     let cgmManager: LibreCGMManager
+    let glucoseUnitObservable: DisplayGlucoseUnitObservable
     var hasCompleted: (() -> Void)?
     
     @Published var glucoseTargetRange: DoubleRange
@@ -28,7 +30,7 @@ class ManagerSettingsModel: NSObject, ObservableObject {
     }
     
     var preferredUnit: HKUnit {
-        return cgmManager.preferredUnit
+        return glucoseUnitObservable.displayGlucoseUnit
     }
     
     var latestReading: SensorReading? {
@@ -56,8 +58,9 @@ class ManagerSettingsModel: NSObject, ObservableObject {
         return formatter
     }()
     
-    init(cgmManager: LibreCGMManager) {
+    init(cgmManager: LibreCGMManager, for glucoseUnitObservable: DisplayGlucoseUnitObservable) {
         self.cgmManager = cgmManager
+        self.glucoseUnitObservable = glucoseUnitObservable
         self.alarmNotifications = cgmManager.alarmNotifications
         self.glucoseTargetRange = cgmManager.glucoseTargetRange
     }

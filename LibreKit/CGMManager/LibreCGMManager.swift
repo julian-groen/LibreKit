@@ -21,8 +21,6 @@ public class LibreCGMManager: CGMManager {
     
     public var providesBLEHeartbeat: Bool = true
     
-    public var preferredUnit: HKUnit = .milligramsPerDeciliter
-    
     public var isOnboarded: Bool = true // No distinction between created and onboarded
     
     public var shouldSyncToRemoteService: Bool = true
@@ -83,10 +81,6 @@ public class LibreCGMManager: CGMManager {
             return nil
         }
         self.init(state: state)
-    }
-    
-    public func set(_ unit: HKUnit) -> LibreCGMManager {
-        self.preferredUnit = unit; return self
     }
     
     public func set(_ changes: (_ state: inout LibreCGMManagerState) -> Void) {
