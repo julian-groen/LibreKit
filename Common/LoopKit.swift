@@ -17,13 +17,6 @@ extension Guardrail where Value == HKQuantity {
     }
 }
 
-extension Array where Element: Hashable {
-    func unique() -> Array<Element> {
-        var set = Set<Element>()
-        return filter { set.insert($0).inserted }
-    }
-}
-
 // MARK: - Helper Classes
 public struct CGMStatusHighlight: DeviceStatusHighlight {
     
