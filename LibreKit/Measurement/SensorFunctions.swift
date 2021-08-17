@@ -1,5 +1,5 @@
 //
-//  SensorDecoder.swift
+//  SensorFunctions.swift
 //  LibreKit
 //
 //  Created by Julian Groen on 20/04/2021.

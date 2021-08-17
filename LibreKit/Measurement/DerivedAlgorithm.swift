@@ -24,6 +24,29 @@ public struct SensorCalibration: Equatable, Codable {
     public var i6: Double
 }
 
+extension Array where Element: AbstractMeasurement {
+    
+    mutating func smoothen(width filter_width: Int = 5) {
+        var filter_width_usage: Int = filter_width
+        if filter_width > 5 || filter_width < 2 { filter_width_usage = 5 }
+        let coefficients_index: Int = filter_width_usage - 2
+        
+        guard self.count >= filter_width_usage else { return }
+        
+        var temporary: [AbstractMeasurement] = [AbstractMeasurement]()
+        for element in self { temporary.append(element) }
+        for _ in 0 ..< filter_width_usage {
+            temporary.insert(Placeholder(value: 0), at: 0)
+            temporary.append(Placeholder(value: 0))
+        }
+    }
+}
+
+public class SavitzkyGolay {
+    
+    public static func smooth(measurements: inout [Measurement]) { }
+}
+
 public struct AlgorithmParameters: Equatable, Codable {
     
     public var slope_slope: Double
@@ -34,32 +57,28 @@ public struct AlgorithmParameters: Equatable, Codable {
     
     public var offset_offset: Double
     
-    public var extraSlope : Double = 1
+    public var extra_slope : Double = 1
     
-    public var extraOffset: Double = 0
-    
-    private var glucoseLowerThreshold: Int = 1000
-    
-    private var temperatureLowerThreshold: Int = 6000
-    
-    private var glucoseUpperThreshold: Int = 3000
-    
-    private var temperatureUpperThreshold: Int = 9000
+    public var extra_offset: Double = 0
     
     public init(bytes: Data) {
         let calibration = SensorFunctions.calibrate(bytes)
-        let responseb1 = Measurement(rawGlucose: glucoseLowerThreshold, rawTemperature: temperatureLowerThreshold).glucose(calibration: calibration)
-        let responseb2 = Measurement(rawGlucose: glucoseUpperThreshold, rawTemperature: temperatureLowerThreshold).glucose(calibration: calibration)
-        let slope1 = (responseb2 - responseb1) / (Double(glucoseUpperThreshold) - Double(glucoseLowerThreshold))
-        let offset1 = responseb2 - (Double(glucoseUpperThreshold) * slope1)
-        let responsef1 = Measurement(rawGlucose: glucoseLowerThreshold, rawTemperature: temperatureUpperThreshold).glucose(calibration: calibration)
-        let responsef2 = Measurement(rawGlucose: glucoseUpperThreshold, rawTemperature: temperatureUpperThreshold).glucose(calibration: calibration)
-        let slope2 = (responsef2 - responsef1) / (Double(glucoseUpperThreshold) - Double(glucoseLowerThreshold))
-        let offset2 = responsef2 - (Double(glucoseUpperThreshold) * slope2)
-        self.slope_slope   = (slope1 - slope2) / (Double(temperatureLowerThreshold) - Double(temperatureUpperThreshold))
-        self.offset_slope  = (slope1 - (slope_slope * Double(temperatureLowerThreshold)))
-        self.slope_offset  = (offset1 - offset2) / (Double(temperatureLowerThreshold) - Double(temperatureUpperThreshold))
-        self.offset_offset = (offset2 - (slope_offset * Double(temperatureUpperThreshold)))
+        let thresholds = (glucose_lower: 1000, temperature_lower: 6000, glucose_upper: 3000, temperature_upper: 9000)
+        
+        let responseb1 = Placeholder(raw_glucose: thresholds.glucose_lower, raw_temperature: thresholds.temperature_lower).calculate(calibration: calibration)
+        let responseb2 = Placeholder(raw_glucose: thresholds.glucose_upper, raw_temperature: thresholds.temperature_lower).calculate(calibration: calibration)
+        let slope1 = (responseb2 - responseb1) / (Double(thresholds.glucose_upper) - Double(thresholds.glucose_lower))
+        let offset1 = responseb2 - (Double(thresholds.glucose_upper) * slope1)
+        
+        let responsef1 = Placeholder(raw_glucose: thresholds.glucose_lower, raw_temperature: thresholds.temperature_upper).calculate(calibration: calibration)
+        let responsef2 = Placeholder(raw_glucose: thresholds.glucose_upper, raw_temperature: thresholds.temperature_upper).calculate(calibration: calibration)
+        let slope2 = (responsef2 - responsef1) / (Double(thresholds.glucose_upper) - Double(thresholds.glucose_lower))
+        let offset2 = responsef2 - (Double(thresholds.glucose_upper) * slope2)
+        
+        self.slope_slope   = (slope1 - slope2) / (Double(thresholds.temperature_lower) - Double(thresholds.temperature_upper))
+        self.offset_slope  = (slope1 - (slope_slope * Double(thresholds.temperature_lower)))
+        self.slope_offset  = (offset1 - offset2) / (Double(thresholds.temperature_lower) - Double(thresholds.temperature_upper))
+        self.offset_offset = (offset2 - (slope_offset * Double(thresholds.temperature_upper)))
     }
 }
 
@@ -70,9 +89,9 @@ extension AlgorithmParameters: CustomDebugStringConvertible {
             "* slopeslope: \(slope_slope)",
             "* slopeoffset: \(slope_offset)",
             "* offsetoffset: \(offset_offset)",
-            "* offsetSlope: \(offset_slope)",
-            "* extraSlope: \(extraSlope)",
-            "* extraOffset: \(extraOffset)",
+            "* offsetslope: \(offset_slope)",
+            "* extraslope: \(extra_slope)",
+            "* extraoffset: \(extra_offset)",
             ""
         ].joined(separator: "\n")
     }
