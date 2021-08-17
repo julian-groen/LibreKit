@@ -163,7 +163,7 @@ extension LibreCGMManager: TransmitterManagerDelegate {
         let startDate = delegate.call { (delegate) -> Date? in delegate?.startDateToFilterNewData(for: self) }
         let newGlucoseSamples = readings.filterDateRange(startDate, nil).filter({ $0.isStateValid }).map {
             reading -> NewGlucoseSample in return NewGlucoseSample(
-                date: reading.startDate, quantity: reading.quantity, isDisplayOnly: false,
+                date: reading.startDate, quantity: reading.quantity, trend: reading.trendType, isDisplayOnly: false,
                 wasUserEntered: false, syncIdentifier: "\(Int(reading.timestamp))", device: device
             )
         }
@@ -183,13 +183,13 @@ extension LibreCGMManager {
     
     // TODO: localize
     
-    public func acknowledgeAlert(alertIdentifier: Alert.AlertIdentifier) {
-        let identifier = Alert.Identifier(managerIdentifier: managerIdentifier, alertIdentifier: alertIdentifier)
-        delegate.notify { (delegate) in delegate?.retractAlert(identifier: identifier) }
-    }
-    
     private func issueAlert(_ alert: Alert) {
         if notificationAlerts { delegate.notify { (delegate) in delegate?.issueAlert(alert) } }
+    }
+    
+    public func acknowledgeAlert(alertIdentifier: Alert.AlertIdentifier, completion: @escaping (Error?) -> Void) {
+        let identifier = Alert.Identifier(managerIdentifier: managerIdentifier, alertIdentifier: alertIdentifier)
+        delegate.notify { (delegate) in delegate?.retractAlert(identifier: identifier) }
     }
     
     private func retractGlucoseAlertIfNecessary() {
