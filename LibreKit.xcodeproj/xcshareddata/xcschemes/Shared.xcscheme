@@ -55,15 +55,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4DCEF24F1D41A2A200724BCD"
-            BuildableName = "G4ShareSpy.framework"
-            BlueprintName = "G4ShareSpy"
-            ReferencedContainer = "container:../G4ShareSpy/G4ShareSpy.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
       </Testables>
    </TestAction>

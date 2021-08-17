@@ -11,7 +11,7 @@ import CoreBluetooth
 import os.log
 
 
-public protocol TransmitterManagerDelegate: class {
+public protocol TransmitterManagerDelegate: AnyObject {
     
     func transmitterManager(_ manager: TransmitterManager, recievedPacket packet: SensorPacket)
     
@@ -241,7 +241,7 @@ extension TransmitterManager: CBCentralManagerDelegate {
 extension TransmitterManager: TransmitterDelegate {
     
     public func transmitter(_ transmitter: Transmitter, changedBatteryLevel batteryLevel: Int) {
-        if batteryLevel < 100 { self.lastBatteryLevel = batteryLevel }
+        if batteryLevel <= 100 { self.lastBatteryLevel = batteryLevel }
     }
     
     public func transmitter(_ transmitter: Transmitter, didRecievePacket packet: SensorPacket) {

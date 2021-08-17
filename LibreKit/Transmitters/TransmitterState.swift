@@ -28,14 +28,14 @@ public struct TransmitterState: RawRepresentable, Equatable {
     
     public init?(rawValue: RawValue) {
         var autoConnectID: UUID?
-        if let rawObjectValue = rawValue["autoConnectID"] as? String {
-            autoConnectID = UUID(uuidString: rawObjectValue)
+        if let rawUUIDString = rawValue["autoConnectID"] as? String {
+            autoConnectID = UUID(uuidString: rawUUIDString)
         }
 
         self.init(autoConnectID: autoConnectID)
         
-        if let rawObjectValue = rawValue["lastBatteryLevel"] as? Int {
-            self.lastBatteryLevel = rawObjectValue
+        if let rbatteryLevel = rawValue["lastBatteryLevel"] as? Int {
+            self.lastBatteryLevel = rbatteryLevel
         }
     }
     

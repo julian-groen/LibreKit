@@ -9,7 +9,7 @@
 import LibreKit
 
 
-class TransmitterConnectModel: NSObject, ObservableObject {
+class TransmitterConnectModel: ObservableObject {
     
     let cgmManager: LibreCGMManager
     var hasContinued: ((_ cgmManager: LibreCGMManager) -> Void)?
@@ -17,10 +17,9 @@ class TransmitterConnectModel: NSObject, ObservableObject {
     
     @Published var transmitters: [Transmitter] = []
     
-    override init() {
+    init() {
         self.cgmManager = LibreCGMManager(state: LibreCGMManagerState())
         self.cgmManager.transmitterManager.setScanningEnabled(true)
-        super.init()
         self.addTransmittersDidChangeObserver()
     }
     

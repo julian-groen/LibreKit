@@ -92,7 +92,7 @@ struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
             HStack(alignment: .lastTextBaseline, spacing: 3) {
                 Text("Sensor expires in").foregroundColor(.secondary)
                 Spacer()
-                switch (viewModel.minutesRemaining) {
+                switch (viewModel.latestReading?.minutesRemaining) {
                 case let minutes? where minutes >= 1440:
                     let days: Int = Int(round(Double(minutes) / 1440))
                     unitView(value: days, unit: days == 1 ?
@@ -111,7 +111,7 @@ struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
                     unitView(value: nil, unit: LocalizedString("days", comment: "Unit for plural days in sensor life remaining"))
                 }
             }
-            ProgressView(progress: CGFloat(viewModel.latestReading?.percentComplete ?? 0.0)).accentColor(.blue)
+            ProgressView(progress: 1.0 - CGFloat(viewModel.latestReading?.percentComplete ?? 0.0)).accentColor(.blue)
         }
     }
  
@@ -124,7 +124,7 @@ struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
                 Button(action: {
                     viewModel.toggleNotifications()
                 }, label: {
-                    if viewModel.alarmNotifications {
+                    if viewModel.notificationAlerts {
                         Text("Disable Notifications", comment: "").foregroundColor(guidanceColors.critical)
                     } else {
                         Text("Enable Notifications", comment: "").foregroundColor(.blue)
@@ -143,7 +143,7 @@ struct ManagerSettingsView<Model>: View where Model: ManagerSettingsModel {
             destination: { dismiss in
                 AnyView(
                     GlucoseTargetRangeEditor(viewModel: self.viewModel, didSave: dismiss)
-                ).environment(\.dismiss, dismiss)
+                ).environment(\.dismissAction, dismiss)
             },
             content: {
                 GlucoseTargetRangeItem(value: viewModel.glucoseTargetRange, preferredUnit: viewModel.preferredUnit)

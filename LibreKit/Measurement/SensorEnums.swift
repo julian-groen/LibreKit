@@ -19,18 +19,12 @@ public enum SensorType: Int {
     
     init(byte: UInt8?) {
         switch byte {
-        case 223:
-            self = .libreOne
-        case 162:
-            self = .libre1A2
-        case 157:
-            self = .libreTwo
-        case 229:
-            self = .libreUSA
-        case 112:
-            self = .librePro
-        default:
-            self = .libreOne
+        case 223: self = .libreOne
+        case 162: self = .libre1A2
+        case 157: self = .libreTwo
+        case 229: self = .libreUSA
+        case 112: self = .librePro
+        default: self = .libreOne
         }
     }
     
@@ -62,20 +56,13 @@ public enum SensorState: Int {
     
     init(byte: UInt8) {
         switch byte {
-        case 01:
-            self = .awaiting
-        case 02:
-            self = .starting
-        case 03:
-            self = .ready
-        case 04:
-            self = .expired
-        case 05:
-            self = .shutdown
-        case 06:
-            self = .failure
-        default:
-            self = .unknown
+        case 01: self = .awaiting
+        case 02: self = .starting
+        case 03: self = .ready
+        case 04: self = .expired
+        case 05: self = .shutdown
+        case 06: self = .failure
+        default: self = .unknown
         }
     }
     
@@ -98,8 +85,8 @@ public enum SensorState: Int {
         }
     }
     
-    var isValidState: Bool {
-        return !(self.rawValue > 2)
+    var isValid: Bool {
+        return self == .ready
     }
 }
 

@@ -12,7 +12,7 @@ import os.log
 extension OSLog {
 
     convenience init(category: String) {
-        self.init(subsystem: "com.loopkit.LibrePlugin", category: category)
+        self.init(subsystem: "com.loopkit.LibreKitPlugin", category: category)
     }
 
     func debug(_ message: StaticString, _ args: CVarArg...) {

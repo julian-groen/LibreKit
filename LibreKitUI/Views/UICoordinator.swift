@@ -12,14 +12,13 @@ import LoopKitUI
 import LibreKit
 
 
-class UICoordinator: UINavigationController, CGMManagerCreateNotifying, CGMManagerOnboardNotifying, CompletionNotifying, UINavigationControllerDelegate {
+class UICoordinator: UINavigationController, CGMManagerOnboarding, CompletionNotifying, UINavigationControllerDelegate {
     
     let cgmManager: LibreCGMManager?
     let glucoseUnitObservable: DisplayGlucoseUnitObservable?
     let colorPalette: LoopUIColorPalette
     
-    weak var cgmManagerCreateDelegate: CGMManagerCreateDelegate?
-    weak var cgmManagerOnboardDelegate: CGMManagerOnboardDelegate?
+    weak var cgmManagerOnboardingDelegate: CGMManagerOnboardingDelegate?
     weak var completionDelegate: CompletionDelegate?
     
     init(
@@ -30,7 +29,6 @@ class UICoordinator: UINavigationController, CGMManagerCreateNotifying, CGMManag
         self.colorPalette = colorPalette
         self.glucoseUnitObservable = glucoseUnitObservable
         self.cgmManager = cgmManager
-        
         super.init(navigationBarClass: UINavigationBar.self, toolbarClass: UIToolbar.self)
     }
     
@@ -86,7 +84,7 @@ class UICoordinator: UINavigationController, CGMManagerCreateNotifying, CGMManag
     }
     
     private func setupCompletion(_ cgmManager: LibreCGMManager) {
-        cgmManagerCreateDelegate?.cgmManagerCreateNotifying(didCreateCGMManager: cgmManager)
+        cgmManagerOnboardingDelegate?.cgmManagerOnboarding(didCreateCGMManager: cgmManager)
         completionDelegate?.completionNotifyingDidComplete(self)
     }
     

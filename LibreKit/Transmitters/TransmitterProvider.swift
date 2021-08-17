@@ -11,7 +11,7 @@ import CoreBluetooth
 
 
 public let allTransmitters: [Transmitter.Type] = [
-    MiaoMiaoTransmitter.self
+    MiaoMiaoTransmitter.self, NativeTransmitter.self
 ]
 
 public func TransmitterFromPeripheral(_ peripheral: CBPeripheral) -> Transmitter? {
@@ -23,7 +23,7 @@ public func TransmitterFromPeripheral(_ peripheral: CBPeripheral) -> Transmitter
 
 public typealias Transmitter = (TransmitterProtocol & AbstractTransmitter)
 
-public protocol TransmitterDelegate: class {
+public protocol TransmitterDelegate: AnyObject {
     
     func transmitter(_ transmitter: Transmitter, changedBatteryLevel batteryLevel: Int)
     

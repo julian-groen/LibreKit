@@ -19,7 +19,7 @@ class ManagerSettingsModel: NSObject, ObservableObject {
     var hasCompleted: (() -> Void)?
     
     @Published var glucoseTargetRange: DoubleRange
-    @Published var alarmNotifications: Bool
+    @Published var notificationAlerts: Bool
     
     var connectionState: ConnectionState {
         return cgmManager.transmitterState?.connectionState ?? .unknown
@@ -35,13 +35,6 @@ class ManagerSettingsModel: NSObject, ObservableObject {
     
     var latestReading: SensorReading? {
         return cgmManager.latestReading
-    }
-    
-    var minutesRemaining: Int? {
-        if let latestReading = cgmManager.latestReading {
-            return latestReading.minutesTillExpire - latestReading.minutesSinceStart
-        }
-        return nil
     }
     
     lazy var unitFormatter: QuantityFormatter = {
@@ -61,13 +54,13 @@ class ManagerSettingsModel: NSObject, ObservableObject {
     init(cgmManager: LibreCGMManager, for glucoseUnitObservable: DisplayGlucoseUnitObservable) {
         self.cgmManager = cgmManager
         self.glucoseUnitObservable = glucoseUnitObservable
-        self.alarmNotifications = cgmManager.alarmNotifications
+        self.notificationAlerts = cgmManager.notificationAlerts
         self.glucoseTargetRange = cgmManager.glucoseTargetRange
     }
     
     func toggleNotifications() {
-        cgmManager.alarmNotifications = !cgmManager.alarmNotifications
-        self.alarmNotifications = cgmManager.alarmNotifications
+        cgmManager.notificationAlerts = !cgmManager.notificationAlerts
+        self.notificationAlerts = cgmManager.notificationAlerts
     }
     
     func saveGlucoseTargetRange(_ glucoseTargetRange: DoubleRange) {

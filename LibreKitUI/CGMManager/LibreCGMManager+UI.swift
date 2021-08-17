@@ -15,29 +15,38 @@ import LibreKit
 
 extension LibreCGMManager: CGMManagerUI {
     
+    public static var onboardingImage: UIImage? {
+        return UIImage(named: "FreeStyle Libre")
+    }
+    
+    public static func setupViewController(bluetoothProvider: BluetoothProvider, displayGlucoseUnitObservable: DisplayGlucoseUnitObservable, colorPalette: LoopUIColorPalette, allowDebugFeatures: Bool) -> SetupUIResult<CGMManagerViewController, CGMManagerUI> {
+        return .userInteractionRequired(UICoordinator(colorPalette: colorPalette))
+    }
+    
     public var smallImage: UIImage? {
         return UIImage(named: "FreeStyle Libre")
     }
     
     public var cgmStatusHighlight: DeviceStatusHighlight? {
-        return ((self.cgmManagerStatus.hasValidSensorSession == false) ? self.latestReading : nil)
+        return self.latestReading?.statusHighlight
     }
     
     public var cgmLifecycleProgress: DeviceLifecycleProgress? {
-        return ((self.latestReading?.percentComplete ?? 1.0) <= 0.5 ? self.latestReading : nil)
+        return self.latestReading?.lifecycleProgress
     }
     
     public var cgmStatusBadge: DeviceStatusBadge? {
-        return nil
+        return self.latestReading?.statusBadge
     }
     
-    public static func setupViewController(bluetoothProvider: BluetoothProvider, colorPalette: LoopUIColorPalette)
-            -> SetupUIResult<UIViewController & CGMManagerCreateNotifying & CGMManagerOnboardNotifying & CompletionNotifying, CGMManagerUI> {
-        return .userInteractionRequired(UICoordinator(colorPalette: colorPalette))
-    }
-    
-    public func settingsViewController(for displayGlucoseUnitObservable: DisplayGlucoseUnitObservable, bluetoothProvider: BluetoothProvider, colorPalette: LoopUIColorPalette)
-            -> (UIViewController & CGMManagerOnboardNotifying & CompletionNotifying) {
+    public func settingsViewController(bluetoothProvider: BluetoothProvider, displayGlucoseUnitObservable: DisplayGlucoseUnitObservable, colorPalette: LoopUIColorPalette, allowDebugFeatures: Bool) -> CGMManagerViewController {
         return UICoordinator(cgmManager: self, glucoseUnitObservable: displayGlucoseUnitObservable, colorPalette: colorPalette)
     }
+    
+    public func displayGlucoseUnitDidChange(to displayGlucoseUnit: HKUnit) {
+        self.displayGlucoseUnit = displayGlucoseUnit
+    }
 }
+
+// return .userInteractionRequired(UICoordinator(colorPalette: colorPalette))
+// return .createdAndOnboarded(LibreCGMManager(state: LibreCGMManagerState()))

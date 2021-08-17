@@ -16,7 +16,7 @@ import CoreML
 public class LibreCGMManager: CGMManager {
     
     public var managerIdentifier: String = "LibreKit"
-    
+
     public var localizedTitle: String = "Freestyle Libre"
     
     public var providesBLEHeartbeat: Bool = true
@@ -29,17 +29,21 @@ public class LibreCGMManager: CGMManager {
     
     public let delegate = WeakSynchronizedDelegate<CGMManagerDelegate>()
     
+    public var displayGlucoseUnit: HKUnit?
+    
     public let transmitterManager: TransmitterManager
     
     public private(set) var latestReading: SensorReading?
-    
+
     public var glucoseDisplay: GlucoseDisplayable? {
         return self.latestReading
     }
     
     public var cgmManagerStatus: CGMManagerStatus {
-        let valid = (lastSensorPacket?.sensorState.isValidState)
-        return CGMManagerStatus(hasValidSensorSession: valid ?? true)
+        return CGMManagerStatus(
+            hasValidSensorSession: self.lastSensorPacket?.sensorState.isValid ?? false,
+            lastCommunicationDate: Date(timestamp: lastSensorPacket?.readingTimestamp)
+        )
     }
     
     public var cgmManagerDelegate: CGMManagerDelegate? {
@@ -50,7 +54,7 @@ public class LibreCGMManager: CGMManager {
             delegate.delegate = newValue
         }
     }
-    
+
     public var delegateQueue: DispatchQueue! {
         get {
             return delegate.queue
@@ -59,38 +63,36 @@ public class LibreCGMManager: CGMManager {
             delegate.queue = newValue
         }
     }
-    
+
     private let lockedState: Locked<LibreCGMManagerState>
-    
-    public var state: LibreCGMManagerState {
+
+    public var managerState: LibreCGMManagerState {
         return lockedState.value
     }
-    
-    public var rawState: PumpManager.RawStateValue {
-        return state.rawValue
+
+    public var rawState: RawStateValue {
+        return managerState.rawValue
     }
-    
+
     public init(state: LibreCGMManagerState) {
         self.lockedState = Locked(state)
         self.transmitterManager = TransmitterManager(state.transmitterState)
         self.transmitterManager.delegate = self
     }
-    
+
     public required convenience init?(rawState: RawStateValue) {
-        guard let state = LibreCGMManagerState(rawValue: rawState) else {
-            return nil
-        }
+        guard let state = LibreCGMManagerState(rawValue: rawState) else { return nil }
         self.init(state: state)
     }
     
     public func set(_ changes: (_ state: inout LibreCGMManagerState) -> Void) {
-        let oldValue: LibreCGMManagerState = state
+        let oldValue: LibreCGMManagerState = managerState
         let newValue = lockedState.mutate { (state) in
             changes(&state)
         }
-        
+
         if oldValue == newValue { return }
-        
+
         delegate.notify { (delegate) in
             delegate?.cgmManagerDidUpdateState(self)
         }
@@ -100,90 +102,64 @@ public class LibreCGMManager: CGMManager {
         completion(.noData)
     }
     
-    // TODO: TARGET TO CHANGE -> NEW ALGORITHM
-    private var calibration: Calibration {
-        return try! Calibration(configuration: MLModelConfiguration())
-    }
-    
-    private func transformPacket(_ packet: SensorPacket) -> [SensorReading]? {
-        var entries = [SensorReading]()
-        var i: Int = 0
+    private func process(_ packet: SensorPacket) -> [SensorReading]? {
+        let algorithm_parameters: AlgorithmParameters = AlgorithmParameters(bytes: packet.rawSensorData)
         
-        for measurement in packet.trend(reversed: true) {
-            if i % 5 == 0 {
-                guard let output = try? calibration.prediction(raw: Double(measurement.rawGlucose)) else {
-                    break
-                }
-                var reading = SensorReading(packet, value: output.glucose, timestamp: measurement.timestamp)
-                reading.glucoseTrend = TrendCalculation.calculateTrend(current: reading, last: entries.last)
-                entries.append(reading)
-            }
-            i += 1
+        var measurements: [Measurement] = [Measurement]()
+        measurements.append(contentsOf: packet.trend(parameters: algorithm_parameters, reference: measurements.last))
+        measurements.append(contentsOf: packet.history(parameters: algorithm_parameters, reference: measurements.last))
+        measurements.sort(by: { $0.timestamp < $1.timestamp })
+
+        var entries: [SensorReading] = [SensorReading]()
+        for measurement in measurements {
+            var reading = SensorReading(packet, value: measurement.glucose, timestamp: measurement.timestamp)
+            reading.calculate(predecessor: entries.last, range: self.glucoseTargetRange); entries.append(reading)
         }
-        return entries
+        return entries // TODO: smoothing
     }
-    
+
     public var device: HKDevice? {
         return HKDevice(
-            name: localizedTitle,
-            manufacturer: "Abbott",
-            model: lastSensorPacket?.sensorType.description,
-            hardwareVersion: nil,
-            firmwareVersion: nil,
-            softwareVersion: nil,
-            localIdentifier:
-                transmitterState?.autoConnectID?.uuidString,
-            udiDeviceIdentifier: nil
+            name: localizedTitle, manufacturer: "Abbott", model: lastSensorPacket?.sensorType.description,
+            hardwareVersion: nil, firmwareVersion: nil, softwareVersion: nil,
+            localIdentifier: transmitterState?.autoConnectID?.uuidString, udiDeviceIdentifier: nil
         )
     }
-    
+
     public var debugDescription: String {
         return [
             "## \(String(describing: type(of: self)))",
-            "state: \(String(reflecting: state))",
+            "state: \(String(reflecting: managerState))",
             ""
         ].joined(separator: "\n")
-    }
-    
-    // TODO: ADDING NOTIFICATIONS
-    public func acknowledgeAlert(alertIdentifier: Alert.AlertIdentifier) { }
-    
-    public func getSoundBaseURL() -> URL? {
-        return nil
-    }
-    
-    public func getSounds() -> [Alert.Sound] {
-        return []
     }
 }
 
 // MARK: - TransmitterManagerDelegate
 extension LibreCGMManager: TransmitterManagerDelegate {
     
+    public func transmitterManager(_ manager: TransmitterManager, stateChange state: TransmitterState) {
+        issueAlerts(state, predecessor: self.transmitterState); self.transmitterState = state
+    }
+    
     public func transmitterManager(_ manager: TransmitterManager, recievedPacket packet: SensorPacket) {
         self.lastSensorPacket = packet
 
         guard packet.isValidSensor else {
-            delegate.notify { (delegate) in
-                delegate?.cgmManager(self, hasNew: .error(SensorError.invalid))
-            }
+            delegate.notify { (delegate) in delegate?.cgmManager(self, hasNew: .error(SensorError.invalid)) }
             return
         }
-        
+
         guard packet.sensorState == .ready else {
-            delegate.notify { (delegate) in
-                delegate?.cgmManager(self, hasNew: .error(SensorError.expired))
-            }
+            delegate.notify { (delegate) in delegate?.cgmManager(self, hasNew: .error(SensorError.expired)) }
             return
         }
-        
-        guard let readings = transformPacket(packet), readings.count > 0 else {
-            delegate.notify { (delegate) in
-                delegate?.cgmManager(self, hasNew: .noData)
-            }
+
+        guard let readings = self.process(packet), readings.count > 0 else {
+            delegate.notify { (delegate) in delegate?.cgmManager(self, hasNew: .noData) }
             return
         }
-        
+
         let startDate = delegate.call { (delegate) -> Date? in delegate?.startDateToFilterNewData(for: self) }
         let newGlucoseSamples = readings.filterDateRange(startDate, nil).filter({ $0.isStateValid }).map {
             reading -> NewGlucoseSample in return NewGlucoseSample(
@@ -191,67 +167,152 @@ extension LibreCGMManager: TransmitterManagerDelegate {
                 wasUserEntered: false, syncIdentifier: "\(Int(reading.timestamp))", device: device
             )
         }
-        
+
         delegate.notify { (delegate) in
             delegate?.cgmManager(self, hasNew: newGlucoseSamples.isEmpty ? .noData : .newData(newGlucoseSamples))
         }
-        
-        latestReading = readings.filter({ $0.isStateValid }).max(by: { $0.startDate < $1.startDate })
-    }
-    
-    public func transmitterManager(_ manager: TransmitterManager, stateChange state: TransmitterState) {
-        if let lastBatteryLevel = transmitterState?.lastBatteryLevel,
-           (state.lastBatteryLevel < lastBatteryLevel && state.lastBatteryLevel <= 10) {
-            // TODO: NOTIFY BATTERY
-        }
-        self.transmitterState = state
+
+        let temporaryReading: SensorReading? = self.latestReading
+        self.latestReading = readings.filter({ $0.isStateValid }).max(by: { $0.startDate < $1.startDate })
+        issueAlerts(self.latestReading, predecessor: temporaryReading)
     }
 }
 
-// MARK: - Wrapped Variable
+// MARK: - LibreCGMManager Alerts
 extension LibreCGMManager {
     
-    public var alarmNotifications: Bool {
-        get {
-            return state.alarmNotifications
-        }
-        set {
-            set { (state) in
-                state.alarmNotifications = newValue
-            }
-        }
+    public func acknowledgeAlert(alertIdentifier: Alert.AlertIdentifier) {
+        let identifier = Alert.Identifier(managerIdentifier: managerIdentifier, alertIdentifier: alertIdentifier)
+        self.retractAlert(identifier: identifier)
     }
     
-    public var glucoseTargetRange: DoubleRange {
-        get {
-            return state.glucoseTargetRange
-        }
-        set {
-            set { (state) in
-                state.glucoseTargetRange = newValue
-            }
-        }
+    private func retractAlert(identifier: Alert.Identifier) {
+        delegate.notify { delegate in delegate?.retractAlert(identifier: identifier) }
     }
     
+    private func issueAlert(_ alert: Alert) {
+        self.retractAlert(identifier: alert.identifier)
+        if notificationAlerts { delegate.notify { delegate in delegate?.issueAlert(alert) } }
+    }
+    
+    // TODO: localized
+    private func issueAlerts(_ reading: SensorReading?, predecessor: SensorReading?) {
+        guard let latestSensorReading = reading else { return }
+        
+        if latestSensorReading.minutesSinceStart >= latestSensorReading.minutesTillExpire {
+            let highlight = CGMStatusHighlight(localizedMessage: "sensor expired", imageName: "exclamationmark.circle.fill")
+            self.latestReading?.statusHighlight = highlight
+        }
+        
+        self.issueGlucoseAlertIfNecessary(latestSensorReading, predecessor)
+        self.issueReadinessAlertIfNecessary(latestSensorReading, predecessor)
+        self.issueLifecycleAlertIfNecessary(latestSensorReading, predecessor)
+    }
+    
+    private func issueLifecycleAlertIfNecessary(_ reading: SensorReading, _ predecessor: SensorReading?) {
+        let description: String
+        switch reading.minutesSinceStart {
+        case let x where x >= 15840 && !(predecessor?.minutesSinceStart ?? 0 >= 15840): // three days
+            description = String(format: LocalizedString("Replace sensor in %1$@ days", comment: "Sensor expiring alert format string. (1: days left)"), "3")
+        case let x where x >= 17280 && !(predecessor?.minutesSinceStart ?? 0 >= 17280): // two days
+            description = String(format: LocalizedString("Replace sensor in %1$@ days", comment: "Sensor expiring alert format string. (1: days left)"), "2")
+        case let x where x >= 18720 && !(predecessor?.minutesSinceStart ?? 0 >= 18720): // one day
+            description = String(format: LocalizedString("Replace sensor in %1$@ day", comment: "Sensor expiring alert format string. (1: day left)"), "1")
+        case let x where x >= 19440 && !(predecessor?.minutesSinceStart ?? 0 >= 19440): // twelve hours
+            description = String(format: LocalizedString("Replace sensor in %1$@ hours", comment: "Sensor expiring alert format string. (1: hours left)"), "12")
+        case let x where x >= 20100 && !(predecessor?.minutesSinceStart ?? 0 >= 20100): // one hour
+            description = String(format: LocalizedString("Replace sensor in %1$@ hour", comment: "Sensor expiring alert format string. (1: hour left)"), "1")
+        default: return
+        }
+        
+        let content = Alert.Content(title: "Sensor ending soon", body: description, acknowledgeActionButtonLabel: "OK")
+        let identifier = Alert.Identifier(managerIdentifier: managerIdentifier, alertIdentifier: "sensor.expire")
+        let alert = Alert(identifier: identifier, foregroundContent: content, backgroundContent: content, trigger: .immediate)
+        self.issueAlert(alert)
+    }
+    
+    private func issueReadinessAlertIfNecessary(_ reading: SensorReading, _ predecessor: SensorReading?) {
+        guard reading.sensorState == .ready && predecessor?.sensorState == .starting else { return }
+        let content = Alert.Content(title: "Sensor ready", body: "Your sensor is ready for usage", acknowledgeActionButtonLabel: "OK")
+        let identifier = Alert.Identifier(managerIdentifier: managerIdentifier, alertIdentifier: "sensor.ready")
+        let alert = Alert(identifier: identifier, foregroundContent: content, backgroundContent: content, trigger: .immediate)
+        self.issueAlert(alert)
+    }
+    
+    private func issueGlucoseAlertIfNecessary(_ reading: SensorReading, _ predecessor: SensorReading?) {
+        guard reading.glucoseRangeCategory != .normal, let glucoseUnit = displayGlucoseUnit else { return }
+        
+        let formatter = QuantityFormatter(for: glucoseUnit)
+        guard let quantity = formatter.string(from: reading.quantity, for: glucoseUnit) else { return }
+        
+        let content: Alert.Content
+        switch reading.glucoseRangeCategory {
+        case .high, .aboveRange:
+            let localized: String = LocalizedString("High glucose-alarm ⚠️", comment: "The notification title for a high glucose")
+            content = Alert.Content(title: localized, body: "\(quantity) \(reading.trendType?.symbol ?? "?")", acknowledgeActionButtonLabel: "OK", isCritical: true)
+        case .low, .belowRange:
+            let localized: String = LocalizedString("Low glucose-alarm ⚠️", comment: "The notification title for a low glucose")
+            content = Alert.Content(title: localized, body: "\(quantity) \(reading.trendType?.symbol ?? "?")", acknowledgeActionButtonLabel: "OK", isCritical: true)
+        default: return
+        }
+
+        let identifier = Alert.Identifier(managerIdentifier: managerIdentifier, alertIdentifier: "glucose.alert")
+        let alert = Alert(identifier: identifier, foregroundContent: nil, backgroundContent: content, trigger: .immediate)
+        self.issueAlert(alert)
+    }
+    
+    private func issueAlerts(_ state: TransmitterState, predecessor: TransmitterState?) {
+        if state.lastBatteryLevel <= 10 && state.lastBatteryLevel != 0 {
+            self.latestReading?.statusBadge = CGMStatusBadge(imageName: "bolt.circle.fill")
+        } else if state.lastBatteryLevel == 0 {
+            let highlight = CGMStatusHighlight(localizedMessage: "battery 0%", imageName: "bolt.circle.fill")
+            self.latestReading?.statusHighlight = highlight
+        }
+    }
+}
+
+// MARK: - Wrapped State Variable
+extension LibreCGMManager {
+
     public var transmitterState: TransmitterState? {
         get {
-            return state.transmitterState
+            return managerState.transmitterState
         }
         set {
-            set { (state) in
-                state.transmitterState = newValue
-            }
+            set { (state) in state.transmitterState = newValue }
         }
     }
-    
+
+    public var notificationAlerts: Bool {
+        get {
+            return managerState.notificationAlerts
+        }
+        set {
+            set { (state) in state.notificationAlerts = newValue }
+        }
+    }
+
+    public var glucoseTargetRange: DoubleRange {
+        get {
+            return managerState.glucoseTargetRange
+        }
+        set {
+            set { (state) in state.glucoseTargetRange = newValue }
+        }
+    }
+
     public var lastSensorPacket: SensorPacket? {
         get {
-            return state.lastSensorPacket
+            return managerState.lastSensorPacket
         }
         set {
-            set { (state) in
-                state.lastSensorPacket = newValue
-            }
+            set { (state) in state.lastSensorPacket = newValue }
         }
     }
+}
+
+// MARK: - AlertSoundVendor implementation
+extension LibreCGMManager {
+    public func getSoundBaseURL() -> URL? { return nil }
+    public func getSounds() -> [Alert.Sound] { return [] }
 }

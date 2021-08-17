@@ -18,7 +18,7 @@ struct GlucoseTargetRangeEditor: View {
     @State var showingConfirmationAlert = false
     @State var isEditing: Bool = false
 
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismissAction) var dismiss
     
     let initialValue: DoubleRange
     let onSave: (_ newValue: DoubleRange) -> Void
@@ -162,11 +162,8 @@ private struct BloodGlucoseGuardrailWarning: View {
     
     var body: some View {
         assert(!crossedThresholds.isEmpty)
-        return GuardrailWarning(
-            title: title,
-            thresholds: crossedThresholds,
-            caption: caption
-        )
+        return GuardrailWarning(therapySetting: TherapySetting.glucoseTargetRange, title: title,
+                                thresholds: crossedThresholds, caption: caption)
     }
 
     private var title: Text {

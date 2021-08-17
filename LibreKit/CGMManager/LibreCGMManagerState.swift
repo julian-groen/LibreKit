@@ -8,6 +8,7 @@
 
 import Foundation
 import LoopKit
+import LoopKitUI
 
 
 public struct LibreCGMManagerState: RawRepresentable, Equatable {
@@ -18,7 +19,7 @@ public struct LibreCGMManagerState: RawRepresentable, Equatable {
 
     public var transmitterState: TransmitterState?
     
-    public var alarmNotifications: Bool
+    public var notificationAlerts: Bool
     
     public var glucoseTargetRange: DoubleRange
     
@@ -26,7 +27,7 @@ public struct LibreCGMManagerState: RawRepresentable, Equatable {
         self.lastSensorPacket = lastSensorPacket
         self.transmitterState = transmitterState
         self.glucoseTargetRange = DoubleRange(minValue: 70.0, maxValue: 180.0)
-        self.alarmNotifications = true
+        self.notificationAlerts = true
     }
     
     public init?(rawValue: RawValue) {
@@ -41,7 +42,7 @@ public struct LibreCGMManagerState: RawRepresentable, Equatable {
         }
         
         self.init(lastSensorPacket: lastSensorPacket, transmitterState: transmitterState)
-        self.alarmNotifications = (rawValue["alarmNotifications"] as? Bool) ?? true
+        self.notificationAlerts = (rawValue["notificationAlerts"] as? Bool) ?? true
     
         if let rawObjectValue = rawValue["glucoseTargetRange"] as? DoubleRange.RawValue {
             self.glucoseTargetRange = DoubleRange(rawValue: rawObjectValue)!
@@ -50,7 +51,7 @@ public struct LibreCGMManagerState: RawRepresentable, Equatable {
     
     public var rawValue: RawValue {
         var value: [String : Any] = [
-            "alarmNotifications": alarmNotifications,
+            "notificationAlerts": notificationAlerts,
             "glucoseTargetRange": glucoseTargetRange.rawValue
         ]
         
@@ -61,16 +62,15 @@ public struct LibreCGMManagerState: RawRepresentable, Equatable {
         if let transmitterState = transmitterState {
             value["transmitterState"] = transmitterState.rawValue
         }
-        
         return value
     }
 }
- 
+
 extension LibreCGMManagerState: CustomDebugStringConvertible {
     public var debugDescription: String {
         return [
             "## LibreCGMManagerState",
-            "* alarmNotifications: \(String(describing: alarmNotifications))",
+            "* notificationAlerts: \(String(describing: notificationAlerts))",
             "* glucoseTargetRange: \(String(describing: glucoseTargetRange))",
             "* transmitterState: \(String(reflecting: transmitterState))",
             "* lastSensorPacket: \(String(reflecting: lastSensorPacket))"

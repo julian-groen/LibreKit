@@ -49,36 +49,40 @@ public struct SensorPacket: RawRepresentable, Equatable {
         }
         
         self.init(sensorType, bytes: rawSensorData)
-        self.readingTimestamp = (rawValue["readingTimestamp"] as? TimeInterval)
-            ?? Date().timeIntervalSince1970
+        
+        if let rtimestamp = rawValue["readingTimestamp"] as? TimeInterval {
+            self.readingTimestamp = rtimestamp
+        }
     }
     
-    public func trend(reversed: Bool = false) -> [Measurement] {
+    public func trend(parameters: AlgorithmParameters, reference: Measurement? = nil) -> [Measurement] {
         let nextTrendBlock = Int(rawSensorData[26] & 0xFF)
         var measurements: [Measurement] = [Measurement]()
         for index in 0 ..< 16 {
             let offset = nextTrendBlock - index - 1
             let start = (offset < 0 ? offset + 16 : offset) * 6 + 28
             let timestamp = readingTimestamp.advanced(by: Double(index * -60))
-            let bytes = Array(rawSensorData[start ..< (start + 6)])
-            let measurement = Measurement(rawValue: bytes, timestamp: timestamp)
+            if let last = reference?.timestamp, last <= timestamp { continue }
+            let bytes = Data(rawSensorData[start ..< (start + 6)])
+            let measurement = Measurement(bytes, timestamp, params: parameters)
             measurements.append(measurement)
         }
-        return (reversed ? measurements.reversed() : measurements)
+        return measurements
     }
     
-    public func history(reversed: Bool = false) -> [Measurement] {
+    public func history(parameters: AlgorithmParameters, reference: Measurement? = nil) -> [Measurement] {
         let nextHistoryBlock = Int(rawSensorData[27] & 0xFF)
         var measurements: [Measurement] = [Measurement]()
         for index in 0 ..< 32 {
             let offset = nextHistoryBlock - index - 1
-            let start = (offset < 0 ? offset + 16 : offset) * 6 + 124
+            let start = (offset < 0 ? offset + 32 : offset) * 6 + 124
             let timestamp = readingTimestamp.advanced(by: Double(index * -900))
-            let bytes = Array(rawSensorData[start ..< (start + 6)])
-            let measurement = Measurement(rawValue: bytes, timestamp: timestamp)
+            if let last = reference?.timestamp, last <= timestamp { continue }
+            let bytes = Data(rawSensorData[start ..< (start + 6)])
+            let measurement = Measurement(bytes, timestamp, params: parameters)
             measurements.append(measurement)
         }
-        return (reversed ? measurements.reversed() : measurements)
+        return measurements
     }
     
     public var rawValue: RawValue {
@@ -87,6 +91,17 @@ public struct SensorPacket: RawRepresentable, Equatable {
             "readingTimestamp": readingTimestamp.rawValue,
             "rawSensorData": rawSensorData
         ]
+    }
+}
+
+extension Data {
+    private static let hexAlphabet = "0123456789abcdef".unicodeScalars.map { $0 }
+    
+    public func hexEncodedString() -> String {
+        return String(self.reduce(into: "".unicodeScalars, { (result, value) in
+            result.append(Data.hexAlphabet[Int(value/16)])
+            result.append(Data.hexAlphabet[Int(value%16)])
+        }))
     }
 }
 
@@ -105,16 +120,15 @@ extension SensorPacket: CustomDebugStringConvertible {
 }
 
 extension SensorPacket {
-    public static func parse(from data: Data, id: Data) -> SensorPacket? {
+    public static func parse(from data: Data, serial: Data) -> SensorPacket? {
         let patchInformation = (data.count > 345 ? Data(data[345...350]) : nil)
         let sensorType = SensorType(byte: (data.count > 345 ? data[345] : nil))
         
         var rawSensorData: Data = data
         if (sensorType == .libreTwo || sensorType == .libreUSA) && data.count > 345 {
-            rawSensorData = SensorDecrypt.decrypt(id, patchInformation ?? Data(), data)
+            rawSensorData = SensorFunctions.decrypt(serial, patchInformation ?? Data(), data)
         }
-        
-        guard rawSensorData.count == 344 && SensorCRC.parse(data: rawSensorData) else {
+        guard rawSensorData.count == 344 && RedundancyCheck.parse(data: rawSensorData) else {
             return nil
         }
         return SensorPacket(sensorType, bytes: rawSensorData)

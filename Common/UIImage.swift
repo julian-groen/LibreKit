@@ -3,7 +3,7 @@
 //  LibreKit
 //
 //  Created by Julian Groen on 08/12/2020.
-//  Copyright © 2020 Mark Wilson. All rights reserved.
+//  Copyright © 2020 Julian Groen. All rights reserved.
 //
 
 import Foundation
