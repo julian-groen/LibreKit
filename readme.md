@@ -1,8 +1,10 @@
 # Known issues
 
-- none?
+- kickoff libre -> no notification & high glucose
+- substraction of extra lifetime not correct
 
 
 # TODO
 
-- ADDING notifications
+- ADDING native libre 2 support
+- ADDING support for localized strings

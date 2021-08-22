@@ -101,18 +101,20 @@ public class LibreCGMManager: CGMManager {
         completion(.noData)
     }
     
-    // TODO: smoothing
     private func process(_ packet: SensorPacket) -> [SensorReading]? {
         let algorithm_parameters: AlgorithmParameters = AlgorithmParameters(bytes: packet.rawSensorData)
         
         var measurements: [Measurement] = [Measurement]()
         measurements.append(contentsOf: packet.trend(parameters: algorithm_parameters, reference: measurements.last))
-        measurements.append(contentsOf: packet.history(parameters: algorithm_parameters, reference: measurements.last))
-        measurements.sort(by: { $0.timestamp < $1.timestamp })
-        
+        SavitzkyGolay.smooth(measurements: &measurements, iterations: 2) // trend smoothing
+    
+        var history = packet.history(parameters: algorithm_parameters, reference: measurements.last)
+        SavitzkyGolay.smooth(measurements: &history); history.remove(at: 0) // history smoothing
+        measurements.append(contentsOf: history); measurements.sort(by: { $0.timestamp < $1.timestamp })
+    
         var entries: [SensorReading] = [SensorReading]()
         for measurement in measurements {
-            var reading = SensorReading(packet, value: measurement.glucose, timestamp: measurement.timestamp)
+            var reading = SensorReading(packet, value: measurement.value, timestamp: measurement.timestamp)
             reading.calculate(predecessor: entries.last, range: self.glucoseTargetRange); entries.append(reading)
         }
         return entries
@@ -180,8 +182,6 @@ extension LibreCGMManager: TransmitterManagerDelegate {
 
 // MARK: - LibreCGMManager Alerts
 extension LibreCGMManager {
-    
-    // TODO: localize
     
     private func issueAlert(_ alert: Alert) {
         if notificationAlerts { delegate.notify { (delegate) in delegate?.issueAlert(alert) } }

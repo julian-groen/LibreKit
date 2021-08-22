@@ -62,7 +62,7 @@ public struct SensorPacket: RawRepresentable, Equatable {
             let offset = nextTrendBlock - index - 1
             let start = (offset < 0 ? offset + 16 : offset) * 6 + 28
             let timestamp = readingTimestamp.advanced(by: Double(index * -60))
-            if let last = reference?.timestamp, last <= timestamp { continue }
+            if let last = reference?.timestamp, last < timestamp { continue }
             let bytes = Data(rawSensorData[start ..< (start + 6)])
             let measurement = Measurement(bytes, timestamp, params: parameters)
             measurements.append(measurement)
@@ -77,7 +77,7 @@ public struct SensorPacket: RawRepresentable, Equatable {
             let offset = nextHistoryBlock - index - 1
             let start = (offset < 0 ? offset + 32 : offset) * 6 + 124
             let timestamp = readingTimestamp.advanced(by: Double(index * -900))
-            if let last = reference?.timestamp, last <= timestamp { continue }
+            if let last = reference?.timestamp, last < timestamp { continue }
             let bytes = Data(rawSensorData[start ..< (start + 6)])
             let measurement = Measurement(bytes, timestamp, params: parameters)
             measurements.append(measurement)

@@ -11,22 +11,22 @@ import Foundation
 
 public protocol AbstractMeasurement {
     
-    var glucose: Double { get set }
+    var value: Double { get set }
     var timestamp: TimeInterval { get set }
 }
 
 // implementation for usage with derived algorithm
 public struct Measurement: AbstractMeasurement {
     
-    public var glucose: Double
+    public var value: Double
     
     public var timestamp: TimeInterval
     
     /// raw temperature value returned from sensor
-    private var raw_temperature: Int
+    private var temperature: Int
 
     /// raw glucose value returned from sensor
-    private var raw_glucose: Int
+    private var glucose: Int
 
     /// slope to calculate glucose from raw value in (mg/dl)/raw
     private let slope: Double = 0.1
@@ -39,41 +39,41 @@ public struct Measurement: AbstractMeasurement {
     
     public init(_ bytes: Data, _ timestamp: TimeInterval, params: AlgorithmParameters) {
         self.timestamp = timestamp
-        self.raw_temperature = (Int(bytes[4] & 0x3F) << 8) + Int(bytes[3])
-        self.raw_glucose = (Int(bytes[1] & 0x1F) << 8) + Int(bytes[0])
-        self.glucose = offset + slope * Double(raw_glucose)
+        self.temperature = (Int(bytes[4] & 0x3F) << 8) + Int(bytes[3])
+        self.glucose = (Int(bytes[1] & 0x1F) << 8) + Int(bytes[0])
+        self.value = offset + slope * Double(glucose)
 
         let temperature_adjustment = (SensorFunctions.read(bytes, 0, 0x26, 0x9) << 2)
         let negative_adjustment = SensorFunctions.read(bytes, 0, 0x2f, 0x1) != 0
         self.adjustment = negative_adjustment ? -temperature_adjustment : temperature_adjustment
 
-        let slope = params.slope_slope * Double(raw_temperature) + params.offset_slope
-        let offset = params.slope_offset * Double(raw_temperature) + params.offset_offset
-        let temporary = slope * Double(raw_glucose) + offset
-        self.glucose = temporary * params.extra_slope + params.extra_offset
+        let slope = params.slope_slope * Double(temperature) + params.offset_slope
+        let offset = params.slope_offset * Double(temperature) + params.offset_offset
+        let temporary = slope * Double(glucose) + offset
+        self.value = temporary * params.extra_slope + params.extra_offset
     }
 }
 
 // implementation for usage as math parameter
 public struct Placeholder: AbstractMeasurement {
     
-    public var glucose: Double
+    public var value: Double
     
     public var timestamp: TimeInterval
     
     /// raw temperature value returned from sensor
-    private var raw_temperature: Double
+    private var temperature: Double
 
     /// raw glucose value returned from sensor
-    private var raw_glucose: Double
+    private var glucose: Double
     
-    public init(value: Int) { self.init(raw_glucose: value, raw_temperature: 0) }
+    public init(value: Double) { self.init(glucose: value, temperature: 0) }
     
-    public init(raw_glucose: Int, raw_temperature: Int) {
-        self.raw_glucose     = Double(raw_glucose)
-        self.raw_temperature = Double(raw_temperature)
-        self.glucose         = Double(raw_glucose)
-        self.timestamp       = TimeInterval()
+    public init(glucose: Double, temperature: Double) {
+        self.glucose     = Double(glucose)
+        self.temperature = Double(temperature)
+        self.value       = Double(glucose)
+        self.timestamp   = TimeInterval()
     }
     
     func calculate(calibration: SensorCalibration) -> Double {
@@ -82,10 +82,10 @@ public struct Placeholder: AbstractMeasurement {
         let cc = 0.0000007061775
         let cd = 0.00000005283566
 
-        let log = log(((raw_temperature * Double(72500)) / calibration.i6) - Double(1000))
+        let log = log(((temperature * Double(72500)) / calibration.i6) - Double(1000))
         let d = pow(log, 3) * cd + pow(log, 2) * cc + log * cb + ca
         let temperature = 1 / d - 273.15
-        let g1 = 65.0 * (raw_glucose - calibration.i3) / (calibration.i4 - calibration.i3)
+        let g1 = 65.0 * (glucose - calibration.i3) / (calibration.i4 - calibration.i3)
         let g2 = pow(1.045, 32.5 - temperature)
         
         let v1 = SensorCalibration.t1[calibration.i2 - 1]
@@ -100,9 +100,9 @@ extension Measurement: CustomDebugStringConvertible {
         return [
             "### Measurement",
             "* timestamp: \(Date(timestamp: timestamp))",
-            "* glucoseValue: \(String(describing: glucose))",
-            "* rawTemperature: \(String(describing: raw_temperature))",
-            "* rawGlucose: \(String(describing: raw_glucose))",
+            "* glucoseValue: \(String(describing: value))",
+            "* rawTemperature: \(String(describing: temperature))",
+            "* rawGlucose: \(String(describing: glucose))",
             ""
         ].joined(separator: "\n")
     }

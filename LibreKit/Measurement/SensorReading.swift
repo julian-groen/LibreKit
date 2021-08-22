@@ -38,7 +38,7 @@ public struct SensorReading: GlucoseValue, GlucoseDisplayable {
         self.glucoseValue = value
         self.sensorState = packet.sensorState
         self.minutesSinceStart = packet.minutesSinceStart
-        self.minutesTillExpire = packet.minutesTillExpire - 754 // TODO: minus 'extra' minutes
+        self.minutesTillExpire = packet.minutesTillExpire - 754 // minus 'extra' minutes
         self.timestamp = timestamp
     }
     
