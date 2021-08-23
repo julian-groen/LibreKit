@@ -13,8 +13,15 @@
 		0A146C7725850FE400CF5F0A /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A146C7625850FE400CF5F0A /* LocalizedString.swift */; };
 		0A146C782585104800CF5F0A /* Framework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A146C7325850FAC00CF5F0A /* Framework.swift */; };
 		0A146C792585104800CF5F0A /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A146C7625850FE400CF5F0A /* LocalizedString.swift */; };
+		0A17891E26D3DAD30086D245 /* 1587513080.0655909.txt in Sources */ = {isa = PBXBuildFile; fileRef = 0A944D8426D3D4BF0051E8BA /* 1587513080.0655909.txt */; };
+		0A17891F26D3DB290086D245 /* 1587517529.933136.txt in Sources */ = {isa = PBXBuildFile; fileRef = 0A944DAF26D3D4C50051E8BA /* 1587517529.933136.txt */; };
+		0A17892026D3DB290086D245 /* 1587523526.197431.txt in Sources */ = {isa = PBXBuildFile; fileRef = 0A944A5926D3D4660051E8BA /* 1587523526.197431.txt */; };
+		0A17892126D3DB290086D245 /* 1587538526.0026078.txt in Sources */ = {isa = PBXBuildFile; fileRef = 0A944C9026D3D4A00051E8BA /* 1587538526.0026078.txt */; };
+		0A17892226D3DB290086D245 /* 1587546625.9357471.txt in Sources */ = {isa = PBXBuildFile; fileRef = 0A944C1A26D3D48D0051E8BA /* 1587546625.9357471.txt */; };
 		0A192ADB2589752A00598025 /* LibreKitPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A192AD92589752A00598025 /* LibreKitPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A192AF9258975E000598025 /* LibreKitPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A192AF8258975E000598025 /* LibreKitPlugin.swift */; };
+		0A27B3C626D3D130009BD4C0 /* LibreKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A27B3C526D3D130009BD4C0 /* LibreKitTests.swift */; };
+		0A27B3C826D3D130009BD4C0 /* LibreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DB22581A0B300DC6DE5 /* LibreKit.framework */; };
 		0A2F443726041C3C007A7857 /* LibreCGMManagerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F443626041C3C007A7857 /* LibreCGMManagerState.swift */; };
 		0A2F44492604A600007A7857 /* SensorPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F44482604A600007A7857 /* SensorPacket.swift */; };
 		0A2F44512604A9DC007A7857 /* TransmitterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F44502604A9DC007A7857 /* TransmitterState.swift */; };
@@ -46,6 +53,12 @@
 		0A8F9D19262CC7250090A476 /* CBPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8F9D18262CC7250090A476 /* CBPeripheral.swift */; };
 		0A906E45262F323A002998AF /* SensorEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A906E44262F323A002998AF /* SensorEnums.swift */; };
 		0A906E4D262F7D1B002998AF /* SensorFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A906E4C262F7D1B002998AF /* SensorFunctions.swift */; };
+		0A94494A26D3D1F00051E8BA /* LoopKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A94494926D3D1F00051E8BA /* LoopKit.framework */; };
+		0A944EE426D3D4CD0051E8BA /* 1587523526.197431.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0A944A5926D3D4660051E8BA /* 1587523526.197431.txt */; };
+		0A9450A526D3D4D20051E8BA /* 1587546625.9357471.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0A944C1A26D3D48D0051E8BA /* 1587546625.9357471.txt */; };
+		0A94511B26D3D4D30051E8BA /* 1587538526.0026078.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0A944C9026D3D4A00051E8BA /* 1587538526.0026078.txt */; };
+		0A94520F26D3D4D60051E8BA /* 1587513080.0655909.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0A944D8426D3D4BF0051E8BA /* 1587513080.0655909.txt */; };
+		0A94523A26D3D4D70051E8BA /* 1587517529.933136.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0A944DAF26D3D4C50051E8BA /* 1587517529.933136.txt */; };
 		0AA5CBBB259D6BC9004F93F2 /* LibreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DB22581A0B300DC6DE5 /* LibreKit.framework */; };
 		0AA5CBBE259D6BCA004F93F2 /* LibreKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A544DC82581A1B700DC6DE5 /* LibreKitUI.framework */; };
 		0AA5D637259D6F59004F93F2 /* carthage.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA5D635259D6F59004F93F2 /* carthage.sh */; };
@@ -62,6 +75,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		0A192AE52589756E00598025 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A544DA92581A0B300DC6DE5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A544DB12581A0B300DC6DE5;
+			remoteInfo = LibreKit;
+		};
+		0A27B3C926D3D130009BD4C0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0A544DA92581A0B300DC6DE5 /* Project object */;
 			proxyType = 1;
@@ -93,6 +113,9 @@
 		0A192AD92589752A00598025 /* LibreKitPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibreKitPlugin.h; sourceTree = "<group>"; };
 		0A192ADA2589752A00598025 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A192AF8258975E000598025 /* LibreKitPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreKitPlugin.swift; sourceTree = "<group>"; };
+		0A27B3C326D3D130009BD4C0 /* LibreKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LibreKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A27B3C526D3D130009BD4C0 /* LibreKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreKitTests.swift; sourceTree = "<group>"; };
+		0A27B3C726D3D130009BD4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A2F443626041C3C007A7857 /* LibreCGMManagerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreCGMManagerState.swift; sourceTree = "<group>"; };
 		0A2F44482604A600007A7857 /* SensorPacket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorPacket.swift; sourceTree = "<group>"; };
 		0A2F44502604A9DC007A7857 /* TransmitterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransmitterState.swift; sourceTree = "<group>"; };
@@ -127,6 +150,12 @@
 		0A8F9D18262CC7250090A476 /* CBPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBPeripheral.swift; sourceTree = "<group>"; };
 		0A906E44262F323A002998AF /* SensorEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorEnums.swift; sourceTree = "<group>"; };
 		0A906E4C262F7D1B002998AF /* SensorFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorFunctions.swift; sourceTree = "<group>"; };
+		0A94494926D3D1F00051E8BA /* LoopKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LoopKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A944A5926D3D4660051E8BA /* 1587523526.197431.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1587523526.197431.txt; sourceTree = "<group>"; };
+		0A944C1A26D3D48D0051E8BA /* 1587546625.9357471.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1587546625.9357471.txt; sourceTree = "<group>"; };
+		0A944C9026D3D4A00051E8BA /* 1587538526.0026078.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1587538526.0026078.txt; sourceTree = "<group>"; };
+		0A944D8426D3D4BF0051E8BA /* 1587513080.0655909.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1587513080.0655909.txt; sourceTree = "<group>"; };
+		0A944DAF26D3D4C50051E8BA /* 1587517529.933136.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1587517529.933136.txt; sourceTree = "<group>"; };
 		0AA5D635259D6F59004F93F2 /* carthage.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = carthage.sh; sourceTree = "<group>"; };
 		0AA5D636259D6F59004F93F2 /* copy-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "copy-frameworks.sh"; sourceTree = "<group>"; };
 		0AA5D688259D7CFD004F93F2 /* OSLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
@@ -146,6 +175,15 @@
 			files = (
 				0AA5CBBE259D6BCA004F93F2 /* LibreKitUI.framework in Frameworks */,
 				0AA5CBBB259D6BC9004F93F2 /* LibreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A27B3C026D3D130009BD4C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A27B3C826D3D130009BD4C0 /* LibreKit.framework in Frameworks */,
+				0A94494A26D3D1F00051E8BA /* LoopKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +216,16 @@
 				0A192ADA2589752A00598025 /* Info.plist */,
 			);
 			path = LibreKitPlugin;
+			sourceTree = "<group>";
+		};
+		0A27B3C426D3D130009BD4C0 /* LibreKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				0A94494B26D3D4200051E8BA /* RawData */,
+				0A27B3C526D3D130009BD4C0 /* LibreKitTests.swift */,
+				0A27B3C726D3D130009BD4C0 /* Info.plist */,
+			);
+			path = LibreKitTests;
 			sourceTree = "<group>";
 		};
 		0A2F443326041B89007A7857 /* CGMManager */ = {
@@ -243,6 +291,7 @@
 				0A544DB42581A0B300DC6DE5 /* LibreKit */,
 				0A544DC92581A1B700DC6DE5 /* LibreKitUI */,
 				0A192AD82589752A00598025 /* LibreKitPlugin */,
+				0A27B3C426D3D130009BD4C0 /* LibreKitTests */,
 				0A544DB32581A0B300DC6DE5 /* Products */,
 				0A544DD52581A47000DC6DE5 /* Frameworks */,
 				0AA5D634259D6F59004F93F2 /* Scripts */,
@@ -255,6 +304,7 @@
 				0A544DB22581A0B300DC6DE5 /* LibreKit.framework */,
 				0A544DC82581A1B700DC6DE5 /* LibreKitUI.framework */,
 				0A1916832589744100598025 /* LibreKitPlugin.loopplugin */,
+				0A27B3C326D3D130009BD4C0 /* LibreKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -304,6 +354,7 @@
 		0A544DD52581A47000DC6DE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A94494926D3D1F00051E8BA /* LoopKit.framework */,
 				0A465EFA26C5CBC600E50AA3 /* HealthKit.framework */,
 				0A465EF726C5CBC100E50AA3 /* LoopKitUI.framework */,
 				0A465EF326C5CBBB00E50AA3 /* LoopKit.framework */,
@@ -312,6 +363,18 @@
 				0A83367225FEFD6500CA3DCC /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0A94494B26D3D4200051E8BA /* RawData */ = {
+			isa = PBXGroup;
+			children = (
+				0A944D8426D3D4BF0051E8BA /* 1587513080.0655909.txt */,
+				0A944DAF26D3D4C50051E8BA /* 1587517529.933136.txt */,
+				0A944A5926D3D4660051E8BA /* 1587523526.197431.txt */,
+				0A944C9026D3D4A00051E8BA /* 1587538526.0026078.txt */,
+				0A944C1A26D3D48D0051E8BA /* 1587546625.9357471.txt */,
+			);
+			path = RawData;
 			sourceTree = "<group>";
 		};
 		0AA5D634259D6F59004F93F2 /* Scripts */ = {
@@ -382,6 +445,24 @@
 			productReference = 0A1916832589744100598025 /* LibreKitPlugin.loopplugin */;
 			productType = "com.apple.product-type.framework";
 		};
+		0A27B3C226D3D130009BD4C0 /* LibreKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A27B3CB26D3D130009BD4C0 /* Build configuration list for PBXNativeTarget "LibreKitTests" */;
+			buildPhases = (
+				0A27B3BF26D3D130009BD4C0 /* Sources */,
+				0A27B3C026D3D130009BD4C0 /* Frameworks */,
+				0A27B3C126D3D130009BD4C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A27B3CA26D3D130009BD4C0 /* PBXTargetDependency */,
+			);
+			name = LibreKitTests;
+			productName = LibreKitTests;
+			productReference = 0A27B3C326D3D130009BD4C0 /* LibreKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		0A544DB12581A0B300DC6DE5 /* LibreKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A544DBA2581A0B300DC6DE5 /* Build configuration list for PBXNativeTarget "LibreKit" */;
@@ -425,12 +506,16 @@
 		0A544DA92581A0B300DC6DE5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Julian Groen";
 				TargetAttributes = {
 					0A1916822589744100598025 = {
 						CreatedOnToolsVersion = 12.3;
 						LastSwiftMigration = 1230;
+					};
+					0A27B3C226D3D130009BD4C0 = {
+						CreatedOnToolsVersion = 12.5.1;
 					};
 					0A544DB12581A0B300DC6DE5 = {
 						CreatedOnToolsVersion = 12.2;
@@ -474,6 +559,7 @@
 				0A544DB12581A0B300DC6DE5 /* LibreKit */,
 				0A544DC72581A1B700DC6DE5 /* LibreKitUI */,
 				0A1916822589744100598025 /* LibreKitPlugin */,
+				0A27B3C226D3D130009BD4C0 /* LibreKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -483,6 +569,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A27B3C126D3D130009BD4C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A94511B26D3D4D30051E8BA /* 1587538526.0026078.txt in Resources */,
+				0A94523A26D3D4D70051E8BA /* 1587517529.933136.txt in Resources */,
+				0A9450A526D3D4D20051E8BA /* 1587546625.9357471.txt in Resources */,
+				0A94520F26D3D4D60051E8BA /* 1587513080.0655909.txt in Resources */,
+				0A944EE426D3D4CD0051E8BA /* 1587523526.197431.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +636,19 @@
 			files = (
 				0AA5D68B259D7CFD004F93F2 /* OSLog.swift in Sources */,
 				0A192AF9258975E000598025 /* LibreKitPlugin.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0A27B3BF26D3D130009BD4C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A17891F26D3DB290086D245 /* 1587517529.933136.txt in Sources */,
+				0A17892026D3DB290086D245 /* 1587523526.197431.txt in Sources */,
+				0A17892126D3DB290086D245 /* 1587538526.0026078.txt in Sources */,
+				0A17892226D3DB290086D245 /* 1587546625.9357471.txt in Sources */,
+				0A17891E26D3DAD30086D245 /* 1587513080.0655909.txt in Sources */,
+				0A27B3C626D3D130009BD4C0 /* LibreKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +709,11 @@
 			isa = PBXTargetDependency;
 			target = 0A544DB12581A0B300DC6DE5 /* LibreKit */;
 			targetProxy = 0A192AE52589756E00598025 /* PBXContainerItemProxy */;
+		};
+		0A27B3CA26D3D130009BD4C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A544DB12581A0B300DC6DE5 /* LibreKit */;
+			targetProxy = 0A27B3C926D3D130009BD4C0 /* PBXContainerItemProxy */;
 		};
 		0A544DDB2581A48200DC6DE5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -692,6 +808,44 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = loopplugin;
+			};
+			name = Release;
+		};
+		0A27B3CC26D3D130009BD4C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2KC48ABXJN;
+				INFOPLIST_FILE = LibreKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.juliangroen.LibreKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0A27B3CD26D3D130009BD4C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2KC48ABXJN;
+				INFOPLIST_FILE = LibreKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.juliangroen.LibreKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -959,6 +1113,15 @@
 			buildConfigurations = (
 				0A1916892589744100598025 /* Debug */,
 				0A19168A2589744100598025 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A27B3CB26D3D130009BD4C0 /* Build configuration list for PBXNativeTarget "LibreKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A27B3CC26D3D130009BD4C0 /* Debug */,
+				0A27B3CD26D3D130009BD4C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
