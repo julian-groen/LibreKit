@@ -1,6 +1,6 @@
 # Known issues
 
-- kickoff libre -> no notification & high glucose
+- Wierd smoothening? Any help?
 
 
 # TODO
