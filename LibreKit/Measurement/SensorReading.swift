@@ -37,13 +37,14 @@ public struct SensorReading: GlucoseValue, GlucoseDisplayable {
     public init(_ packet: SensorPacket, value: Double, timestamp: TimeInterval) {
         self.glucoseValue = value
         self.sensorState = packet.sensorState
-        self.minutesSinceStart = packet.minutesSinceStart
+        let difference = Int(packet.readingTimestamp - timestamp) / 60
+        self.minutesSinceStart = packet.minutesSinceStart - difference
         self.minutesTillExpire = packet.minutesTillExpire
         self.timestamp = timestamp
     }
     
     public var isStateValid: Bool {
-        return glucoseValue >= 39 && sensorState.isValid
+        return minutesSinceStart > 30 && glucoseValue >= 39 && sensorState.isValid
     }
     
     public var quantity: HKQuantity {

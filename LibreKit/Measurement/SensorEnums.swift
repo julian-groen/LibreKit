@@ -30,16 +30,11 @@ public enum SensorType: Int {
     
     var description: String {
         switch self {
-        case .libreOne:
-            return "Freestyle Libre 1"
-        case .libre1A2:
-            return "Freestyle Libre 1 A2"
-        case .librePro:
-            return "Freestyle Libre Pro H"
-        case .libreTwo:
-            return "Freestyle Libre 2"
-        case .libreUSA:
-            return "Freestyle Libre US"
+        case .libreOne: return "Freestyle Libre 1"
+        case .libre1A2: return "Freestyle Libre 1 A2"
+        case .librePro: return "Freestyle Libre Pro H"
+        case .libreTwo: return "Freestyle Libre 2"
+        case .libreUSA: return "Freestyle Libre US"
         }
     }
 }
@@ -68,39 +63,17 @@ public enum SensorState: Int {
     
     var description: String {
         switch self {
-        case .awaiting:
-            return "Sensor is not started"
-        case .starting:
-            return "Sensor in starting phase"
-        case .ready:
-            return "Sensor is ready"
-        case .expired:
-            return "Sensor is expired"
-        case .shutdown:
-            return "Sensor is shut down"
-        case .failure:
-            return "Sensor has failed"
-        default:
-            return "Unknown sensor state"
+        case .awaiting: return "Sensor is not started"
+        case .starting: return "Sensor in starting phase"
+        case .ready   : return "Sensor is ready"
+        case .expired : return "Sensor is expired"
+        case .shutdown: return "Sensor is shut down"
+        case .failure : return "Sensor has failed"
+        default: return "Unknown sensor state"
         }
     }
     
     var isValid: Bool {
-        return self == .ready
-    }
-}
-
-public enum SensorError: Error {
-    
-    case expired
-    case invalid
-    
-    var description: String {
-        switch self {
-        case .expired:
-            return "Sensor has expired"
-        case .invalid:
-            return "Invalid SensorPacket"
-        }
+        return (self == .ready || self == .starting)
     }
 }

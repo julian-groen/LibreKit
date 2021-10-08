@@ -145,19 +145,14 @@ extension LibreCGMManager: TransmitterManagerDelegate {
     }
     
     public func transmitterManager(_ manager: TransmitterManager, recievedPacket packet: SensorPacket) {
-        self.lastSensorPacket = packet
+        self.lastSensorPacket = packet; issueExpiredHighlightIfNecessary(packet.sensorState)
 
         guard packet.isValidSensor else {
-            delegate.notify { (delegate) in delegate?.cgmManager(self, hasNew: .error(SensorError.invalid)) }
+            delegate.notify { (delegate) in delegate?.cgmManager(self, hasNew: .unreliableData) }
             return
         }
-
-        guard packet.sensorState == .ready || packet.sensorState == .starting else {
-            delegate.notify { (delegate) in delegate?.cgmManager(self, hasNew: .error(SensorError.expired)) }
-            return
-        }
-
-        guard let readings = self.process(packet), readings.count > 0 else {
+        
+        guard let readings = process(packet), readings.count > 0 else {
             delegate.notify { (delegate) in delegate?.cgmManager(self, hasNew: .noData) }
             return
         }
@@ -198,32 +193,27 @@ extension LibreCGMManager {
     }
     
     private func issueAlerts(_ reading: SensorReading?, predecessor: SensorReading?) {
-        guard let latestSensorReading = reading else { return }
-        
-        if latestSensorReading.sensorState == .expired {
-            let highlight = CGMStatusHighlight(localizedMessage: "sensor expired", imageName: "exclamationmark.circle.fill")
-            self.latestReading?.statusHighlight = highlight
-        }
-        
         self.retractGlucoseAlertIfNecessary()
-        self.issueReadinessAlertIfNecessary(latestSensorReading, predecessor)
+        guard let latestSensorReading = reading else { return }
         self.issueLifecycleAlertIfNecessary(latestSensorReading, predecessor)
         self.issueGlucoseAlertIfNecessary(latestSensorReading, predecessor)
     }
     
     private func issueLifecycleAlertIfNecessary(_ reading: SensorReading, _ predecessor: SensorReading?) {
+        guard let previousReading = predecessor else { return }
+        
         let description: String
         switch reading.minutesRemaining {
-        case let x where x <= 4320 && !(predecessor?.minutesSinceStart ?? 0 <= 4320): // three days
-            description = String(format: LocalizedString("Replace sensor in %1$@ days", comment: "Sensor expiring alert. (1: days left)"), "3")
-        case let x where x <= 2880 && !(predecessor?.minutesSinceStart ?? 0 <= 2880): // two days
-            description = String(format: LocalizedString("Replace sensor in %1$@ days", comment: "Sensor expiring alert. (1: days left)"), "2")
-        case let x where x <= 1440 && !(predecessor?.minutesSinceStart ?? 0 <= 1440): // one day
-            description = String(format: LocalizedString("Replace sensor in %1$@ day", comment: "Sensor expiring alert. (1: day left)"), "1")
-        case let x where x <= 0720 && !(predecessor?.minutesSinceStart ?? 0 <= 0720): // twelve hours
-            description = String(format: LocalizedString("Replace sensor in %1$@ hours", comment: "Sensor expiring alert. (1: hours left)"), "12")
-        case let x where x <= 0060 && !(predecessor?.minutesSinceStart ?? 0 <= 0060): // one hour
-            description = String(format: LocalizedString("Replace sensor in %1$@ hour", comment: "Sensor expiring alert. (1: hour left)"), "1")
+        case let x where (x <= 4320 && previousReading.minutesRemaining >= 4320): // three days
+            description = String(format: LocalizedString("Replace sensor in %1$@ days", comment: "Sensor expiring. (1: days)"), "3")
+        case let x where (x <= 2880 && previousReading.minutesRemaining >= 2880): // two days
+            description = String(format: LocalizedString("Replace sensor in %1$@ days", comment: "Sensor expiring. (1: days)"), "2")
+        case let x where (x <= 1440 && previousReading.minutesRemaining >= 1440): // one day
+            description = String(format: LocalizedString("Replace sensor in %1$@ day", comment: "Sensor expiring. (1: day)"), "1")
+        case let x where (x <= 0720 && previousReading.minutesRemaining >= 0720): // twelve hours
+            description = String(format: LocalizedString("Replace sensor in %1$@ hours", comment: "Sensor expiring. (1: hours)"), "12")
+        case let x where (x <= 0060 && previousReading.minutesRemaining >= 0060): // one hour
+            description = String(format: LocalizedString("Replace sensor in %1$@ hour", comment: "Sensor expiring. (1: hour)"), "1")
         default: return
         }
         
@@ -233,12 +223,9 @@ extension LibreCGMManager {
         self.issueAlert(alert)
     }
     
-    private func issueReadinessAlertIfNecessary(_ reading: SensorReading, _ predecessor: SensorReading?) {
-        guard reading.sensorState == .ready && predecessor?.sensorState == .starting else { return }
-        let content = Alert.Content(title: "Sensor ready", body: "Your sensor is ready for usage", acknowledgeActionButtonLabel: "OK")
-        let identifier = Alert.Identifier(managerIdentifier: managerIdentifier, alertIdentifier: "sensor.ready")
-        let alert = Alert(identifier: identifier, foregroundContent: content, backgroundContent: content, trigger: .immediate)
-        self.issueAlert(alert)
+    private func issueExpiredHighlightIfNecessary(_ state: SensorState) {
+        let status = CGMStatusHighlight(localizedMessage: "expired", imageName: "exclamationmark.circle.fill")
+        if state == .expired || state == .shutdown { self.latestReading?.statusHighlight = status }
     }
     
     private func issueGlucoseAlertIfNecessary(_ reading: SensorReading, _ predecessor: SensorReading?) {
